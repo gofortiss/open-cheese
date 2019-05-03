@@ -3,6 +3,14 @@ require_once('inc/connexion.inc.php');
 require_once('inc/class.response.php');
 class functions extends CI_Model
 {
+  // Redirection à l'accueil si l'utilisateur n'est pas connecté
+  public function authVerification() 
+  {
+    if(empty($_SESSION['idUser'])) {
+      header('Location:'.base_url('index.php/FormHome'));
+    }
+  }
+
   // fonction pour la connexion
   public function connexion($pseudo, $password)
   {
