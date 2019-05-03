@@ -34,12 +34,29 @@
 		      <li class="nav-item">
 		        <a class="nav-link" href="#">Liste des dégustations</a>
 		      </li>
-					<li class="nav-item">
-		        <a class="nav-link" href="#">Connexion</a>
-		      </li>
-					<li class="nav-item">
-		        <a class="nav-link" href="#">Inscription</a>
-		      </li>
+					<!-- Élément dynamique HTML connecté/déconnecté-->
+					<?php
+						if (!isset($_SESSION['idUser'])) {
+							?>
+							<li class="nav-item">
+								<a class="nav-link" href="deconnect">Connexion</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Inscription</a>
+							</li>
+							<?php
+						}
+						else {
+							?>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Mon compte</a>
+							</li>
+							<li class="nav-item">
+								<?php echo '<a href='.base_url('index.php/deconnect').' class="nav-link">Déconnexion</a>';?>
+							</li>
+							<?php
+						}
+					 ?>
 		    </ul>
 		  </div>
 		</nav>
