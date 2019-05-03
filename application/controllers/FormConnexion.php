@@ -21,7 +21,14 @@ class FormConnexion extends CI_Controller {
     // Chargement de la session
     $this->load->helper('url');
     $this->load->model("functions");
-    $this->load->view('header-view',$data); // Load header
-    $this->load->view('connexion-view');
+    // Vérifie si l'utilisateur est déconnecté
+    if(empty($_SESSION['idUser']))
+    {
+      $this->load->view('header-view',$data); // Load header
+      $this->load->view('connexion-view');
+    }
+    else {
+      header('Location:'.base_url('index.php/FormAccount'));
+    }
   }
 }
