@@ -1,0 +1,17 @@
+body {
+  font-family: 'Ubuntu', sans-serif!important;
+}
+.jumbotron {
+  background-color: #FDEFC1;
+  text-align: center;
+}
+/* NAVBAR */
+.navbar-nav {
+  margin: auto;
+  font-size: 18px;
+}
+/* CONNEXION */
+.connexion {
+  max-width: 800px;
+  margin: auto;
+}
