@@ -12,10 +12,6 @@ class FormConnexion extends CI_Controller {
         case 'incorrect':
           $data['js'] = 'swal("Erreur", "Il semblerait que vous-vous soyez tromper :(", "error", {button: "Continuer",}).catch(swal.noop);';
           break;
-
-        case 'vide':
-          $data['js'] = 'swal("Attention", "Veuillez remplir les champs", "warning", {button: "Retour",}).catch(swal.noop);';
-          break;
       }
     }
     // Chargement de la session
@@ -26,6 +22,7 @@ class FormConnexion extends CI_Controller {
     {
       $this->load->view('header-view',$data); // Load header
       $this->load->view('connexion-view');
+      $this->load->view('footer-view');
     }
     else {
       header('Location:'.base_url('index.php/FormAccount'));
