@@ -1,4 +1,5 @@
 <?php
+require_once('connexion.inc.php');
 function uploadImage($file,$target)
 {
     $target_dir = "C:/wamp/www/open-cheese/assets/images/".$target;
@@ -21,7 +22,12 @@ function uploadImage($file,$target)
   		{
         // Upload du fichier
   			move_uploaded_file($file["fichier"]["tmp_name"], $target_dir . $newfilename);
-  			return array('nomFichier'=>$newfilename,'message'=>'','type'=>'success');
+        $cnn = getConnexion('open-cheese');
+        $stmt = $cnn->prepare('SELECT * FROM tblutilisateur WHERE tblutilisateur.pseudo LIKE :pseudo');
+        $stmt->bindParam(':pseudo', $post['pseudo']);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  			return array('id'=>$id,'nomFichier'=>$newfilename,'message'=>'','type'=>'success');
   		}
   	}
   	elseif (empty($file_basename))
