@@ -5,16 +5,12 @@ class FormInscription extends CI_Controller {
   public function index()
   {
     // Titre de la page
-    $data['title'] = "Connexion";
+    $data['title'] = "Inscription";
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
-        case 'incorrect':
-          $data['js'] = 'swal("Erreur", "Il semblerait que vous-vous soyez tromper :(", "error", {button: "Continuer",}).catch(swal.noop);';
-          break;
-
-        case 'vide':
-          $data['js'] = 'swal("Attention", "Veuillez remplir les champs", "warning", {button: "Retour",}).catch(swal.noop);';
+        case 'motdepasse':
+          $data['js'] = 'swal("Attention", "Les mot de passe ne correspondent pas", "error", {button: "Retour",}).catch(swal.noop);';
           break;
       }
     }
