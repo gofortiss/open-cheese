@@ -47,11 +47,13 @@ function uploadImage($file,$target)
 
 function apiImage($pseudo)
 {
+  // Récupération de l'image
   $api = 'https://api.adorable.io/avatars/285/'.$pseudo.'.png';
   $path = 'C:/wamp/www/open-cheese/assets/images/profile-picture/'.$pseudo.'.png';
-  $filename = $pseudo.'.png';
+  $extention = ".png";
+  $filename = $pseudo.$extenton;
   file_put_contents($path, file_get_contents($api));
 
   // Retour du résultat
-  return array('numero'=>$pseudo,'nomFichier'=>$filename,'message'=>'','type'=>'success');
+  return array('numero'=>$filename,'nomFichier'=>$filename,'message'=>'','type'=>'success');
 }
