@@ -11,7 +11,8 @@ function uploadImage($file,$target)
 
   	if (in_array($file_ext,$allowed_file_types))
   	{
-  		// Rename file
+  		// Renomer le fichier (Time stamp + md5.extention)
+      $time = time(); // Nom fichier + id base de donnée
   		$newfilename = time().md5($file_basename).$file_ext;
   		if (file_exists($target_dir.$newfilename))
   		{
@@ -21,13 +22,10 @@ function uploadImage($file,$target)
   		else
   		{
         // Upload du fichier
-  			move_uploaded_file($file["fichier"]["tmp_name"], $target_dir . $newfilename);
-        $cnn = getConnexion('open-cheese');
-        $stmt = $cnn->prepare('SELECT * FROM tblutilisateur WHERE tblutilisateur.pseudo LIKE :pseudo');
-        $stmt->bindParam(':pseudo', $post['pseudo']);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-  			return array('id'=>$id,'nomFichier'=>$newfilename,'message'=>'','type'=>'success');
+        move_uploaded_file($file["fichier"]["tmp_name"], $target_dir . $newfilename);
+
+        // Retour du résultat
+  			return array('numero'=>$newfilename,'nomFichier'=>$newfilename,'message'=>'','type'=>'success');
   		}
   	}
   	elseif (empty($file_basename))
