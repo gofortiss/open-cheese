@@ -10,7 +10,7 @@ class FormConnexion extends CI_Controller {
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'incorrect':
-          $data['js'] = 'swal("Erreur", "Il semblerait que vous-vous soyez tromper :(", "error", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = 'swal("Erreur", "Pseudo ou mot de passe incorrect :(", "error", {button: "Continuer",}).catch(swal.noop);';
           break;
       }
     }
