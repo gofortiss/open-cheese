@@ -1,3 +1,13 @@
+<?php
+  // Contrôle du cookie de rémanance
+  if(isset($_COOKIE['inscription'])) {
+    $input = json_decode($_COOKIE['inscription']); // Décodage du cookie
+    $pseudo = $input->pseudo;
+    $nom = $input->nom;
+    $prenom = $input->prenom;
+    $date = $input->naissance;
+  }
+ ?>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Inscription</h1>
@@ -6,20 +16,20 @@
 <form class="inscription" action="Inscription" class="inscription" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Pseudo</label>
-    <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" required>
+    <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php if(isset($pseudo)){echo $pseudo;}?>' required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Nom</label>
-      <input type="text" class="form-control" name="nom" id="nom" placeholder="Dubuis">
+      <input type="text" class="form-control" name="nom" id="nom" placeholder="Dubuis" value='<?php if(isset($nom)){echo $nom;}?>'>
     </div>
     <div class="form-group col-md-4">
       <label>prénom</label>
-      <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Guillaume">
+      <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Guillaume" value='<?php if(isset($prenom)){echo $prenom;}?>'>
     </div>
     <div class="form-group col-md-4">
       <label>Date de naissance</label>
-      <input type="date" class="form-control" name="naissance" id="date">
+      <input type="date" class="form-control" name="naissance" id="date" value='<?php if(isset($date)){echo $date;}?>'>
     </div>
   </div>
   <div class="form-row">
