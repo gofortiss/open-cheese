@@ -70,7 +70,7 @@ class functions extends CI_Model
        }
        else {
          // Génération d'une image
-
+         $image = apiImage($post['pseudo']);
        }
        switch ($image['type']) {
          case 'success':

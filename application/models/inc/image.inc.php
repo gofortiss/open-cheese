@@ -44,3 +44,14 @@ function uploadImage($file,$target)
       return array('nomFichier'=>$filename,'message'=>'Seulement ces types de fichier sont autorisés :'.implode(', ',$allowed_file_types),'type'=>'error');
   	}
 }
+
+function apiImage($pseudo)
+{
+  $api = 'https://api.adorable.io/avatars/285/'.$pseudo.'.png';
+  $path = 'C:/wamp/www/open-cheese/assets/images/profile-picture/'.$pseudo.'.png';
+  $filename = $pseudo.'.png';
+  file_put_contents($path, file_get_contents($api));
+
+  // Retour du résultat
+  return array('numero'=>$pseudo,'nomFichier'=>$filename,'message'=>'','type'=>'success');
+}
