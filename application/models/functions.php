@@ -68,29 +68,37 @@ class functions extends CI_Model
        if($file['fichier']['name'] !=''){
          $image = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
        }
+       else {
+         // Génération d'une image
 
-       if($resultImage['type'] == 'success')
-       {
-         $password = md5($post['password1']); // Cryptage du mot de passe
+       }
+       switch ($image['type']) {
+         case 'success':
+               $password = md5($post['password1']); // Cryptage du mot de passe
 
-         // Insértion de l'utilisateur dans la base de donnée
-         $cnn = getConnexion('open-cheese');
-         $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
-         $stmt->bindParam(':pseudo', $post['pseudo']);
-         $stmt->bindParam(':dateNaissance', $post['naissance']);
-         $stmt->bindParam(':motdepasse', $password);
-         $stmt->bindParam(':genre', $post['genre']);
-         $stmt->bindParam(':pays', $post['pays']);
-         $stmt->bindParam(':photo', $resultImage['numero']);
-         $stmt->execute();
+               // Insértion de l'utilisateur dans la base de donnée
+               $cnn = getConnexion('open-cheese');
+               $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
+               $stmt->bindParam(':pseudo', $post['pseudo']);
+               $stmt->bindParam(':dateNaissance', $post['naissance']);
+               $stmt->bindParam(':motdepasse', $password);
+               $stmt->bindParam(':genre', $post['genre']);
+               $stmt->bindParam(':pays', $post['pays']);
+               $stmt->bindParam(':photo', $image['numero']);
+               $stmt->execute();
+               $response->addMessage('success');
+           break;
+         case 'error':
+              $response->addMessage('fichier'); // Problème avec le fichier
+           break;
        }
      }
      else
      {
-       $response->addMessage('pseudo');
+       $response->addMessage('pseudo'); // Problème avec le pseudo
      }
    } else {
-     $response->addMessage("motdepasse");
+     $response->addMessage("motdepasse"); // Problème avec le mot de passe
    }
    return $response->info();
  }
