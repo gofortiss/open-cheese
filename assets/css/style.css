@@ -28,6 +28,32 @@ body {
   -moz-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
   box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
 }
+
+/* MON COMPTE */
+.photoProfil {
+  display: block;
+  margin: auto;
+  width: 150px;
+  border-radius: 145px;
+}
+
+.moncompte-block1 {
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  height: 700px;
+}
+
+.moncompte-block2 {
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  overflow-y:scroll;
+  height: 700px;
+}
+
 /* FOOTER */
 .footer	{
   position: absolute;
