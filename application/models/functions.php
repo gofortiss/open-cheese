@@ -65,7 +65,9 @@ class functions extends CI_Model
      $row = $stmt->fetch(PDO::FETCH_ASSOC);
      if(empty($row))
      {
-       $resultImage = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
+       if($file['fichier']['name'] !=''){
+         $image = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
+       }
 
        if($resultImage['type'] == 'success')
        {

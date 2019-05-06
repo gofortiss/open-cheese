@@ -23,6 +23,9 @@ class Inscription extends CI_Controller {
           case 'motdepasse':
               header('Location:'.base_url('index.php/FormInscription?message=motdepasse')); // Renvoi de la page avec message erreur (Mot de passe correspond pas)
             break;
+          case 'fichier':
+              header('Location:'.base_url('index.php/FormInscription?message=fichier')); // Renvoi de la page avec message erreur (Mot de passe correspond pas)
+            break;
         }
     }
 }

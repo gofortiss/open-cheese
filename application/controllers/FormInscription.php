@@ -15,6 +15,9 @@ class FormInscription extends CI_Controller {
         case 'motdepasse':
           $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
           break;
+        case 'fichier':
+          $data['js'] = 'swal("Erreur", "Un problème avec le fichier est survenu", "error", {button: "Continuer",}).catch(swal.noop);';
+          break;
       }
     }
     // Chargement de la session

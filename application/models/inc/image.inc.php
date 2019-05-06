@@ -11,9 +11,8 @@ function uploadImage($file,$target)
 
   	if (in_array($file_ext,$allowed_file_types))
   	{
-  		// Renomer le fichier (Time stamp + md5.extention)
-      $time = time(); // Nom fichier + id base de donnée
-  		$newfilename = time().md5($file_basename).$file_ext;
+      $time = time();
+  		$newfilename = time().md5($file_basename).$file_ext; // Timestamp + md5 + extention(.jpg etc...)
   		if (file_exists($target_dir.$newfilename))
   		{
   			// Le fichier existe déjà
@@ -31,12 +30,12 @@ function uploadImage($file,$target)
   	elseif (empty($file_basename))
   	{
   		// Fichier vide
-  		return array('nomFichier'=>$filename,'message'=>'Veuillez sélectionner un fichier','type'=>'warning');
+  		return array('nomFichier'=>$filename,'message'=>'Veuillez sélectionner un fichier','type'=>'error');
   	}
   	elseif ($filesize > 5000000)
   	{
   		// Taille de fichier trop grand
-      return array('nomFichier'=>$filename,'message'=>'Désolé le fichier est trop large','type'=>'warning');
+      return array('nomFichier'=>$filename,'message'=>'Désolé le fichier est trop large','type'=>'error');
   	}
   	else
   	{
