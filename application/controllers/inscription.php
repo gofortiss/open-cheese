@@ -7,6 +7,16 @@ class Inscription extends CI_Controller {
         $this->load->model("functions");
         $this->load->helper('url');
         $result = $this->functions->inscription($_POST,$_FILES);
-        var_dump($result);
+        switch ($result->message[0]) {
+          case 'success':
+              header('Location:'.base_url('index.php/FormAccount'));
+            break;
+          case 'pseudo':
+              header('Location:'.base_url('index.php/FormInscription?message=pseudo')); // Renvoi de la page avec message erreur (Pseudo déjà utilisé)
+            break;
+          case 'motdepasse':
+              header('Location:'.base_url('index.php/FormInscription?message=motdepasse')); // Renvoi de la page avec message erreur (Mot de passe correspond pas)
+            break;
+        }
     }
 }
