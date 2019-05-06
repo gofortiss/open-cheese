@@ -1,6 +1,6 @@
 <?php
 function getConnexion($nom){
-  $dsn = 'mysql:dbname=open-cheese;host=localhost';
+  $dsn = 'mysql:dbname='.$nom;'host=localhost';
   $user = 'root';
   $password = '';
   try {
