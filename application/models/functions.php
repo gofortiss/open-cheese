@@ -46,8 +46,8 @@ class functions extends CI_Model
       {
         $response->setSuccess(false);
       }
-      return $response->info();
     }
+    return $response->info();
   }
 
 // fonction pour l'inscription
