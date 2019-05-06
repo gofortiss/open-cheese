@@ -65,37 +65,31 @@ class functions extends CI_Model
      $row = $stmt->fetch(PDO::FETCH_ASSOC);
      if(empty($row))
      {
+       $resultImage = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
 
-       return uploadImage($file,'profile-picture/');
+       if($resultImage['type'] == 'success')
+       {
+         $password = md5($post['password1']); // Cryptage du mot de passe
 
-       // // connexion à la base de donnée et requête SQL
-       // $cnn = getConnexion('open-cheese');
-       // $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`, `dateNaissance`, `bio`, `motdepasse`, `num_tblgenre`, `num_tblpays`, `num_tblphoto`) VALUES (NULL, :pseudo, :dateNaissance, NULL,:password,:genre, :pays,:photo)');
-       // $stmt->bindParam(':pseudo', $post['pseudo']);
-       // $stmt->bindParam(':dateNaissance', $post['naissance']);
-       // $stmt->bindParam(':password', md5($post['password1'])); // Cryptage
-       // $stmt->bindParam(':genre', $post['genre']);
-       // $stmt->bindParam(':pays', $post['pays']);
-       // $stmt->bindParam(':photo', $path);
-       // $stmt->execute();
-       // $response->setSuccess(true);
-       // return $response->info();
+         // Insértion de l'utilisateur dans la base de donnée
+         $cnn = getConnexion('open-cheese');
+         $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
+         $stmt->bindParam(':pseudo', $post['pseudo']);
+         $stmt->bindParam(':dateNaissance', $post['naissance']);
+         $stmt->bindParam(':motdepasse', $password);
+         $stmt->bindParam(':genre', $post['genre']);
+         $stmt->bindParam(':pays', $post['pays']);
+         $stmt->bindParam(':photo', $resultImage['numero']);
+         $stmt->execute();
+       }
      }
      else
      {
-       $response->setSuccess(false);
-       return $response->info();
+       $response->addMessage('pseudo');
      }
+   } else {
+     $response->addMessage("motdepasse");
    }
-   else {
-
-   }
+   return $response->info();
  }
-
-
- public function recupererImage($id)
- {
-
- }
-
 }
