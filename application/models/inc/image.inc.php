@@ -51,7 +51,7 @@ function apiImage($pseudo)
   $api = 'https://api.adorable.io/avatars/285/'.$pseudo.'.png';
   $path = 'C:/wamp/www/open-cheese/assets/images/profile-picture/'.$pseudo.'.png';
   $extention = ".png";
-  $filename = $pseudo.$extenton;
+  $filename = $pseudo.$extention;
   file_put_contents($path, file_get_contents($api));
 
   // Retour du résultat
