@@ -165,6 +165,7 @@ class functions extends CI_Model
      $photo = $user[0]['photo'];
    }
 
+   // Requête mise à jour des informations
    $cnn = getConnexion('open-cheese');
    $stmt = $cnn->prepare('UPDATE tblutilisateur SET pseudo = :pseudo, bio = :bio, photo = :photo, motdepasse = :motdepasse WHERE tblutilisateur.numero = :numero');
    $stmt->bindValue(':numero', $_SESSION['idUser']);
