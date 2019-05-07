@@ -9,8 +9,14 @@ class FormAccount extends CI_Controller {
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
-        case 'incorrect':
-          $data['js'] = 'swal("Erreur", "Pseudo ou mot de passe incorrect :(", "error", {button: "Continuer",}).catch(swal.noop);';
+        case 'success':
+          $data['js'] = 'swal("Parfait", "Les données ont bien été modifées", "success", {button: "Continuer",}).catch(swal.noop);';
+          break;
+        case 'pseudo':
+          $data['js'] = 'swal("Attention", "Le pseudo est déjà utilisé", "warning", {button: "Continuer",}).catch(swal.noop);';
+          break;
+        case 'motdepasse':
+          $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
           break;
       }
     }
@@ -20,6 +26,7 @@ class FormAccount extends CI_Controller {
     // Vérifie si l'utilisateur est déconnecté
     if(isset($_SESSION['idUser']))
     {
+      $data['userInfo'] = $this->functions->informationsUtilisateur($_SESSION['idUser']);
       $this->load->view('header-view',$data); // Load header
       $this->load->view('moncompte-view');
       $this->load->view('footer-view');
