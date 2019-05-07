@@ -36,6 +36,8 @@ class functions extends CI_Model
         {
           // Création de la session
           $_SESSION['idUser'] = $row['numero'];
+          $_SESSION['pseudo'] = $row['pseudo'];
+          $_SESSION['photo'] =  $row['photo'];
           $response->setSuccess(true);
         }
         else {
@@ -63,6 +65,7 @@ class functions extends CI_Model
      $stmt->bindParam(':pseudo', $post['pseudo']);
      $stmt->execute();
      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+     // Si aucun utilisateur avec ce pseudo existe
      if(empty($row))
      {
        if($file['fichier']['name'] !=''){
@@ -100,6 +103,77 @@ class functions extends CI_Model
    } else {
      $response->addMessage("motdepasse"); // Problème avec le mot de passe
    }
+   return $response->info();
+ }
+
+ public function informationsUtilisateur($numero)
+ {
+   $cnn = getConnexion('open-cheese');
+   $stmt = $cnn->prepare('SELECT * FROM `tblutilisateur` WHERE numero = :numero');
+   $stmt->bindValue(':numero', $numero);
+   $stmt->execute();
+   $userInfo = $stmt->fetchAll();
+   return $userInfo;
+ }
+
+ // Fonction de mise à jour des informations d'un utilisateur
+ public function updateInformationsUtilisateur($user ,$post, $file) // Information de l'utilisateur par défaut, nouvelles informations, fichier si existant
+ {
+   $response = new Response();
+   var_dump($user);
+   // connexion à la base de donnée et requête SQL pour vérifier si l'utilisateur existe
+   $cnn = getConnexion('open-cheese');
+   $stmt = $cnn->prepare('SELECT tblutilisateur.numero, tblutilisateur.pseudo FROM `tblutilisateur` WHERE tblutilisateur.pseudo = :pseudo');
+   $stmt->bindValue(':pseudo',$_POST['pseudo']);
+   $stmt->execute();
+   $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+   var_dump($row);
+
+   // Vérification du pseudo
+   if(empty($row)) { // Si la ligne est vide
+     $pseudo = $_POST['pseudo'];
+   } elseif($row[0]['numero'] != $_SESSION['idUser']) { // Si le numéro de la ligne est pas égale a l'utilisateur connecté (Est déjà utilisé)
+     $pseudo = $user[0]['pseudo'];
+     $response->addMessage('pseudo');
+   }
+   else { // Si l'input du pseudo est le même que l'actuelle
+     $pseudo = $user[0]['pseudo']; // Le pseudo ne change pas
+   }
+
+   // Vérification du mot de passe
+   $password = $user[0]['motdepasse']; //Mot de passe par défaut
+
+   if ($post['password1'] != "" && $post['password2'] != "") {
+        // Si les mots de passe correspondent
+       if($post['password1'] == $post['password2']) {
+         $password = md5($post['password1']); // Chiffrement du mot de passe
+       }
+       // Envoie message d'erreur
+       else{
+         $response->addMessage('motdepasse');
+         $password = $user[0]['motdepasse'];
+       }
+   }
+
+   //Vérification si une nouvelle photo de profile est existante
+   if($file['fichier']['name'] !='')
+   {
+     $photo = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
+     $photo = $photo['nomFichier'];
+   } else {
+     $photo = $user[0]['photo'];
+   }
+
+   $cnn = getConnexion('open-cheese');
+   $stmt = $cnn->prepare('UPDATE tblutilisateur SET pseudo = :pseudo, bio = :bio, photo = :photo, motdepasse = :motdepasse WHERE tblutilisateur.numero = :numero');
+   $stmt->bindValue(':numero', $_SESSION['idUser']);
+   $stmt->bindValue(':pseudo', $pseudo);
+   $stmt->bindValue(':bio', $post['bio']);
+   $stmt->bindValue(':photo', $photo);
+   $stmt->bindValue(':motdepasse', $password);
+   $stmt->execute();
+   $response->addMessage('success');
    return $response->info();
  }
 }
