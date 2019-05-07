@@ -3,8 +3,6 @@
   if(isset($_COOKIE['inscription'])) {
     $input = json_decode($_COOKIE['inscription']); // Décodage du cookie
     $pseudo = $input->pseudo;
-    $nom = $input->nom;
-    $prenom = $input->prenom;
     $date = $input->naissance;
   }
  ?>
@@ -19,15 +17,7 @@
     <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php if(isset($pseudo)){echo $pseudo;}?>' required>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-4">
-      <label>Nom</label>
-      <input type="text" class="form-control" name="nom" id="nom" placeholder="Dubuis" value='<?php if(isset($nom)){echo $nom;}?>'>
-    </div>
-    <div class="form-group col-md-4">
-      <label>prénom</label>
-      <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Guillaume" value='<?php if(isset($prenom)){echo $prenom;}?>'>
-    </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-12">
       <label>Date de naissance</label>
       <input type="date" class="form-control" name="naissance" id="date" value='<?php if(isset($date)){echo $date;}?>'>
     </div>
