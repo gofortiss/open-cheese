@@ -143,7 +143,7 @@ class functions extends CI_Model
 
    // Vérification du mot de passe
    $password = $user[0]['motdepasse']; //Mot de passe par défaut
-
+   var_dump($file);
    if ($post['password1'] != "" && $post['password2'] != "") {
         // Si les mots de passe correspondent
        if($post['password1'] == $post['password2']) {
@@ -155,14 +155,19 @@ class functions extends CI_Model
          $password = $user[0]['motdepasse'];
        }
    }
-
+   
    //Vérification si une nouvelle photo de profile est existante
-   if($file['fichier']['name'] !='')
-   {
+   $photo = $user[0]['photo'];
+   if($file['fichier']['name']!=''){
      $photo = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
-     $photo = $photo['nomFichier'];
-   } else {
-     $photo = $user[0]['photo'];
+     if($file['fichier']['name'] != '' && $photo['type'] == "success")
+     {
+       $photo = $photo['nomFichier'];
+     }
+     else {
+       $photo = $user[0]['photo'];
+       $response->addMessage('photo');
+     }
    }
 
    // Requête mise à jour des informations

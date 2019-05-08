@@ -18,6 +18,9 @@ class FormAccount extends CI_Controller {
         case 'motdepasse':
           $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
           break;
+        case 'photo':
+          $data['js'] = 'swal("Oupss", "Il y a eu un problème avec le fichier", "error", {button: "Continuer",}).catch(swal.noop);';
+          break;
       }
     }
     // Chargement de la session

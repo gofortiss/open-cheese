@@ -10,7 +10,6 @@ class updateAccount extends CI_Controller {
         // Appel de la fonction mise à jour de l'utilisateur
         $defaultData = $this->functions->informationsUtilisateur($_SESSION['idUser']);
         $result = $this->functions->updateInformationsUtilisateur($defaultData, $_POST, $_FILES);
-        var_dump($result);
         switch ($result->message[0]) {
           case 'pseudo':
               header('Location:'.base_url('index.php/FormAccount?message=pseudo'));
@@ -21,6 +20,9 @@ class updateAccount extends CI_Controller {
 
           case 'motdepasse':
               header('Location:'.base_url('index.php/FormAccount?message=motdepasse'));
+            break;
+          case 'photo':
+              header('Location:'.base_url('index.php/FormAccount?message=photo'));
             break;
         }
     }

@@ -35,6 +35,7 @@ function uploadImage($file,$target)
   	elseif ($filesize > 5000000)
   	{
   		// Taille de fichier trop grand
+      unlink($file["fichier"]["tmp_name"]);
       return array('nomFichier'=>$filename,'message'=>'Désolé le fichier est trop large','type'=>'error');
   	}
   	else
