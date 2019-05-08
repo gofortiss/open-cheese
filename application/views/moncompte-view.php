@@ -6,9 +6,9 @@
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">
-    <div class="form-group col-md-6">
+    <div class="form-group col-lg-6">
        <h2 class="moncompte-titre">Mes informations</h2>
-      <div class="moncompte-block1">
+      <div class="moncompte-block1 reveal-focus">
         <form action="updateAccount" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
@@ -41,9 +41,9 @@
         </form>
       </div>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-lg-6">
       <h2 class="moncompte-titre">Amis</h2>
-      <div class="moncompte-block2">
+      <div class="moncompte-block2 reveal-focus">
         <table class="table">
           <thead>
             <tr>
@@ -164,6 +164,21 @@
             </tr>
           </tbody>
           </table>
+      </div>
+    </div>
+    <div class="form-group col-lg-12">
+      <h2 class="moncompte-titre">Badges</h2>
+      <div class="moncompte-block3 reveal-focus">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
+        <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
       </div>
     </div>
   </div>
