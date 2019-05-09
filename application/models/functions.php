@@ -68,13 +68,15 @@ class functions extends CI_Model
      // Si aucun utilisateur avec ce pseudo existe
      if(empty($row))
      {
+       // Upload de l'image choisie par l'utilisateur
        if($file['fichier']['name'] !=''){
          $image = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
        }
+       // Génération d'une image par rappot au pseudo
        else {
-         // Génération d'une image
          $image = apiImage($post['pseudo']);
        }
+
        switch ($image['type']) {
          case 'success':
                $password = md5($post['password1']); // Cryptage du mot de passe
@@ -155,7 +157,7 @@ class functions extends CI_Model
          $password = $user[0]['motdepasse'];
        }
    }
-   
+
    //Vérification si une nouvelle photo de profile est existante
    $photo = $user[0]['photo'];
    if($file['fichier']['name']!=''){
@@ -170,7 +172,7 @@ class functions extends CI_Model
      }
    }
 
-   // Requête mise à jour des informations
+   // Requête mise à jour des informations de l'utilisateur
    $cnn = getConnexion('open-cheese');
    $stmt = $cnn->prepare('UPDATE tblutilisateur SET pseudo = :pseudo, bio = :bio, photo = :photo, motdepasse = :motdepasse WHERE tblutilisateur.numero = :numero');
    $stmt->bindValue(':numero', $_SESSION['idUser']);

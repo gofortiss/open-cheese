@@ -6,7 +6,7 @@ class Inscription extends CI_Controller {
         // Chargement de la session
         $this->load->model("functions");
         $this->load->helper('url');
-
+        
         // Création d'un cookie avec les valeur des inputs
         setcookie ('inscription', json_encode($_POST), time() + 240); // heure de création + 240 sec
         // Appel de la fonction création d'utilisateur
