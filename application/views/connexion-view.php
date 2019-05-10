@@ -3,7 +3,7 @@
     <h1 class="display-4">Connexion</h1>
   </div>
 </div>
-<form class="connexion" action="Connexion" method="post">
+<form class="connexion" action="Connexion/connect" method="post">
   <div class="form-group">
     <label>Pseudo</label>
     <input type="text" class="form-control" name="pseudo" placeholder="Nom d'utilisateur" required>

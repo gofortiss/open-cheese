@@ -52,62 +52,6 @@ class functions extends CI_Model
     return $response->info();
   }
 
-// fonction pour l'inscription
- public function inscription($post,$file)
- {
-   // initialisation des variable nécessaire à la fonction
-   $response = new Response();
-   // Vérification si les deux mots de passe correspondent
-   if($post['password1']==$post['password2']) {
-     // connexion à la base de donnée et requête SQL pour vérifier si l'utilisateur existe
-     $cnn = getConnexion('open-cheese');
-     $stmt = $cnn->prepare('SELECT * FROM tblutilisateur WHERE tblutilisateur.pseudo LIKE :pseudo');
-     $stmt->bindParam(':pseudo', $post['pseudo']);
-     $stmt->execute();
-     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-     // Si aucun utilisateur avec ce pseudo existe
-     if(empty($row))
-     {
-       // Upload de l'image choisie par l'utilisateur
-       if($file['fichier']['name'] !=''){
-         $image = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
-       }
-       // Génération d'une image par rappot au pseudo
-       else {
-         $image = apiImage($post['pseudo']);
-       }
-
-       switch ($image['type']) {
-         case 'success':
-               $password = md5($post['password1']); // Cryptage du mot de passe
-
-               // Insértion de l'utilisateur dans la base de donnée
-               $cnn = getConnexion('open-cheese');
-               $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
-               $stmt->bindParam(':pseudo', $post['pseudo']);
-               $stmt->bindParam(':dateNaissance', $post['naissance']);
-               $stmt->bindParam(':motdepasse', $password);
-               $stmt->bindParam(':genre', $post['genre']);
-               $stmt->bindParam(':pays', $post['pays']);
-               $stmt->bindParam(':photo', $image['numero']);
-               $stmt->execute();
-               $response->addMessage('success');
-           break;
-         case 'error':
-              $response->addMessage('fichier'); // Problème avec le fichier
-           break;
-       }
-     }
-     else
-     {
-       $response->addMessage('pseudo'); // Problème avec le pseudo
-     }
-   } else {
-     $response->addMessage("motdepasse"); // Problème avec le mot de passe
-   }
-   return $response->info();
- }
-
  public function informationsUtilisateur($numero)
  {
    $cnn = getConnexion('open-cheese');
