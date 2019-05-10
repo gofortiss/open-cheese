@@ -11,7 +11,6 @@
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
-		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
@@ -36,30 +35,27 @@
 		        <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Liste des fromages</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Liste des dégustations</a>
+		        <a class="nav-link" href="<?php echo base_url('index.php/listeFromage');?>">Liste des fromages</a>
 		      </li>
 					<!-- Élément dynamique HTML connecté/déconnecté-->
 					<?php
 						if (!isset($_SESSION['idUser'])) {
 							?>
 							<li class="nav-item">
-								<a class="nav-link" href="deconnect">Connexion</a>
+								<a class="nav-link" href="<?php echo base_url('index.php/Connexion');?>">Connexion</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Inscription</a>
+								<a class="nav-link" href="<?php echo base_url('index.php/Inscription');?>">Inscription</a>
 							</li>
 							<?php
 						}
 						else {
 							?>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Mon compte</a>
+								<a class="nav-link" href="<?php echo base_url('index.php/moncompte');?>">Mon compte</a>
 							</li>
 							<li class="nav-item">
-								<?php echo '<a href='.base_url('index.php/deconnect').' class="nav-link">Déconnexion</a>';?>
+								<?php echo '<a href='.base_url('index.php/Deconnexion').' class="nav-link">Déconnexion</a>';?>
 							</li>
 							<?php
 						}
