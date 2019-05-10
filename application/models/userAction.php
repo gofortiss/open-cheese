@@ -180,6 +180,6 @@ class userAction extends CI_Model
  public function deconnect()
  {
    unset($_SESSION['idUser']);
-   header('Location:'.base_url('index.php/FormHome'));
+   header('Location:'.base_url('index.php/Connexion'));
  }
 }
