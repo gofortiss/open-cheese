@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Liste des dégustations</h1>
+    <h1 class="display-4">Historique des dégustations</h1>
   </div>
 </div>
 <table id="table"></table>
@@ -15,6 +15,10 @@ $(document).ready(function(){
           visible : false,
           field: '0',
           title: "Identifiant unique"
+        },
+        {
+          field: 'pseudo',
+          title: "Utilisateur"
         },{
           field: 'dateAjout',
           title: "Date de l'ajout"
@@ -39,7 +43,7 @@ $(document).ready(function(){
         }],
         // Si une ligne est cliquée redirection sur la page de la dégustation
         onClickRow: function (row, element, field) {
-          window.location.href = "<?php echo base_url(); ?>index.php/degustation?id="+row['0'];
+          window.location.href = "<?php echo base_url(); ?>index.php/fromage?id="+row['0'];
         }
       })
 });

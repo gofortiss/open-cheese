@@ -105,6 +105,15 @@ body {
   width: 100px;
 }
 
+/* DEGUSTATION */
+.degustation {
+  text-align: center;
+  margin: auto;
+}
+.degustation .form-group {
+
+}
+
 /* FOOTER */
 .footer	{
   position: absolute;
