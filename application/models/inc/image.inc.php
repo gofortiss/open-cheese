@@ -41,8 +41,13 @@ function uploadImage($file,$target)
   	else
   	{
   		// Erreur type de fichier
-  		unlink($file["fichier"]["tmp_name"]);
+      try {
+        unlink($file["fichier"]["tmp_name"]);
+      } catch (\Exception $e) {
+        echo $e;
+      }
       return array('nomFichier'=>$filename,'message'=>'Seulement ces types de fichier sont autorisés :'.implode(', ',$allowed_file_types),'type'=>'error');
+
   	}
 }
 
