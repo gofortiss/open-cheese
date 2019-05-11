@@ -10,7 +10,7 @@ class degustations extends CI_Model
     INNER JOIN tblfromage ON tbldegustation.num_tblfromage = tblfromage.numero
     INNER JOIN tbltypepate ON tblfromage.num_tbltypePate
     INNER JOIN tbllait ON tblfromage.num_tblLait
-    INNER JOIN tblpasteurise ON tblfromage.num_tblpasteurise');
+    INNER JOIN tblpasteurise ON tblfromage.num_tblpasteurise WHERE tbldegustation.num_tblutilisateur = tblutilisateur.numero');
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;
