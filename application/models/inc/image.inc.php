@@ -11,7 +11,6 @@ function uploadImage($file,$target)
 
   	if (in_array($file_ext,$allowed_file_types))
   	{
-      $time = time();
   		$newfilename = time().md5($file_basename).$file_ext; // Timestamp + md5 + extention(.jpg etc...)
   		if (file_exists($target_dir.$newfilename))
   		{
