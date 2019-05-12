@@ -42,7 +42,7 @@ $(document).ready(function(){
           title: 'Sodium (100g)'
         }, {
           field: 'lipides',
-          title: 'Lipides'
+          title: 'Lipides (100g)'
         }],
         // Si une ligne est cliquée redirection sur la page de la dégustation
         onClickRow: function (row, element, field) {

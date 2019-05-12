@@ -36,8 +36,10 @@ body {
 .photoProfil {
   display: block;
   margin: auto;
-  width: 120px;
-  border-radius: 145px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .moncompte-block1 {

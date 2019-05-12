@@ -4,14 +4,24 @@
   </div>
 </div>
 <div class="form-row degustation">
-  <div class="form-group col-lg-6 reveal-focus">
-    <h2 class="titre titre-fromage"></h2>
+  <div class="form-group col-lg-4 reveal-focus">
+    <h2 class="titre titre-fromage">Description du produit</h2>
     <img class="image-fromage" src="" alt="degustation"/>
     <label>Description :</label>
     <p class="description-fromage"></p>
   </div>
-  <div class="form-group col-lg-6 reveal-focus">
+  <div class="form-group col-lg-4 reveal-focus">
+    <h2 class="titre titre-fromage">Valeur énergetique</h2>
+    <p class="description-fromage"></p>
+  </div>
+  <div class="form-group col-lg-4 reveal-focus">
+    <h2 class="titre titre-fromage">Note des utilisateurs</h2>
     <h2 class="titre">Note</h2>
+  </div>
+</div>
+<div class="form-row degustation">
+  <div class="form-group col-lg-12 reveal-focus">
+      <h2 class="titre titre-fromage">Commentaires</h2>
   </div>
 </div>
 <script type="text/javascript">
