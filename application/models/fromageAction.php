@@ -1,15 +1,13 @@
 <?php
 require_once('inc/connexion.inc.php');
-class fromage extends CI_Model
+class fromageAction extends CI_Model
 {
   public function getAllFromages()
   {
     $cnn = getConnexion('open-cheese');
-    $stmt = $cnn->prepare('SELECT DISTINCT * FROM tblfromage
-    INNER JOIN tbltypepate ON tblfromage.num_tbltypePate
-    INNER JOIN tbllait ON tblfromage.num_tblLait
-    INNER JOIN tblpasteurise ON tblfromage.num_tblpasteurise
-    INNER JOIN tblvaleurenergetique ON tblfromage.num_tblvaleurenergetique');
+    $stmt = $cnn->prepare('SELECT * FROM `tblfromage` INNER JOIN tbltypepate ON tblfromage.num_tbltypePate = tbltypepate.numero
+    INNER JOIN tbllait ON tblfromage.num_tblLait = tbllait.numero
+    INNER JOIN tblpasteurise ON tblfromage.num_tblpasteurise = tblpasteurise.numero');
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;
