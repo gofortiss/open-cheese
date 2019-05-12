@@ -4,7 +4,6 @@ class Connexion extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->model("userAction");
-    $this->load->model("functions");
     $this->load->helper('url');
   }
 
@@ -20,9 +19,6 @@ class Connexion extends CI_Controller {
           break;
       }
     }
-    // Chargement de la session
-    $this->load->helper('url');
-    $this->load->model("functions");
     // Vérifie si l'utilisateur est déconnecté
     if(empty($_SESSION['idUser']))
     {

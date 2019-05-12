@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class fromage extends CI_Controller {
 public function __construct(){
   parent::__construct();
-  $this->load->model("degustations");
-  $this->load->model("functions");
+  $this->load->model("fromageAction");
 }
   public function index()
   {

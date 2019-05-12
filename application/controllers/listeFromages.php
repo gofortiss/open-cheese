@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class listeFromages extends CI_Controller {
 public function __construct(){
   parent::__construct();
-  $this->load->model("fromage");
+  $this->load->model("fromageAction");
 }
   public function index()
   {
@@ -20,7 +20,7 @@ public function __construct(){
 
     public function api()
   {
-      $fromages = $this->fromage->getAllFromages();
+      $fromages = $this->fromageAction->getAllFromages();
       $fromages = json_encode($fromages,true);
       echo $fromages;
   }
