@@ -35,7 +35,7 @@
 		        <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="<?php echo base_url('index.php/listeFromage');?>">Liste des fromages</a>
+		        <a class="nav-link" href="<?php echo base_url('index.php/listeFromages');?>">Liste des fromages</a>
 		      </li>
 					<!-- Élément dynamique HTML connecté/déconnecté-->
 					<?php
