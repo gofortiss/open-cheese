@@ -17,7 +17,7 @@ $(document).ready(function(){
       // Affichage des dégustations
       $('#table').bootstrapTable({
         search : true,
-        url:"<?php echo base_url(); ?>index.php/listeFromages/api",
+        url:"<?php echo base_url(); ?>index.php/fromage/listeFromage/api",
         pagination: true,
         columns: [{
           visible : false,

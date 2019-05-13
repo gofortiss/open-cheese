@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class fromage extends CI_Controller {
 public function __construct(){
   parent::__construct();
+  $this->load->database();
   $this->load->model("fromageAction");
   $this->load->helper('url');
 }
@@ -22,8 +23,30 @@ public function __construct(){
     $this->load->view('footer-view');
   }
 
+  // Liste des fromages
+  public function listeFromage()
+  {
+    // Titre de la page
+    $data['title'] = "Liste des fromages";
+
+    $this->load->view('header-view',$data); // Load header
+    $this->load->view('fromage-liste-view');
+    $this->load->view('footer-view');
+
+  }
+
+  // Récupération des fromages
+  function apiAllFromages()
+  {
+    $fromages = $this->fromageAction->getAllFromages();
+    $fromages = json_encode($fromages,true);
+    echo $fromages;
+    echo "coucou";
+  }
+
+
   // Récupération des informations d'un fromage
-  public function api()
+  public function apiFromage()
   {
     if(isset($_GET['id'])){
       $degustation = $this->fromageAction->getFromage($_GET['id']);
@@ -38,9 +61,11 @@ public function __construct(){
   public function Ajouter()
   {
     $data['title'] = "Ajouter un fromage";
-    $data['pate'] = $this->fromageAction->getTypePate();
-    $data['lait'] = $this->fromageAction->getTypeLait();
-    $data['pasteurise'] = $this->fromageAction->getPasteurise();
+
+    //Requête SQL sur les tables (Données liste déroulante)
+    $data['pate'] = $this->db->get('tbltypepate');
+    $data['lait'] = $this->db->get('tbllait');
+    $data['pasteurise'] = $this->db->get('tblpasteurise');
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
     $this->load->view('ajout-fromage-view');

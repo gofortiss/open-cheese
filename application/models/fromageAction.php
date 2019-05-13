@@ -25,31 +25,4 @@ class fromageAction extends CI_Model
     $result = $stmt->fetchAll();
     return $result;
   }
-
-  public function getTypePate()
-  {
-    $cnn = getConnexion('open-cheese');
-    $stmt = $cnn->prepare('SELECT * FROM `tbltypepate`');
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    return $result;
-  }
-
-  public function getTypeLait()
-  {
-    $cnn = getConnexion('open-cheese');
-    $stmt = $cnn->prepare('SELECT * FROM `tbllait`');
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    return $result;
-  }
-
-  public function getPasteurise()
-  {
-    $cnn = getConnexion('open-cheese');
-    $stmt = $cnn->prepare('SELECT * FROM `tblpasteurise`');
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    return $result;
-  }
 }

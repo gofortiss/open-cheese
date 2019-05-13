@@ -13,8 +13,8 @@
       <label>Type de pâte</label>
       <select class="custom-select mr-sm-2" name="typePate" id="inlineFormCustomSelect">
         <?php
-            foreach ($pate as $value) {
-              echo '<option value="'.$value['numero'].'" selected>'.$value['type'].'</option>';
+            foreach ($pate->result() as $value) {
+              echo '<option value="'.$value->numero.'" selected>'.$value->type.'</option>';
             }
          ?>
       </select>
@@ -25,10 +25,10 @@
       <label>Type de lait</label>
       <select class="custom-select mr-sm-2" name="typeLait" id="inlineFormCustomSelect">
         <?php
-            foreach ($lait as $value) {
-              echo '<option value="'.$value['numero'].'" selected>'.$value['typeLait'].'</option>';
-            }
-         ?>
+          foreach ($lait->result() as $value) {
+            echo '<option value="'.$value->numero.'" selected>'.$value->typeLait.'</option>';
+          }
+        ?>
       </select>
     </div>
   </div>
@@ -37,8 +37,8 @@
       <label>Pasteurisé</label>
       <select class="custom-select mr-sm-2" name="pasteurise" id="inlineFormCustomSelect">
         <?php
-            foreach ($pasteurise as $value) {
-              echo '<option value="'.$value['numero'].'" selected>'.$value['pasteurise'].'</option>';
+            foreach ($pasteurise->result() as $value) {
+              echo '<option value="'.$value->numero.'" selected>'.$value->pasteurise.'</option>';
             }
          ?>
       </select>
