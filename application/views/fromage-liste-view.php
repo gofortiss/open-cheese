@@ -3,6 +3,14 @@
     <h1 class="display-4">Liste des fromages</h1>
   </div>
 </div>
+<?php
+if(isset($_SESSION['idUser']))
+{
+  ?>
+    <a href="<?php echo base_url('/index.php/fromage/Ajouter');?>" class="btn btn-primary btn-lg btn-block">Ajouter un fromage</a>
+  <?php
+}
+?>
 <table id="table"></table>
 <script type="text/javascript">
 $(document).ready(function(){

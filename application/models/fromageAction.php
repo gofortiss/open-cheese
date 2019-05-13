@@ -16,12 +16,38 @@ class fromageAction extends CI_Model
   public function getFromage($id)
   {
     $cnn = getConnexion('open-cheese');
-    $stmt = $cnn->prepare('SELECT * FROM tbldegustation
-    INNER JOIN tblfromage ON tbldegustation.num_tblfromage = tblfromage.numero
-    INNER JOIN tbltypepate ON tblfromage.num_tbltypePate
-    INNER JOIN tbllait ON tblfromage.num_tblLait
-    LEFT JOIN tblpasteurise ON tblfromage.num_tblpasteurise WHERE tbldegustation.numero = :numero');
+    $stmt = $cnn->prepare('SELECT * FROM `tblfromage` INNER JOIN tbltypepate ON num_tbltypePate = tbltypepate.numero
+    INNER JOIN tbllait ON num_tblLait = tbllait.numero
+    INNER JOIN tblpasteurise ON num_tblpasteurise = tblpasteurise.numero
+    WHERE tblfromage.numero = :numero');
     $stmt->bindValue(':numero',$id);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+  }
+
+  public function getTypePate()
+  {
+    $cnn = getConnexion('open-cheese');
+    $stmt = $cnn->prepare('SELECT * FROM `tbltypepate`');
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+  }
+
+  public function getTypeLait()
+  {
+    $cnn = getConnexion('open-cheese');
+    $stmt = $cnn->prepare('SELECT * FROM `tbllait`');
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+  }
+
+  public function getPasteurise()
+  {
+    $cnn = getConnexion('open-cheese');
+    $stmt = $cnn->prepare('SELECT * FROM `tblpasteurise`');
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;

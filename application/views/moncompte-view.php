@@ -2,7 +2,7 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4"><?php if(isset($userInfo)){echo $userInfo[0]['pseudo'];}?></h1>
-      <img class="photoProfil" src="<?php echo base_url('assets/images/profile-picture/'.$userInfo[0]['photo']); ?>">
+      <img class="headerPhoto" src="<?php echo base_url('assets/images/profile-picture/'.$userInfo[0]['photo']); ?>">
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">
@@ -167,7 +167,7 @@
       </div>
     </div>
     <div class="form-group col-lg-12">
-      <h2 class="moncompte-titre">Badges</h2>
+      <h2 class="moncompte-titre">Badges obtenus</h2>
       <div class="moncompte-block3 reveal-focus">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">

@@ -33,7 +33,7 @@ body {
 }
 
 /* MON COMPTE */
-.photoProfil {
+.headerPhoto {
   display: block;
   margin: auto;
   width: 200px;
@@ -114,6 +114,19 @@ body {
 }
 .degustation .form-group {
 
+}
+
+/* FROMAGE */
+
+.titre {
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+.image-fromage {
+  width: 150px;
+}
+.border {
+  border: solid 1px #ebebec;
 }
 
 /* FOOTER */
