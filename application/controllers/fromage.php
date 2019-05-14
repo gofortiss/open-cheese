@@ -62,9 +62,10 @@ public function __construct(){
     $data['title'] = "Ajouter un fromage";
 
     //Requête SQL sur les tables (Données liste déroulante)
-    $data['pate'] = $this->db->get('tbltypepate');
-    $data['lait'] = $this->db->get('tbllait');
-    $data['pasteurise'] = $this->db->get('tblpasteurise');
+    $data['pate'] = $this->fromageAction->getTypePate();
+    $data['lait'] = $this->fromageAction->getLait();
+    $data['pasteurise'] = $this->fromageAction->getPasteurise();
+
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
     $this->load->view('ajout-fromage-view');
@@ -79,6 +80,13 @@ public function __construct(){
 
   public function ajoutDegustation()
   {
-    
+    $data['title'] = "Ajouter une dégustation";
+    // Retour requête SQL sur toute la table fromage
+    $fromages = $this->fromageAction->getAllFromages();
+    var_dump($fromages);
+    // Chargement des vues
+    $this->load->view('header-view',$data); // Load header
+    $this->load->view('ajout-degustation-view');
+    $this->load->view('footer-view');
   }
 }

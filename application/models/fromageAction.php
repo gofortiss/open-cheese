@@ -28,6 +28,24 @@ class fromageAction extends CI_Model
     return $result;
   }
 
+  // Requête table type de pate
+  public function getTypePate()
+  {
+    return $this->db->get('tbltypepate');
+  }
+
+  // Requête table lait
+  public function getLait()
+  {
+    return $this->db->get('tbllait');
+  }
+
+  // Reuqête table pasteurise
+  public function getPasteurise()
+  {
+    return $this->db->get('tblpasteurise');
+  }
+
   public function addFromage($post,$file)
   {
     // Remplacement des valeurs vide par des valeurs NULL
