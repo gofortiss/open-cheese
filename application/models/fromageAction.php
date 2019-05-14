@@ -26,6 +26,15 @@ class fromageAction extends CI_Model
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;
+
+    $this->db->select("tblfromage.numero as fromage_numero, nom,description_fromage,calories,proteines,lipides,sodium,type,typeLait,pasteurise,photo_fromage");
+    $this->db->from('tblfromage');
+    $this->db->join('tbltypepate','tblfromage.num_tbltypePate=tbltypepate.numero');
+    $this->db->join('tbllait','tblfromage.num_tbllait=tbllait.numero');
+    $this->db->join('tblpasteurise','tblfromage.num_tblpasteurise=tblpasteurise.numero');
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
   }
 
   // Requête table type de pate
