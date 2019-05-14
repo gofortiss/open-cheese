@@ -18,9 +18,15 @@ public function __construct(){
       $data['id'] = 0;
     }
 
+
+  }
+
+  public function ajouterDegustation()
+  {
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
-    $this->load->view('fromage-details-view');
+    $this->load->view('ajouter-degustation-view');
     $this->load->view('footer-view');
   }
+
 }
