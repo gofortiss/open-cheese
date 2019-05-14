@@ -75,7 +75,8 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutFromage()
   {
-    $fromages = $this->fromageAction->addFromage($_POST,$_FILES);
+    $this->fromageAction->addFromage($_POST,$_FILES);
+    header('Location:'.base_url('index.php/fromage/listeFromage'));
   }
 
   public function ajouterDegustation()
