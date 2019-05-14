@@ -78,7 +78,7 @@ public function __construct(){
     $fromages = $this->fromageAction->addFromage($_POST,$_FILES);
   }
 
-  public function ajoutDegustation()
+  public function ajouterDegustation()
   {
     $data['title'] = "Ajouter une dégustation";
     // Retour requête SQL sur toute la table fromage
