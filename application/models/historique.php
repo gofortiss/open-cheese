@@ -8,9 +8,10 @@ class historique extends CI_Model
     $stmt = $cnn->prepare('SELECT DISTINCT * FROM tbldegustation
     INNER JOIN tblutilisateur ON tbldegustation.num_tblutilisateur
     INNER JOIN tblfromage ON tbldegustation.num_tblfromage = tblfromage.numero
-    INNER JOIN tbltypepate ON tblfromage.num_tbltypePate
-    INNER JOIN tbllait ON tblfromage.num_tblLait
-    INNER JOIN tblpasteurise ON tblfromage.num_tblpasteurise WHERE tbldegustation.num_tblutilisateur = tblutilisateur.numero');
+    INNER JOIN tbltypepate ON tblfromage.num_tbltypePate = tbltypepate.numero
+    INNER JOIN tbllait ON tblfromage.num_tblLait = tbllait.numero
+    INNER JOIN tblpasteurise ON tblfromage.num_tblpasteurise = tblpasteurise.numero
+     WHERE tbldegustation.num_tblutilisateur = tblutilisateur.numero');
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;
