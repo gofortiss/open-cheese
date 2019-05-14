@@ -59,7 +59,7 @@
             $('.proteines-fromage').text(data[0]['proteines']);
             $('.sodium-fromage').text(data[0]['sodium']);
 
-            $('.ajouterDegustation').attr("href","<?php echo base_url(); ?>index.php/fromage/ajoutDegustation/?id="+data[0]['fromage_numero']);
+            $('.ajouterDegustation').attr("href","<?php echo base_url(); ?>index.php/fromage/ajouterDegustation/?id="+data[0]['fromage_numero']);
           }
       });
 
