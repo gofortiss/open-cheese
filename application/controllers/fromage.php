@@ -76,4 +76,9 @@ public function __construct(){
   {
     $fromages = $this->fromageAction->addFromage($_POST,$_FILES);
   }
+
+  public function ajoutDegustation()
+  {
+    
+  }
 }
