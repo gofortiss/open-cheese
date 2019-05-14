@@ -3,74 +3,19 @@
     <h1 class="display-4">Ajout d'une dégustation</h1>
   </div>
 </div>
-<form class="form" action="Ajout" method="post"  enctype="multipart/form-data">
+<form class="form" action="appelAjoutDegustation" method="post"  enctype="multipart/form-data">
   <div class="form-group">
-    <label>Fromage</label>
-    <input type="text" class="form-control" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
+    <label>Votre note</label>
+    <select class="custom-select mr-sm-2" name="note" id="inlineFormCustomSelect">
+      <option value="1" selected>1</option>
+      <option value="2">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <label>Type de pâte</label>
-      <select class="custom-select mr-sm-2" name="num_tbltypePate" id="inlineFormCustomSelect">
-        <?php
-            foreach ($pate->result() as $value) {
-              echo '<option value="'.$value->numero.'" selected>'.$value->type.'</option>';
-            }
-         ?>
-      </select>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label>Type de lait</label>
-      <select class="custom-select mr-sm-2" name="num_tblLait" id="inlineFormCustomSelect">
-        <?php
-          foreach ($lait->result() as $value) {
-            echo '<option value="'.$value->numero.'" selected>'.$value->typeLait.'</option>';
-          }
-        ?>
-      </select>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label>Pasteurisé</label>
-      <select class="custom-select mr-sm-2" name="num_tblpasteurise" id="inlineFormCustomSelect">
-        <?php
-            foreach ($pasteurise->result() as $value) {
-              echo '<option value="'.$value->numero.'" selected>'.$value->pasteurise.'</option>';
-            }
-         ?>
-      </select>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label>Informations nutritives</label>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Calories (100g)</th>
-            <th scope="col">Proteines (100g)</th>
-            <th scope="col">Lipides (100g)</th>
-            <th scope="col">Sodium (100g)</th>
-          </tr>
-        </thead>
-      <tbody>
-        <tr>
-          <th class="calories-fromage"><input type="text" class="form-control" name="calories" id="calories"></th>
-          <th class="protines-fromage"><input type="text" class="form-control" name="proteines" id="proteines"></th>
-          <th class="lipides-fromage"><input type="text" class="form-control" name="lipides" id="lipides"></th>
-          <th class="sodium-fromage"><input type="text" class="form-control" name="sodium" id="sodium"></th>
-        </tr>
-      </tbody>
-      <small class="form-text text-muted">Si vous ne les connaissez pas, voir les données du site : <a href="https://myfitnesspal.com/fr/food/" target="_blank">myfitnesspal</a></small>
-      </table>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label>Description du fromage</label>
+      <label>Description de la dégustation</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
@@ -82,13 +27,13 @@
   <div class="form-row">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Photo du fromage</span>
+        <span class="input-group-text">Photo de la dégustation</span>
       </div>
       <div class="custom-file">
-        <input type="file" class="custom-file-input" name="fichier" aria-describedby="inputGroupFileAddon01">
+        <input type="file" class="custom-file-input" name="fichier">
         <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-outline-primary btn-lg btn-block" >Ajouter</button>
+  <button type="submit" class="btn btn-outline-primary btn-lg btn-block" >Ajouter ma dégustation</button>
 </form>
