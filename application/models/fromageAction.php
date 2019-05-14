@@ -1,5 +1,6 @@
 <?php
 require_once('inc/connexion.inc.php');
+require_once('inc/image.inc.php');
 class fromageAction extends CI_Model
 {
   public function getAllFromages()
@@ -24,5 +25,26 @@ class fromageAction extends CI_Model
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;
+  }
+
+  public function addFromage($post,$file)
+  {
+    // Remplacement des valeurs vide par des valeurs NULL
+    foreach ($post as $key => $value) {
+          if ($value == '') {
+               $post[$key] = NULL;
+          }
+      }
+
+    // Vérification si un fichier à été envoyé
+    if($file['fichier']['name']!='')
+    {
+      $image = uploadImage($file,'fromage/'); // Upload de l'image du fromage
+      $post['photo_fromage'] = $image['nomFichier'];
+
+    } else {
+      $post['photo_fromage'] = 'default.png';
+    }
+    $this->db->insert('tblfromage', $post);
   }
 }

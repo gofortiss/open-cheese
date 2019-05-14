@@ -3,7 +3,7 @@
     <h1 class="display-4">Ajout d'un fromage</h1>
   </div>
 </div>
-<form class="inscription" action="Inscription/newInscription" class="inscription" method="post"  enctype="multipart/form-data">
+<form class="form" action="Ajout" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du fromage</label>
     <input type="text" class="form-control" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
@@ -11,7 +11,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Type de pâte</label>
-      <select class="custom-select mr-sm-2" name="typePate" id="inlineFormCustomSelect">
+      <select class="custom-select mr-sm-2" name="num_tbltypePate" id="inlineFormCustomSelect">
         <?php
             foreach ($pate->result() as $value) {
               echo '<option value="'.$value->numero.'" selected>'.$value->type.'</option>';
@@ -23,7 +23,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Type de lait</label>
-      <select class="custom-select mr-sm-2" name="typeLait" id="inlineFormCustomSelect">
+      <select class="custom-select mr-sm-2" name="num_tblLait" id="inlineFormCustomSelect">
         <?php
           foreach ($lait->result() as $value) {
             echo '<option value="'.$value->numero.'" selected>'.$value->typeLait.'</option>';
@@ -35,7 +35,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Pasteurisé</label>
-      <select class="custom-select mr-sm-2" name="pasteurise" id="inlineFormCustomSelect">
+      <select class="custom-select mr-sm-2" name="num_tblpasteurise" id="inlineFormCustomSelect">
         <?php
             foreach ($pasteurise->result() as $value) {
               echo '<option value="'.$value->numero.'" selected>'.$value->pasteurise.'</option>';
@@ -64,7 +64,19 @@
           <th class="sodium-fromage"><input type="text" class="form-control" name="sodium" id="sodium"></th>
         </tr>
       </tbody>
+      <small class="form-text text-muted">Si vous ne les connaissez pas, voir les données du site : <a href="https://myfitnesspal.com/fr/food/" target="_blank">myfitnesspal</a></small>
       </table>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Description du fromage</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Description</span>
+        </div>
+        <textarea class="form-control" name="description_fromage" aria-label="With textarea"></textarea>
+      </div>
     </div>
   </div>
   <div class="form-row">
