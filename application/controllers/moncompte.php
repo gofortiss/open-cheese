@@ -58,8 +58,8 @@ class moncompte extends CI_Controller {
     public function update()
   {
     // Appel de la fonction mise à jour de l'utilisateur
-    $defaultData = $this->userAction->informationsUtilisateur($_SESSION['idUser']);
-    $result = $this->userAction->updateInformationsUtilisateur($defaultData, $_POST, $_FILES);
+    $defaultData = $this->userAction->informationsUtilisateur($_SESSION['idUser']); // Données par défaut inscrite dans la db
+    $result = $this->userAction->updateInformationsUtilisateur($defaultData, $_POST, $_FILES); // Nouvelles données
     switch ($result->message[0]) {
       case 'pseudo':
           header('Location:'.base_url('index.php/moncompte?message=pseudo'));
