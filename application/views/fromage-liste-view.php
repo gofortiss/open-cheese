@@ -7,7 +7,7 @@
 if(isset($_SESSION['idUser']))
 {
   ?>
-    <a href="<?php echo base_url('/index.php/fromage/Ajouter');?>" class="btn btn-primary btn-lg btn-block">Ajouter un fromage</a>
+    <a href="<?php echo base_url('/index.php/fromage/ajouterFromage');?>" class="btn btn-primary btn-lg btn-block">Ajouter un fromage</a>
   <?php
 }
 ?>
