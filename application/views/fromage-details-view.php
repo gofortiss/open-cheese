@@ -37,7 +37,7 @@
       </tbody>
     </table>
     <h2 class="titre">Dégustation</h2>
-    <a class="btn btn-primary btn-lg ajouterDegustation" href="<?php echo base_url(); ?>index.php/degustation/ajouterDegustation/?id=" class="btn btn-primary btn-lg">Ajouter une dégustation</a>
+    <a class="btn btn-primary btn-lg ajouterDegustation" href="" class="btn btn-primary btn-lg">Ajouter une dégustation</a>
   </div>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -59,7 +59,7 @@
             $('.proteines-fromage').text(data[0]['proteines']);
             $('.sodium-fromage').text(data[0]['sodium']);
 
-            $('.ajouterDegustation').attr("href","<?php echo base_url(); ?>index.php/degustation/ajouterDegustation/?id="+data[0]['numero']);
+            $('.ajouterDegustation').attr("href","<?php echo base_url(); ?>index.php/fromage/ajoutDegustation/?id="+data[0]['numero']);
           }
       });
 
