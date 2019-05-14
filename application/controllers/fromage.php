@@ -41,7 +41,6 @@ public function __construct(){
     $fromages = $this->fromageAction->getAllFromages();
     $fromages = json_encode($fromages,true);
     echo $fromages;
-    echo "coucou";
   }
 
 
