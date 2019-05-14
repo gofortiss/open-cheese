@@ -3,7 +3,7 @@
     <h1 class="display-4">Ajout d'un fromage</h1>
   </div>
 </div>
-<form class="form" action="Ajout" method="post"  enctype="multipart/form-data">
+<form class="form" action="appelAjoutFromage" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du fromage</label>
     <input type="text" class="form-control" name="nom" id="nom" placeholder="Exemple : Gruyère" required>

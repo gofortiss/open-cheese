@@ -73,7 +73,7 @@ public function __construct(){
   }
 
   // Fonction ajouter un fromage
-  public function Ajout()
+  public function appelAjoutFromage()
   {
     $fromages = $this->fromageAction->addFromage($_POST,$_FILES);
   }
