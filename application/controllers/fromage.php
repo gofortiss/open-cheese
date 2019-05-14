@@ -56,8 +56,8 @@ public function __construct(){
     }
   }
 
-  // Ajout d'un fromage
-  public function Ajouter()
+  // Chargement de la vue ajouter un fromage
+  public function ajouterFromage()
   {
     $data['title'] = "Ajouter un fromage";
 
@@ -69,5 +69,11 @@ public function __construct(){
     $this->load->view('header-view',$data); // Load header
     $this->load->view('ajout-fromage-view');
     $this->load->view('footer-view');
+  }
+
+  // Fonction ajouter un fromage
+  public function Ajout()
+  {
+    $fromages = $this->fromageAction->addFromage($_POST,$_FILES);
   }
 }
