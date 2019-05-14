@@ -19,7 +19,7 @@ public function __construct(){
 
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
-    $this->load->view('degustation-view');
+    $this->load->view('fromage-details-view');
     $this->load->view('footer-view');
   }
 
