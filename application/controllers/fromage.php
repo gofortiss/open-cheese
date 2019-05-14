@@ -85,10 +85,15 @@ public function __construct(){
     // Retour requête SQL sur toute la table fromage
     $data['fromage'] = $this->fromageAction->getAllFromages();
 
-
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
     $this->load->view('ajout-degustation-view');
     $this->load->view('footer-view');
+  }
+
+  // Fonction ajouter un fromage
+  public function appelAjoutDegustation()
+  {
+    var_dump($_POST);
   }
 }
