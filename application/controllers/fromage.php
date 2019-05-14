@@ -10,7 +10,7 @@ public function __construct(){
   public function index()
   {
     // Titre de la page
-    $data['title'] = "Dégustation";
+    $data['title'] = "Détails du fromage";
     if(isset($_GET['id'])) {
       $data['id'] = $_GET['id'];
     } else {
