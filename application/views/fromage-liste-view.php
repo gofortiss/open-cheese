@@ -25,30 +25,46 @@ $(document).ready(function(){
           title: "Identifiant unique"
         },
         {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'nom',
           title: "Nom du fromage"
         },{
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'type',
           title: "Type de pâte"
         }, {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'typeLait',
           title: 'Type de lait'
         },
         {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'pasteurise',
           title: 'Pasteurisé'
         },
         {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'calories',
           title: 'Valeur énergetique (100g)'
         },
         {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'proteines',
           title: 'proteines (100g)'
         }, {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'sodium',
           title: 'Sodium (100g)'
         }, {
+          sortable: true,
+          sortOrder: 'ASC',
           field: 'lipides',
           title: 'Lipides (100g)'
         }],
