@@ -85,4 +85,16 @@ class fromageAction extends CI_Model
 
     $this->db->insert('tbldegustation', $post); // Insertion dans la base de donnée
   }
+
+  public function getDegustation($id)
+  {
+    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur");
+    $this->db->from('tbldegustation');
+    $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
+    $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur=tblutilisateur.numero');
+    $this->db->where('tbldegustation.num_tblfromage', $id);
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
+  }
 }
