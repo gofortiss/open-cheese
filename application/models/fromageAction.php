@@ -76,7 +76,7 @@ class fromageAction extends CI_Model
       $post['photo_degustation'] = $image['nomFichier'];
 
     } else {
-      $post['photo_degustation'] = 'default.png';
+      $post['photo_degustation'] = '';
     }
 
     $post['dateAjout'] = date('Y-m-d'); // Ajout de la date actuelle dans le POST
