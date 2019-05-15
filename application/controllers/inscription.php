@@ -45,7 +45,7 @@ class Inscription extends CI_Controller {
       // Switch qui renvois sur les pages associée au message
       switch ($result->message[0]) {
         case 'success':
-            header('Location:'.base_url('index.php/FormAccount'));
+            header('Location:'.base_url('index.php/Connexion'));
             unset($_COOKIE['inscription']); // Suppression du cookie si l'inscription est effectuée
           break;
         case 'pseudo':
