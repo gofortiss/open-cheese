@@ -63,5 +63,24 @@
           }
       });
 
+      // Récupération des dégustations liées
+      $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>index.php/fromage/apiDegustation?id=<?php echo $id;?>",
+            dataType: "json",
+            success: function (data) {
+              if(data.length != 0){
+                $('.degustation-titre').text("Dégustations :");
+                $.each(data,function(i,val){
+                  // Ajout de l'utilisateur
+                  $('#utilisateur').append("<p>"+val['pseudo']+"</p>");
+                  // Ajout de la description
+                  $("#description").append("<p>"+val['description_degustation']+"</p>");
+                  // Ajout de la note
+                  $("#note").append("<p>"+val['note']+"</p>");
+                });
+              }
+            }
+        });
   });
 </script>
