@@ -39,14 +39,31 @@
     <h2 class="titre">Dégustation</h2>
     <a class="btn btn-primary btn-lg ajouterDegustation" href="" class="btn btn-primary btn-lg">Ajouter une dégustation</a>
   </div>
+</div>
+  <!-- Affichage du message par défaut -->
+<div class="container title degustation">
+  <p class="lead degustation-titre">Ce fromage n'a pas encore été dégusté.</p>
+      <div class="row">
+          <div id="utilisateur" class="col-md-4">
+            <h5>utilisateur</h5>
+          </div>
+          <div id="description" class="col-md-4">
+            <h5>Description</h5>
+          </div>
+          <div id="note" class="col-md-4">
+            <h5>Note</h5>
+          </div>
+      </div>
+  </div>
 <script type="text/javascript">
   $(document).ready(function(){
+
+    // Récupération des données du fromage
     $.ajax({
           type: "POST",
           url: "<?php echo base_url(); ?>index.php/fromage/apiFromage?id=<?php echo $id; ?>",
           dataType: "json",
           success: function (data) {
-            console.log(data);
             $('.titre-fromage').text(data[0]['nom']);
             $('.description-fromage').text(data[0]['description_fromage']);
             $('.headerPhoto').attr("src","<?php echo base_url(); ?>assets/images/fromage/"+data[0]['photo_fromage']);
