@@ -41,19 +41,50 @@
   </div>
 </div>
   <!-- Affichage du message par défaut -->
-<div class="container title degustation">
-  <p class="lead degustation-titre">Ce fromage n'a pas encore été dégusté.</p>
-      <div class="row">
-          <div id="utilisateur" class="col-md-4">
-            <h5>utilisateur</h5>
-          </div>
-          <div id="description" class="col-md-4">
-            <h5>Description</h5>
-          </div>
-          <div id="note" class="col-md-4">
-            <h5>Note</h5>
-          </div>
+<h4 class="degustation-titre title degustation">Ce fromage n'a pas encore été dégusté.</h4>
+  <div class="container-degustation degustation">
+    <div class="row ">
+      <div id="pseudo" class="col-md-4">
+        <h5>Utilisateur</h5>
+        <p>user</p>
       </div>
+      <div id="description" class="col-md-4">
+        <h5>Description</h5>
+        <p>description</p>
+      </div>
+      <div id="note" class="col-md-4">
+        <h5>Note</h5>
+        <p>note</p>
+      </div>
+    </div>
+    <div class="row ">
+      <div id="pseudo" class="col-md-4">
+        <h5>Utilisateur</h5>
+        <p>user</p>
+      </div>
+      <div id="description" class="col-md-4">
+        <h5>Description</h5>
+        <p>description</p>
+      </div>
+      <div id="note" class="col-md-4">
+        <h5>Note</h5>
+        <p>note</p>
+      </div>
+    </div>
+    <div class="row ">
+      <div id="pseudo" class="col-md-4">
+        <h5>Utilisateur</h5>
+        <p>user</p>
+      </div>
+      <div id="description" class="col-md-4">
+        <h5>Description</h5>
+        <p>description</p>
+      </div>
+      <div id="note" class="col-md-4">
+        <h5>Note</h5>
+        <p>note</p>
+      </div>
+    </div>
   </div>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -89,12 +120,18 @@
               if(data.length != 0){
                 $('.degustation-titre').text("Dégustations :");
                 $.each(data,function(i,val){
-                  // Ajout de l'utilisateur
-                  $('#utilisateur').append("<p>"+val['pseudo']+"</p>");
-                  // Ajout de la description
-                  $("#description").append("<p>"+val['description_degustation']+"</p>");
-                  // Ajout de la note
-                  $("#note").append("<p>"+val['note']+"</p>");
+                  // $(".container-degustation").last().append("<div class=\"row\">");
+                  //
+                  // $(".row").append("<div id=\"pseudo\" class=\"col-md-4\">");
+                  // $("#pseudo").append(val['pseudo']);
+                  //
+                  // $(".row").append("<div id=\"description\" class=\"col-md-4\">");
+                  // $("#description").append(val['description_degustation']);
+                  //
+                  // $(".row").append("<div id=\"note\" class=\"col-md-4\">");
+                  // $("#note").append(val['note']);
+                  //
+
                 });
               }
             }
