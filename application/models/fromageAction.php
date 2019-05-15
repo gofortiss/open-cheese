@@ -88,7 +88,7 @@ class fromageAction extends CI_Model
 
   public function getDegustation($id)
   {
-    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur");
+    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur,photo_profil");
     $this->db->from('tbldegustation');
     $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
     $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur=tblutilisateur.numero');
