@@ -16,7 +16,9 @@ public function __construct(){
     } else {
       $data['id'] = 0;
     }
-
+    // Récupération des dégustations
+    $data['degustation'] = $this->fromageAction->getDegustation($_GET['id']);
+    
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
     $this->load->view('fromage-details-view');
