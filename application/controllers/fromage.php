@@ -94,6 +94,7 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutDegustation()
   {
-    var_dump($_POST);
+    $this->fromageAction->addDegustation($_POST,$_FILES,$_GET['id']);
+    header('Location:'.base_url('index.php/fromage/?id='.$_GET['id']));
   }
 }

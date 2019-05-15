@@ -3,7 +3,8 @@
     <h1 class="display-4">Ajout d'une dégustation</h1>
   </div>
 </div>
-<form class="form" action="appelAjoutDegustation" method="post"  enctype="multipart/form-data">
+<!-- Formulaire d'ajout d'une dégustation -->
+<form class="form" action="<?php echo base_url(); ?>index.php/fromage/appelAjoutDegustation?id=<?php echo $_GET['id']; ?>" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Votre note</label>
     <select class="custom-select mr-sm-2" name="note" id="inlineFormCustomSelect">
@@ -13,6 +14,7 @@
       <option value="5">5</option>
     </select>
   </div>
+  <!-- Ligne de description -->
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Description de la dégustation</label>
@@ -20,10 +22,11 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" name="description_fromage" aria-label="With textarea"></textarea>
+        <textarea class="form-control" name="description_degustation" aria-label="With textarea"></textarea>
       </div>
     </div>
   </div>
+  <!-- Ligne d'ajout de photo -->
   <div class="form-row">
     <div class="input-group mb-3">
       <div class="input-group-prepend">

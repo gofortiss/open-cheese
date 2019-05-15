@@ -66,4 +66,23 @@ class fromageAction extends CI_Model
     }
     $this->db->insert('tblfromage', $post);
   }
+
+  public function addDegustation($post,$file,$id)
+  {
+    // Vérification si un fichier à été envoyé
+    if($file['fichier']['name']!='')
+    {
+      $image = uploadImage($file,'degustation/'); // Upload de l'image du fromage
+      $post['photo_degustation'] = $image['nomFichier'];
+
+    } else {
+      $post['photo_degustation'] = 'default.png';
+    }
+
+    $post['dateAjout'] = date('Y-m-d'); // Ajout de la date actuelle dans le POST
+    $post['num_tblutilisateur'] = $_SESSION['idUser']; // Ajout de l'utilisateur connecté dans le POST
+    $post['num_tblfromage'] = $id; // Ajout du numero du fromage
+
+    $this->db->insert('tbldegustation', $post); // Insertion dans la base de donnée
+  }
 }
