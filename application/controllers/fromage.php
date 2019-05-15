@@ -48,7 +48,18 @@ public function __construct(){
   public function apiFromage()
   {
     if(isset($_GET['id'])){
-      $degustation = $this->fromageAction->getFromage($_GET['id']);
+      $fromage = $this->fromageAction->getFromage($_GET['id']);
+      $fromage = json_encode($fromage,true);
+      echo $fromage;
+    } else {
+      echo "Error";
+    }
+  }
+
+  public function apiDegustation()
+  {
+    if(isset($_GET['id'])){
+      $degustation = $this->fromageAction->getDegustation($_GET['id']);
       $degustation = json_encode($degustation,true);
       echo $degustation;
     } else {
