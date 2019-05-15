@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4 titre-fromage"></h1>
-    <img class="headerPhoto" src="" alt="photo du fromage">
+    <img class="rounded-photo" id="image-fromage" src="" alt="photo du fromage">
   </div>
 </div>
 <div class="form-row degustation">

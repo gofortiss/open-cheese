@@ -33,7 +33,7 @@ body {
 }
 
 /* MON COMPTE */
-.headerPhoto {
+.rounded-photo {
   display: block;
   margin: auto;
   width: 200px;
