@@ -105,7 +105,10 @@ class fromageAction extends CI_Model
       'numero_tblutilisateur' => $_SESSION['idUser'],
       'numero_tbldegustation' => $id
     );
-    $this->db->insert('tblaime',$data);
+
+    $this->db->db_debug = FALSE; // Désactivation des erreurs Codeigniter si le like existe déjà
+    $this->db->insert('tblaime',$data); // Insertion du like
+
   }
 
   public function getLikeDegustation($id)
