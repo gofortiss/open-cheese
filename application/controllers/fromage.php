@@ -113,4 +113,26 @@ public function __construct(){
     $this->fromageAction->addDegustation($_POST,$_FILES,$_GET['id']);
     header('Location:'.base_url('index.php/fromage/?id='.$_GET['id']));
   }
+
+  // Ajouter un "Like" sur une dégustation
+  public function addLike()
+  {
+    // Vérification si un paramètre est entré
+    if(isset($_GET['degustation']) && isset($_GET['fromage']))
+    {
+      $this->fromageAction->addLikeDegustation($_GET['degustation']);
+      // Redirection sur la page du fromage
+      header('Location:'.base_url('index.php/fromage/?id='.$_GET['fromage']));
+    } else {echo "Nope";}
+  }
+
+  // Retourne un tableau JSON qui contient les like d'une dégustation
+  public function apiGetLike()
+  {
+    if(isset($_GET['degustation'])) {
+      $existingLike = $this->fromageAction->getLikeDegustation($_GET['degustation']);
+      $existingLike = json_encode($existingLike,true);
+      echo $existingLike;
+    }
+  }
 }

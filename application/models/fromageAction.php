@@ -97,4 +97,27 @@ class fromageAction extends CI_Model
     $data=$query->result();
     return $data;
   }
+
+  public function addLikeDegustation($id)
+  {
+    $data = array(
+      'numero' => NULL,
+      'numero_tblutilisateur' => $_SESSION['idUser'],
+      'numero_tbldegustation' => $id
+    );
+    $this->db->insert('tblaime',$data);
+  }
+
+  public function getLikeDegustation($id)
+  {
+    $this->db->select("tblaime.numero, pseudo, numero_tbldegustation");
+    $this->db->from('tblaime');
+    $this->db->join('tblutilisateur','tblaime.numero_tblutilisateur=tblutilisateur.numero');
+    $this->db->join('tbldegustation','tblaime.numero_tbldegustation=tbldegustation.numero');
+    $this->db->where('tblaime.numero_tbldegustation', $id);
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
+    // var_dump($data);
+  }
 }
