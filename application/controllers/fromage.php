@@ -21,7 +21,7 @@ public function __construct(){
       }
     // Récupération des dégustations
     $data['degustation'] = $this->fromageAction->getDegustation($_GET['id']);
-    
+
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
     $this->load->view('fromage-details-view');
@@ -61,6 +61,7 @@ public function __construct(){
     }
   }
 
+  // Retourne un tableau JSON des dégustations
   public function apiDegustation()
   {
     if(isset($_GET['id'])){
