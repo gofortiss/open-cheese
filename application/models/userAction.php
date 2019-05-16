@@ -151,7 +151,7 @@ class userAction extends CI_Model
    }
 
    //Vérification si une nouvelle photo de profile est existante
-   $photo = $user[0]['photo'];
+   $photo = $user[0]['photo_profil'];
    if($file['fichier']['name']!=''){
      $photo = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
      if($file['fichier']['name'] != '' && $photo['type'] == "success")
@@ -159,14 +159,14 @@ class userAction extends CI_Model
        $photo = $photo['nomFichier'];
      }
      else {
-       $photo = $user[0]['photo'];
+       $photo = $user[0]['photo_profil'];
        $response->addMessage('photo');
      }
    }
 
    // Requête mise à jour des informations de l'utilisateur
    $cnn = getConnexion('open-cheese');
-   $stmt = $cnn->prepare('UPDATE tblutilisateur SET pseudo = :pseudo, bio = :bio, photo = :photo, motdepasse = :motdepasse WHERE tblutilisateur.numero = :numero');
+   $stmt = $cnn->prepare('UPDATE tblutilisateur SET pseudo = :pseudo, bio = :bio, photo_profil = :photo, motdepasse = :motdepasse WHERE tblutilisateur.numero = :numero');
    $stmt->bindValue(':numero', $_SESSION['idUser']);
    $stmt->bindValue(':pseudo', $pseudo);
    $stmt->bindValue(':bio', $post['bio']);
