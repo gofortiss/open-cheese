@@ -114,12 +114,19 @@ body {
 }
 .degustation-info-block {
     min-width: 130px;
-    height: 180px;
+    height: 140px;
     margin: auto;
     margin-bottom: 25px;
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 20px;
+}
+.degustation-like {
+  margin-top:35px;
+
+}
+.degustation-like > a{
+  padding: 15px;
 }
 
 /* FROMAGE */
