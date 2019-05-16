@@ -19,6 +19,7 @@ $(document).ready(function(){
         search : true,
         url:"<?php echo base_url(); ?>index.php/fromage/apiAllFromages",
         pagination: true,
+        showLoading: true,
         columns: [{
           visible : false,
           field: 'numero',

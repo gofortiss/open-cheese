@@ -2,7 +2,7 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4"><?php if(isset($userInfo)){echo $userInfo[0]['pseudo'];}?></h1>
-      <img class="headerPhoto" src="<?php echo base_url('assets/images/profile-picture/'.$userInfo[0]['photo']); ?>">
+      <img class="rounded-photo" src="<?php echo base_url('assets/images/profile-picture/'.$userInfo[0]['photo_profil']); ?>">
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">

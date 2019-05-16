@@ -35,7 +35,7 @@ class userAction extends CI_Model
 
                // Insértion de l'utilisateur dans la base de donnée
                $cnn = getConnexion('open-cheese');
-               $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
+               $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo_profil`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
                $stmt->bindParam(':pseudo', $post['pseudo']);
                $stmt->bindParam(':dateNaissance', $post['naissance']);
                $stmt->bindParam(':motdepasse', $password);

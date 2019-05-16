@@ -37,7 +37,7 @@ class moncompte extends CI_Controller {
       $this->load->view('footer-view');
     }
     else {
-      header('Location:'.base_url('index.php/FormConnexion'));
+      header('Location:'.base_url('index.php/Connexion'));
     }
   }
     public function connexion()
@@ -51,7 +51,7 @@ class moncompte extends CI_Controller {
     }
     else
     {
-      header('Location:'.base_url('index.php/FormConnexion?message=incorrect')); // Renvoi de la page avec message erreur
+      header('Location:'.base_url('index.php/moncompte?message=incorrect')); // Renvoi de la page avec message erreur
     }
   }
 

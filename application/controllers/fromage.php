@@ -11,12 +11,17 @@ public function __construct(){
   {
     // Titre de la page
     $data['title'] = "Détails du fromage";
-    if(isset($_GET['id'])) {
-      $data['id'] = $_GET['id'];
-    } else {
-      $data['id'] = 0;
-    }
-
+    // Vérification si un paramètre est existant
+      if(isset($_GET['id'])) {
+        // Envoi du fromage sélectionner à la vue
+        $data['id'] = $_GET['id'];
+      } else {
+        // Redirection sur la liste des fromages
+        header('Location:'.base_url('index.php/fromage/listeFromage'));
+      }
+    // Récupération des dégustations
+    $data['degustation'] = $this->fromageAction->getDegustation($_GET['id']);
+    
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
     $this->load->view('fromage-details-view');

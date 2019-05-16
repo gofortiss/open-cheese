@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4 titre-fromage"></h1>
-    <img class="headerPhoto" src="" alt="photo du fromage">
+    <img class="rounded-photo" id="image-fromage" src="" alt="photo du fromage">
   </div>
 </div>
 <div class="form-row degustation">
@@ -41,51 +41,61 @@
   </div>
 </div>
   <!-- Affichage du message par défaut -->
-<h4 class="degustation-titre title degustation">Ce fromage n'a pas encore été dégusté.</h4>
-  <div class="container-degustation degustation">
-    <div class="row ">
-      <div id="pseudo" class="col-md-4">
-        <h5>Utilisateur</h5>
-        <p>user</p>
-      </div>
-      <div id="description" class="col-md-4">
-        <h5>Description</h5>
-        <p>description</p>
-      </div>
-      <div id="note" class="col-md-4">
-        <h5>Note</h5>
-        <p>note</p>
-      </div>
-    </div>
-    <div class="row ">
-      <div id="pseudo" class="col-md-4">
-        <h5>Utilisateur</h5>
-        <p>user</p>
-      </div>
-      <div id="description" class="col-md-4">
-        <h5>Description</h5>
-        <p>description</p>
-      </div>
-      <div id="note" class="col-md-4">
-        <h5>Note</h5>
-        <p>note</p>
-      </div>
-    </div>
-    <div class="row ">
-      <div id="pseudo" class="col-md-4">
-        <h5>Utilisateur</h5>
-        <p>user</p>
-      </div>
-      <div id="description" class="col-md-4">
-        <h5>Description</h5>
-        <p>description</p>
-      </div>
-      <div id="note" class="col-md-4">
-        <h5>Note</h5>
-        <p>note</p>
-      </div>
-    </div>
-  </div>
+<h2 class="degustation-titre" style="text-align:center">Ce fromage n'a pas encore été dégusté.</h2>
+<div class="container-fluid degustation">
+    	<div class="row degustation-header">
+    		<div class="col-sm-4">
+    			<h2>Utilisateur</h2>
+    		</div>
+    		<div class="col-sm-4">
+    			<h2>Description</h2>
+    		</div>
+    		<div class="col-sm-2">
+    			<h2>Note</h2>
+    		</div>
+        <div class="col-sm-2">
+          <h2>Image</h2>
+        </div>
+    	</div>
+      <?php
+    foreach ($degustation as $value) {
+      echo '<div class="row">
+              <div class="col-md-4">
+                <div class="degustation-info-block" style="width:300px!important">
+                  <img class="degustation-utilisateur-image rounded-photo"  style="width:100px!important;height:100px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
+                  <h4 class="degustation-utilisateur-pseudo">'.$value->pseudo.'</h4>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="degustation-info-block">
+                  <h5 class="degustation-utilisateur-description">'.$value->description_degustation.'</h5>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="degustation-info-block">
+                  <h1 class="degustation-utilisateur-note">'.$value->note.'</h1>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="degustation-info-block">';
+                // Vérification afficher image de la dégustation
+                if($value->photo_degustation != '')
+                {
+                      echo '<img class="degustation-utilisateur-image"  style="width:100px!important;height:100px" src="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'" alt="Aucune photo"/>
+                            <a class="degustation-utilisateur-image"   href="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'">Agrandir</a>';
+                } else {
+                      echo '<h2>Aucune photo</h2>';
+                }
+                echo '
+                </div>
+              </div>
+              </div>';
+        } ?>
+</div>
+
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -97,7 +107,7 @@
           success: function (data) {
             $('.titre-fromage').text(data[0]['nom']);
             $('.description-fromage').text(data[0]['description_fromage']);
-            $('.headerPhoto').attr("src","<?php echo base_url(); ?>assets/images/fromage/"+data[0]['photo_fromage']);
+            $('#image-fromage').attr("src","<?php echo base_url(); ?>assets/images/fromage/"+data[0]['photo_fromage']);
             $('.type-de-lait-fromage').text(data[0]['typeLait']);
             $('.type-de-pate-fromage').text(data[0]['type']);
             $('.pasteurise-fromage').text(data[0]['pasteurise']);
@@ -118,21 +128,9 @@
             dataType: "json",
             success: function (data) {
               if(data.length != 0){
-                $('.degustation-titre').text("Dégustations :");
-                $.each(data,function(i,val){
-                  // $(".container-degustation").last().append("<div class=\"row\">");
-                  //
-                  // $(".row").append("<div id=\"pseudo\" class=\"col-md-4\">");
-                  // $("#pseudo").append(val['pseudo']);
-                  //
-                  // $(".row").append("<div id=\"description\" class=\"col-md-4\">");
-                  // $("#description").append(val['description_degustation']);
-                  //
-                  // $(".row").append("<div id=\"note\" class=\"col-md-4\">");
-                  // $("#note").append(val['note']);
-                  //
-
-                });
+                $('.degustation-titre').text("");
+              } else {
+                $('.degustation-header').attr('style','display:none');
               }
             }
         });

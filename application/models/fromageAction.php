@@ -76,7 +76,7 @@ class fromageAction extends CI_Model
       $post['photo_degustation'] = $image['nomFichier'];
 
     } else {
-      $post['photo_degustation'] = 'default.png';
+      $post['photo_degustation'] = '';
     }
 
     $post['dateAjout'] = date('Y-m-d'); // Ajout de la date actuelle dans le POST
@@ -88,7 +88,7 @@ class fromageAction extends CI_Model
 
   public function getDegustation($id)
   {
-    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur");
+    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur,photo_profil");
     $this->db->from('tbldegustation');
     $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
     $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur=tblutilisateur.numero');
