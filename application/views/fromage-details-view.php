@@ -90,8 +90,10 @@
     foreach ($degustation as $value) {
       echo '<div class="row">
               <div class="col-md-2">
-                <div class="degustation-info-block" style="">
-                  <img class="degustation-utilisateur-image rounded-photo"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
+                <div class="degustation-info-block">
+                  <a href="'.base_url().'index.php/profil?id='.$value->num_tblutilisateur.'">
+                    <img class="degustation-utilisateur-image rounded-photo"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
+                  </a>
                   <h4 class="degustation-utilisateur-pseudo">'.$value->pseudo.'</h4>
                   <h5 class="degustation-utilisateur-date">'.$value->dateAjout.'</h5>
                 </div>
