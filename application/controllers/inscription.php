@@ -16,6 +16,9 @@ class Inscription extends CI_Controller {
         case 'pseudo':
           $data['js'] = 'swal("Attention", "Le pseudo est déjà utilisé", "warning", {button: "Continuer",}).catch(swal.noop);';
           break;
+        case 'date':
+          $data['js'] = 'swal("Attention", "Il y a eu un problème avec la date", "warning", {button: "Continuer",}).catch(swal.noop);';
+          break;
         case 'motdepasse':
           $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
           break;
@@ -50,6 +53,9 @@ class Inscription extends CI_Controller {
           break;
         case 'pseudo':
             header('Location:'.base_url('index.php/Inscription?message=pseudo')); // Renvoi de la page avec message erreur (Pseudo déjà utilisé)
+          break;
+        case 'date':
+            header('Location:'.base_url('index.php/Inscription?message=date')); // Renvoi de la page avec message erreur (Pseudo déjà utilisé)
           break;
         case 'motdepasse':
             header('Location:'.base_url('index.php/Inscription?message=motdepasse')); // Renvoi de la page avec message erreur (Mot de passe correspond pas)
