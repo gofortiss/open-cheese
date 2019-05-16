@@ -31,7 +31,7 @@ class moncompte extends CI_Controller {
     // Vérifie si l'utilisateur est déconnecté
     if(isset($_SESSION['idUser']))
     {
-      $data['userInfo'] = $this->userAction->informationsUtilisateur($_SESSION['idUser']);
+      $data['userInfo'] = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']);
       $this->load->view('header-view',$data); // Load header
       $this->load->view('moncompte-view');
       $this->load->view('footer-view');

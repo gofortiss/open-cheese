@@ -100,7 +100,7 @@ class userAction extends CI_Model
    return $response->info();
  }
 
- public function informationsUtilisateur($numero)
+ public function getInformationsUtilisateur($numero)
  {
    $cnn = getConnexion('open-cheese');
    $stmt = $cnn->prepare('SELECT * FROM `tblutilisateur` WHERE numero = :numero');
