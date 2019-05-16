@@ -107,6 +107,12 @@ body {
   width: 100px;
 }
 
+/* PROFIL */
+.profil {
+  max-width: 700px;
+  margin: auto;
+}
+
 /* DEGUSTATION */
 .degustation {
   text-align: center;
