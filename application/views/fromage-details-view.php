@@ -1,3 +1,20 @@
+<!-- Modal afficher les like -->
+<div class="modal fade" id="modal-like" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Qui à aimé ?</h5>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modal-like-close" class="btn btn-secondary">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Partie visible -->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4 titre-fromage"></h1>
@@ -36,34 +53,52 @@
         </tr>
       </tbody>
     </table>
-    <h2 class="titre">Dégustation</h2>
-    <a class="btn btn-primary btn-lg ajouterDegustation" href="" class="btn btn-primary btn-lg">Ajouter une dégustation</a>
+    <?php
+    // Affichage des actions sur le fromage si l'utilisateur est connecté
+        if(isset($_SESSION['idUser']))
+        {
+          ?>
+          <h2 class="titre">Dégustation</h2>
+          <a class="btn btn-primary btn-lg ajouterDegustation" href="" class="btn btn-primary btn-lg">Ajouter une dégustation</a>
+          <?php
+        }
+     ?>
   </div>
 </div>
   <!-- Affichage du message par défaut -->
 <h2 class="degustation-titre" style="text-align:center">Ce fromage n'a pas encore été dégusté.</h2>
 <div class="container-fluid degustation">
     	<div class="row degustation-header">
-    		<div class="col-sm-4">
+    		<div class="col-sm-2">
     			<h2>Utilisateur</h2>
     		</div>
+        <div class="col-sm-2">
+          <h2>Note</h2>
+        </div>
     		<div class="col-sm-4">
     			<h2>Description</h2>
-    		</div>
-    		<div class="col-sm-2">
-    			<h2>Note</h2>
     		</div>
         <div class="col-sm-2">
           <h2>Image</h2>
         </div>
+        <div class="col-sm-2">
+          <h2>Like</h2>
+        </div>
     	</div>
       <?php
+      // Affichage des dégustations
     foreach ($degustation as $value) {
       echo '<div class="row">
-              <div class="col-md-4">
-                <div class="degustation-info-block" style="width:300px!important">
-                  <img class="degustation-utilisateur-image rounded-photo"  style="width:100px!important;height:100px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
+              <div class="col-md-2">
+                <div class="degustation-info-block" style="">
+                  <img class="degustation-utilisateur-image rounded-photo"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
                   <h4 class="degustation-utilisateur-pseudo">'.$value->pseudo.'</h4>
+                  <h5 class="degustation-utilisateur-date">'.$value->dateAjout.'</h5>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="degustation-info-block">
+                <h1 class="degustation-utilisateur-note">'.$value->note.'</h1>
                 </div>
               </div>
 
@@ -74,23 +109,32 @@
               </div>
 
               <div class="col-md-2">
-                <div class="degustation-info-block">
-                  <h1 class="degustation-utilisateur-note">'.$value->note.'</h1>
-                </div>
-              </div>
-
-              <div class="col-md-2">
                 <div class="degustation-info-block">';
                 // Vérification afficher image de la dégustation
                 if($value->photo_degustation != '')
                 {
-                      echo '<img class="degustation-utilisateur-image"  style="width:100px!important;height:100px" src="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'" alt="Aucune photo"/>
-                            <a class="degustation-utilisateur-image"   href="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'">Agrandir</a>';
+                  echo '<a href="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'" target="_blank">
+                  <img class="degustation-utilisateur-image"  style="width:100px!important;height:100px" src="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'" alt="Aucune photo"/>
+                  </a>';
                 } else {
-                      echo '<h2>Aucune photo</h2>';
+                  echo '<h2>Aucune photo</h2>';
                 }
                 echo '
                 </div>
+              </div>
+              <div class="col-md-2 degustation-like">';
+                if(isset($_SESSION['idUser']))
+                  {
+                    // Le bouton est activé
+                    echo '<a class="btn btn-primary " href="'.base_url('index.php/fromage/addLike?fromage='.$_GET['id'].'&degustation='.$value->degustation_numero).'" role="button"><i class="material-icons">thumb_up_alt</i></a>';
+                    echo '<a class="degustation-get-like" id="'.$value->degustation_numero.'" href="#voir" role="button">Voir</a>';
+
+                  }
+                  else {
+                    // Le bouton est desactivé
+                    echo '<a class="btn btn-primary disabled degustation-like" href="#" role="button"><i class="material-icons">thumb_up_alt</i></a>';
+                  }
+              echo '
               </div>
               </div>';
         } ?>
@@ -99,7 +143,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
 
-    // Récupération des données du fromage
+    // Récupération des données du fromage et ajout des données dans les champs
     $.ajax({
           type: "POST",
           url: "<?php echo base_url(); ?>index.php/fromage/apiFromage?id=<?php echo $id; ?>",
@@ -121,7 +165,7 @@
           }
       });
 
-      // Récupération des dégustations liées
+      // Supprimer les colonnes de dégustation si il y a aucune dégustation
       $.ajax({
             type: "POST",
             url: "<?php echo base_url(); ?>index.php/fromage/apiDegustation?id=<?php echo $id;?>",
@@ -134,5 +178,29 @@
               }
             }
         });
+
+      // Bouton (Voir) à été cliqué
+      $('a[href="#voir"]').click(function(){
+        // Récupération des like
+        $.ajax({
+          type: "POST",
+          url: "<?php echo base_url(); ?>index.php/fromage/apiGetLike?degustation="+this.id,
+          dataType: "json",
+          success: function (data) {
+            // Ajout des utilisateurs dans la modal
+            for (var i = 0; i < data.length; i++) {
+              $('.modal-body').append('<p>'+data[i]['pseudo']+'</p>');
+            }
+            // Ouverture de la modal
+            $('#modal-like').modal('show');
+          }
+        });
+      });
+
+      // Fermeture de la modal
+      $("#modal-like-close").click(function(){
+        $('#modal-like').modal('hide');
+        $(".modal-body").empty();
+      });
   });
 </script>
