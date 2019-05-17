@@ -93,11 +93,19 @@ public function __construct(){
 
   public function ajouterProducteur()
   {
+     // Contrôle des messages d'erreurs
+    if(isset($_GET['message'])) {
+      switch ($_GET['message']) {
+        case 'producteur':
+            $data['js'] = 'swal("Ouuupss", "Le producteur existe déjà.", "warning", {button: "Continuer",}).catch(swal.noop);';
+          break;
+      }
+    }
+
     //Requête SQL sur les tables (Données liste déroulante)
     $data['typeproducteur'] = $this->producteurAction->getTypeProducteur();
     $data['pays'] = $this->producteurAction->getPays();
     $data['canton'] = $this->producteurAction->getCanton();
-
     $data['title'] = "Ajouter un producteur";
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
