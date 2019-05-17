@@ -83,6 +83,7 @@ public function __construct(){
     $data['pate'] = $this->fromageAction->getTypePate();
     $data['lait'] = $this->fromageAction->getLait();
     $data['pasteurise'] = $this->fromageAction->getPasteurise();
+    $data['producteur'] = $this->producteurAction->getAllProducteurs();
 
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
