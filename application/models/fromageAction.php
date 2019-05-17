@@ -3,13 +3,19 @@ require_once('inc/connexion.inc.php');
 require_once('inc/image.inc.php');
 class fromageAction extends CI_Model
 {
-  public function getAllFromages()
+  public function getAllFromageAndProducteur()
   {
-    $this->db->select("tblfromage.numero as fromage_numero, nom,description_fromage,calories,proteines,lipides,sodium,type,typeLait,pasteurise,photo_fromage");
+    $this->db->get_compiled_select("tblfromage.numero as fromage_numero, tblfromage.nom as nom_du_fromage ,description_fromage,
+    calories,proteines,lipides,sodium,tbltypepate.type,typeLait,pasteurise,photo_fromage,
+    tblproducteur.nom_producteur as nom_du_producteur, tblpays.pays, tblcanton.canton, tbltypeproducteur.type");
     $this->db->from('tblfromage');
     $this->db->join('tbltypepate','tblfromage.num_tbltypePate=tbltypepate.numero');
     $this->db->join('tbllait','tblfromage.num_tbllait=tbllait.numero');
     $this->db->join('tblpasteurise','tblfromage.num_tblpasteurise=tblpasteurise.numero');
+    $this->db->join('tblproducteur','tblfromage.num_tblproducteur=tblproducteur.numero');
+    $this->db->join('tblcanton','tblproducteur.num_tblcanton=tblcanton.numero');
+    $this->db->join('tblpays','tblproducteur.num_tblpays=tblpays.numero');
+    $this->db->join('tbltypeproducteur','tblproducteur.num_tbltypeProducteur=tbltypeproducteur.numero');
     $query=$this->db->get();
     $data=$query->result();
     return $data;

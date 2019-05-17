@@ -44,7 +44,7 @@ public function __construct(){
   // Récupération des fromages
   function apiAllFromages()
   {
-    $fromages = $this->fromageAction->getAllFromages();
+    $fromages = $this->fromageAction->getAllFromageAndProducteur();
     $fromages = json_encode($fromages,true);
     echo $fromages;
   }
