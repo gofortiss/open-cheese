@@ -91,6 +91,20 @@ public function __construct(){
     $this->load->view('footer-view');
   }
 
+  public function ajouterProducteur()
+  {
+    //Requête SQL sur les tables (Données liste déroulante)
+    $data['typeproducteur'] = $this->producteurAction->getTypeProducteur();
+    $data['pays'] = $this->producteurAction->getPays();
+    $data['canton'] = $this->producteurAction->getCanton();
+
+    $data['title'] = "Ajouter un producteur";
+    // Chargement des vues
+    $this->load->view('header-view',$data); // Load header
+    $this->load->view('ajout-producteur-view');
+    $this->load->view('footer-view');
+  }
+
   // Fonction ajouter un fromage
   public function appelAjoutFromage()
   {
