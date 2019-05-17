@@ -47,20 +47,20 @@ class producteurAction extends CI_Model
 
     // Vérification du canton
     if($post['num_tblpays'] != '1') {  // Si le pays n'est pas Suisse
-      if($post['num_tblcanton'] != '1') { // Et un canton à été choisi
-        $response->addMessage("canton"); // Message d'erreur du canton
-      }
+        $post['num_tblcanton'] = '1'; // Ne pas assigner de canton
     }
 
 
     // Si aucune erreur n'est survenue jusque là
     if (empty($response->message)) {
+      $this->db->db_debug = FALSE; // Désactivation des messages d'erreurs
       $this->db->insert('tblproducteur', $post); // Insertion des données
-      // Si le nom du producteur existe déjà (erreur 1062 = duplicata de donnée unique)
-      if ($this->db->_error_number()==1062) {
-          $response->addMessage("nom"); // Message de succès
+
+      // Si le nom du producteur existe déjà (duplicata de donnée unique)
+      if ($this->db->insert_id()) {
+          $response->setSuccess(true); // Envoi succès
         } else {
-          $response->addMessage("success"); // Message de succès
+          $response->setSuccess(false); // Envoi erreur
         }
     }
     return $response->info(); // Envoi du message au controlleur
