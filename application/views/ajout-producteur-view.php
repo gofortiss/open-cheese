@@ -23,7 +23,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Pays du producteur</label>
-      <select class="custom-select mr-sm-2" name="num_tbltypeProducteur">
+      <select class="custom-select mr-sm-2" name="num_tblpays">
         <?php
             foreach ($pays->result() as $value) {
               echo '<option value="'.$value->numero.'">'.$value->pays.'</option>';
@@ -39,7 +39,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Canton *Uniquement si le producteur est suisse !</label>
-      <select class="custom-select mr-sm-2" name="num_tblpays" id="inlineFormCustomSelect">
+      <select class="custom-select mr-sm-2" name="num_tblcanton" id="inlineFormCustomSelect">
         <?php
             foreach ($canton->result() as $value) {
               echo '<option value="'.$value->numero.'">'.$value->canton.'</option>';
