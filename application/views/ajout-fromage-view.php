@@ -10,6 +10,19 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
+      <label>Producteur</label>
+      <small>Vous ne le trouver pas ? <a href="<?php echo base_url('index.php/fromage/ajouterProducteur') ?>">Ajouter le</a></small>
+      <select class="custom-select mr-sm-2" name="num_tblproducteur">
+        <?php
+            foreach ($producteur->result() as $value) {
+              echo '<option value="'.$value->numero.'" selected>'.$value->nom.'</option>';
+            }
+         ?>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
       <label>Type de pâte</label>
       <select class="custom-select mr-sm-2" name="num_tbltypePate" id="inlineFormCustomSelect">
         <?php
