@@ -129,8 +129,6 @@ class userAction extends CI_Model
    $stmt->execute();
    $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-   var_dump($row);
-
    // Vérification du pseudo
    if(empty($row)) { // Si la ligne est vide
      $pseudo = $_POST['pseudo'];
