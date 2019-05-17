@@ -147,6 +147,9 @@ body {
 .border {
   border: solid 1px #ebebec;
 }
+.list-button {
+  margin-top: 10px;
+}
 
 /* DEGUSTATION */
 .row-degustation {
