@@ -7,7 +7,16 @@
 if(isset($_SESSION['idUser']))
 {
   ?>
-    <a href="<?php echo base_url('/index.php/fromage/ajouterFromage');?>" class="btn btn-primary btn-lg btn-block">Ajouter un fromage</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <a href="<?php echo base_url('/index.php/fromage/ajouterFromage');?>" class="btn btn-primary btn-lg btn-block">Ajouter un fromage</a>
+      </div>
+      <div class="col-md-6">
+        <a href="<?php echo base_url('/index.php/fromage/ajouterProducteur');?>" class="btn btn-primary btn-lg btn-block">Ajouter un producteur</a>
+      </div>
+    </div>
+  </div>
   <?php
 }
 ?>
