@@ -120,6 +120,21 @@ public function __construct(){
     header('Location:'.base_url('index.php/fromage/listeFromage'));
   }
 
+  // Controller qui appel la fonction d'ajout du producteur
+  public function appelAjoutProducteur()
+  {
+    $success = $this->producteurAction->addProducteur($_POST,$_FILES);
+    var_dump($success);
+    switch ($success->success) {
+      case true :
+          header('Location:'.base_url('index.php/fromage/listeFromage'));
+        break;
+      case false :
+          header('Location:'.base_url('index.php/fromage/ajouterProducteur?message=producteur'));
+        break;
+    }
+  }
+
   public function ajouterDegustation()
   {
     $data['title'] = "Ajouter une dégustation";
