@@ -5,6 +5,7 @@ public function __construct(){
   parent::__construct();
   $this->load->database();
   $this->load->model("fromageAction");
+  $this->load->model("producteurAction");
   $this->load->helper('url');
 }
   public function index()
