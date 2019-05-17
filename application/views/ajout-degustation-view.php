@@ -9,14 +9,14 @@
     <label>Votre note</label>
     <select class="custom-select mr-sm-2" name="note" id="inlineFormCustomSelect">
       <option value="1">1</option>
-      <option value="2">1.5</option>
-      <option value="3">2</option>
-      <option value="4">2.5</option>
-      <option value="5">3</option>
-      <option value="6">3.5</option>
-      <option value="7">4</option>
-      <option value="8">4.5</option>
-      <option value="9">5</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5</option>
     </select>
   </div>
   <!-- Ligne de description -->
