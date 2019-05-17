@@ -46,9 +46,9 @@
         </thead>
       <tbody>
         <tr>
+          <th class="calories-fromage"></th>
           <th class="proteines-fromage"></th>
           <th class="lipides-fromage"></th>
-          <th class="calories-fromage"></th>
           <th class="sodium-fromage"></th>
         </tr>
       </tbody>
