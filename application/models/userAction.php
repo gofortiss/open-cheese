@@ -26,13 +26,15 @@ class userAction extends CI_Model
               // Retour message d'erreur
              $response->addMessage("date");
          }
+         // Assignation de la valeur à null si elle est vide
+         if($post['naissance'] == ''){
+           $post['naissance'] = null;
+         }
 
          // Upload de l'image choisie par l'utilisateur
          if($file['fichier']['name'] !=''){
            $image = uploadImage($file,'profile-picture/'); // Upload de la photo de profil
-         }
-         // Génération d'une image par rappot au pseudo
-         else {
+         } else { // Génération d'une image par rappot au pseudo
            $image = apiImage($post['pseudo']);
          }
 
@@ -42,7 +44,7 @@ class userAction extends CI_Model
          }
 
          // Si aucune erreur n'est survenue
-         if (!empty($response->message)) {
+         if (empty($response->message)) {
              $password = md5($post['password1']); // Cryptage du mot de passe
              // Insértion de l'utilisateur dans la base de donnée
              $cnn = getConnexion('open-cheese');
@@ -54,14 +56,13 @@ class userAction extends CI_Model
              $stmt->bindParam(':pays', $post['pays']);
              $stmt->bindParam(':photo', $image['numero']);
              $stmt->execute();
-             $response->addMessage('success');
+             $response->addMessage('success'); // Envoi du message de succes
            }
        } else {
          $response->addMessage('pseudo'); // Problème avec le pseudo
        }
-     }
-     else {
-     $response->addMessage("motdepasse"); // Problème avec le mot de passe
+     } else {
+       $response->addMessage("motdepasse"); // Problème avec le mot de passe
    }
    return $response->info();
  }
