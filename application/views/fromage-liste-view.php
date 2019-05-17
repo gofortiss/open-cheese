@@ -33,13 +33,28 @@ $(document).ready(function(){
           visible : false,
           field: 'numero',
           title: "Identifiant unique"
-        },
-        {
+        }, {
           sortable: true,
           sortOrder: 'ASC',
           field: 'nom',
           title: "Nom du fromage"
-        },{
+        }, {
+          sortable: true,
+          sortOrder: 'ASC',
+          field: 'nom_producteur',
+          title: "Nom producteur"
+        }, {
+          sortable: true,
+          sortOrder: 'ASC',
+          field: 'pays',
+          title: "Pays de production"
+        },
+        {
+          sortable: true,
+          sortOrder: 'ASC',
+          field: 'canton',
+          title: "Canton"
+        }, {
           sortable: true,
           sortOrder: 'ASC',
           field: 'type',
