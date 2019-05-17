@@ -22,6 +22,7 @@ public function __construct(){
       $this->load->view('footer-view');
     }
     else{
+      // Redirection sur la liste des fromages
         header('Location:'.base_url('index.php/fromage/listeFromage'));
     }
   }
@@ -33,7 +34,7 @@ public function __construct(){
       $liste = $this->friendAction->getAllRelation(); // Liste de toutes les relations
       $relation = $this->friendAction->getRelation($liste); // Liste des relations de l'utilisateur connecté
       $this->friendAction->newRelation($_GET['id'], $relation); // Liste des relations de l'utilisateur connecté
-      
+
     } else {
       header('Location:'.base_url('index.php/fromage/listeFromage'));
     }
