@@ -45,17 +45,18 @@ class userAction extends CI_Model
 
          // Si aucune erreur n'est survenue
          if (empty($response->message)) {
-             $password = md5($post['password1']); // Cryptage du mot de passe
-             // Insértion de l'utilisateur dans la base de donnée
-             $cnn = getConnexion('open-cheese');
-             $stmt = $cnn->prepare('INSERT INTO `tblutilisateur` (`numero`, `pseudo`,`dateNaissance`,`bio`,`motdepasse`,`num_tblgenre`,`num_tblpays`,`photo_profil`) VALUES (NULL, :pseudo,:dateNaissance,NULL,:motdepasse,:genre,:pays,:photo)');
-             $stmt->bindParam(':pseudo', $post['pseudo']);
-             $stmt->bindParam(':dateNaissance', $post['naissance']);
-             $stmt->bindParam(':motdepasse', $password);
-             $stmt->bindParam(':genre', $post['genre']);
-             $stmt->bindParam(':pays', $post['pays']);
-             $stmt->bindParam(':photo', $image['numero']);
-             $stmt->execute();
+            // Création du tableau de donnée
+             $data = array(
+               'numero' => NULL,
+               'pseudo' => $post['pseudo'],
+               'dateNaissance' => $post['naissance'],
+               'bio' => null,
+               'motdepasse' => md5($post['password1']),
+               'num_tblgenre' => $post['genre'],
+               'num_tblpays' => $post['pays'],
+               'photo_profil' => $image['numero']
+             );
+             $this->db->insert('tblutilisateur', $data); // Insertion des données
              $response->addMessage('success'); // Envoi du message de succes
            }
        } else {
