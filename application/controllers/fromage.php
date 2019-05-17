@@ -139,7 +139,7 @@ public function __construct(){
   {
     $data['title'] = "Ajouter une dégustation";
     // Retour requête SQL sur toute la table fromage
-    $data['fromage'] = $this->fromageAction->getAllFromages();
+    $data['fromage'] = $this->fromageAction->getAllFromageAndProducteur();
 
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
