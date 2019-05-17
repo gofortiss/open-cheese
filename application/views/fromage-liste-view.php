@@ -31,17 +31,17 @@ $(document).ready(function(){
         showLoading: true,
         columns: [{
           visible : false,
-          field: 'numero',
+          field: 'fromage_numero',
           title: "Identifiant unique"
         }, {
           sortable: true,
           sortOrder: 'ASC',
-          field: 'nom',
+          field: 'nom_du_fromage',
           title: "Nom du fromage"
         }, {
           sortable: true,
           sortOrder: 'ASC',
-          field: 'nom_producteur',
+          field: 'nom_du_producteur',
           title: "Nom producteur"
         }, {
           sortable: true,
