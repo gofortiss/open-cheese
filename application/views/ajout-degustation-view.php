@@ -22,7 +22,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" name="description_degustation" aria-label="With textarea"></textarea>
+        <textarea class="form-control" name="description_degustation" maxlength="255" aria-label="With textarea"></textarea>
       </div>
     </div>
   </div>

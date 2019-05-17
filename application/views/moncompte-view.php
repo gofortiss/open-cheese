@@ -12,7 +12,7 @@
         <form action="moncompte/update" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
-            <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php echo $userInfo[0]['pseudo'];?>' required>
+            <input type="text" class="form-control" maxlength="255" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php echo $userInfo[0]['pseudo'];?>' required>
             <label>Bio personnelle</label>
             <div class="input-group">
               <div class="input-group-prepend">

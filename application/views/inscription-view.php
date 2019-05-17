@@ -14,7 +14,7 @@
 <form class="form" action="Inscription/newInscription" class="inscription" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Pseudo</label>
-    <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php if(isset($pseudo)){echo $pseudo;}?>' required>
+    <input type="text" class="form-control" name="pseudo" maxlength="50" id="pseudo" placeholder="Pseudo" value='<?php if(isset($pseudo)){echo $pseudo;}?>' required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
