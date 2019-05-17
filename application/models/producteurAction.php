@@ -1,6 +1,7 @@
 <?php
 require_once('inc/connexion.inc.php');
 require_once('inc/image.inc.php');
+require_once('inc/class.response.php');
 class producteurAction extends CI_Model
 {
   public function getAllProducteurs()
