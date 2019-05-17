@@ -15,7 +15,7 @@
       <select class="custom-select mr-sm-2" name="num_tblproducteur">
         <?php
             foreach ($producteur->result() as $value) {
-              echo '<option value="'.$value->numero.'" selected>'.$value->nom.'</option>';
+              echo '<option value="'.$value->numero.'" selected>'.$value->nom_producteur.'</option>';
             }
          ?>
       </select>

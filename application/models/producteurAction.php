@@ -6,7 +6,7 @@ class producteurAction extends CI_Model
 {
   public function getAllProducteurs()
   {
-    $this->db->select("numero, nom");
+    $this->db->select("numero, nom_producteur");
     $this->db->from('tblproducteur');
     return $this->db->get();
   }
