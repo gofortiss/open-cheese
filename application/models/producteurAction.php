@@ -29,28 +29,7 @@ class producteurAction extends CI_Model
     return $this->db->get('tblpays');
   }
 
-   // Ajout d'un producteur
-  public function addFromage($post,$file)
-  {
-    // Remplacement des valeurs vide par des valeurs NULL
-    foreach ($post as $key => $value) {
-          if ($value == '') {
-               $post[$key] = NULL;
-          }
-      }
-
-    // Vérification si un fichier à été envoyé
-    if($file['fichier']['name']!='')
-    {
-      $image = uploadImage($file,'fromage/'); // Upload de l'image du fromage
-      $post['photo_fromage'] = $image['nomFichier'];
-
-    } else {
-      $post['photo_fromage'] = 'default.png';
-    }
-    $this->db->insert('tblfromage', $post);
-  }
-
+  // Ajout d'un producteur
   public function addProducteur($post, $file)
   {
     // Initialisation du message
