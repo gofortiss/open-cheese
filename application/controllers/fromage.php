@@ -135,7 +135,7 @@ public function __construct(){
   // Controller qui appel la fonction d'ajout du producteur
   public function appelAjoutProducteur()
   {
-    $success = $this->producteurAction->addProducteur($_POST,$_FILES);
+    $success = $this->producteurAction->insertProducteur($_POST,$_FILES);
     var_dump($success);
     switch ($success->success) {
       case true :

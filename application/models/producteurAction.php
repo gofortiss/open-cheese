@@ -30,7 +30,7 @@ class producteurAction extends CI_Model
   }
 
   // Ajout d'un producteur
-  public function addProducteur($post, $file)
+  public function insertProducteur($post, $file)
   {
     // Initialisation du message
     $response = new Response();
