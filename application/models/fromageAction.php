@@ -120,7 +120,7 @@ class fromageAction extends CI_Model
     return $data;
   }
 
-  public function addLikeDegustation($id)
+  public function insertLikeDegustation($id)
   {
     $data = array(
       'numero' => NULL,
