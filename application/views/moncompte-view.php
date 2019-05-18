@@ -9,7 +9,7 @@
     <div class="form-group col-lg-6">
        <h2 class="moncompte-titre">Mes informations</h2>
       <div class="moncompte-block1 reveal-focus">
-        <form action="moncompte/update" method="post"  enctype="multipart/form-data">
+        <form action="moncompte/appelUpdate" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
             <input type="text" class="form-control" maxlength="255" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php echo $userInfo[0]['pseudo'];?>' required>
