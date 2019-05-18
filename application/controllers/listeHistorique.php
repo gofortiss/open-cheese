@@ -18,7 +18,7 @@ public function __construct(){
     $this->load->view('footer-view');
   }
 
-    public function api()
+    public function apiHistorique()
   {
       $degustations = $this->historique->getAllDegustations();
       $degustations = json_encode($degustations,true);

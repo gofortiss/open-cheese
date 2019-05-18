@@ -40,7 +40,7 @@ class Inscription extends CI_Controller {
     }
   }
 
-  public function newInscription()
+  public function appelInscription()
   {
       // Création d'un cookie avec les valeur des inputs
       setcookie ('inscription', json_encode($_POST), time() + 240); // heure de création + 240 sec

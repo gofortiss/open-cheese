@@ -167,7 +167,7 @@ public function __construct(){
   }
 
   // Ajouter un "Like" sur une dégustation
-  public function addLike()
+  public function appelLike()
   {
     // Vérification si un paramètre est entré
     if(isset($_GET['degustation']) && isset($_GET['fromage']))
