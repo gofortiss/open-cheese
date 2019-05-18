@@ -40,22 +40,8 @@ class moncompte extends CI_Controller {
       header('Location:'.base_url('index.php/Connexion'));
     }
   }
-    public function connexion()
-  {
-    // Retour du résultat
-    $result = $this->functions->connexion($_POST);
-    // Contrôle résultat
-    if($result->success)
-    {
-      header('Location:'.base_url('index.php/moncompte'));
-    }
-    else
-    {
-      header('Location:'.base_url('index.php/moncompte?message=incorrect')); // Renvoi de la page avec message erreur
-    }
-  }
 
-    public function update()
+    public function appelUpdate()
   {
     // Appel de la fonction mise à jour de l'utilisateur
     $defaultData = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']); // Données par défaut inscrite dans la db
