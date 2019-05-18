@@ -11,7 +11,7 @@
     <h1 class="display-4">Inscription</h1>
   </div>
 </div>
-<form class="form" action="Inscription/newInscription" class="inscription" method="post"  enctype="multipart/form-data">
+<form class="form" action="Inscription/appelInscription" class="inscription" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Pseudo</label>
     <input type="text" class="form-control" name="pseudo" maxlength="50" id="pseudo" placeholder="Pseudo" value='<?php if(isset($pseudo)){echo $pseudo;}?>' required>

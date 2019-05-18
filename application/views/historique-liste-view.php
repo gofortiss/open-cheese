@@ -9,7 +9,7 @@ $(document).ready(function(){
       // Affichage des dégustations
       $('#table').bootstrapTable({
         search : true,
-        url:"<?php echo base_url(); ?>index.php/listeHistorique/api",
+        url:"<?php echo base_url(); ?>index.php/listeHistorique/apiHistorique",
         pagination: true,
 
         columns: [{

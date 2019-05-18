@@ -144,7 +144,7 @@
                 if(isset($_SESSION['idUser']))
                   {
                     // Le bouton est activé
-                    echo '<a class="btn btn-primary " href="'.base_url('index.php/fromage/addLike?fromage='.$_GET['id'].'&degustation='.$value->degustation_numero).'" role="button"><i class="material-icons">thumb_up_alt</i></a>';
+                    echo '<a class="btn btn-primary " href="'.base_url('index.php/fromage/appelLike?fromage='.$_GET['id'].'&degustation='.$value->degustation_numero).'" role="button"><i class="material-icons">thumb_up_alt</i></a>';
                     echo '<a class="degustation-get-like" id="'.$value->degustation_numero.'" href="#voir" role="button">Voir</a>';
 
                   }
