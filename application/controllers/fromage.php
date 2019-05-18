@@ -74,6 +74,18 @@ public function __construct(){
     }
   }
 
+  // Retourne un tableau JSON des producteurs
+  public function apiProducteur()
+  {
+    if(isset($_GET['id'])){
+      $producteur = $this->fromageAction->getProducteur($_GET['id']);
+      $producteur = json_encode($producteur,true);
+      echo $producteur;
+    } else {
+      echo "Error";
+    }
+  }
+
   // Chargement de la vue ajouter un fromage
   public function ajouterFromage()
   {
