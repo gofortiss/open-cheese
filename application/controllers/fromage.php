@@ -128,7 +128,7 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutFromage()
   {
-    $this->fromageAction->addFromage($_POST,$_FILES);
+    $this->fromageAction->insertFromage($_POST,$_FILES);
     header('Location:'.base_url('index.php/fromage/listeFromage'));
   }
 
@@ -162,7 +162,7 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutDegustation()
   {
-    $this->fromageAction->addDegustation($_POST,$_FILES,$_GET['id']);
+    $this->fromageAction->insertDegustation($_POST,$_FILES,$_GET['id']);
     header('Location:'.base_url('index.php/fromage/?id='.$_GET['id']));
   }
 

@@ -68,7 +68,7 @@ class fromageAction extends CI_Model
     return $this->db->get('tblpasteurise');
   }
 
-  public function addFromage($post,$file)
+  public function insertFromage($post,$file)
   {
     // Remplacement des valeurs vide par des valeurs NULL
     foreach ($post as $key => $value) {
@@ -89,7 +89,7 @@ class fromageAction extends CI_Model
     $this->db->insert('tblfromage', $post);
   }
 
-  public function addDegustation($post,$file,$id)
+  public function insertDegustation($post,$file,$id)
   {
     // Vérification si un fichier à été envoyé
     if($file['fichier']['name']!='')
