@@ -22,30 +22,33 @@
   </div>
 </div>
 <div class="form-row degustation">
+  <!-- Fromage -->
   <div class="form-group col-lg-3 border">
     <h2 class="titre">Le produit</h2>
-    <h4>Description</h4>
-    <h5 class="description-fromage" style="max-width: 400px;margin:auto"></h5>
-    <h4>Type de lait</h4>
-    <p class="type-de-lait-fromage"></p>
-    <h4>Type de pâte</h4>
-    <p class="type-de-pate-fromage"></p>
-    <h4>Est pasteurisé</h4>
-    <p class="pasteurise-fromage"></p>
+    <h3>Description</h4>
+    <h5 class="description-fromage" style="max-width: 400px;margin-left:auto;margin-right:auto"></h5>
+    <h3>Type de lait</h3>
+    <h5 class="type-de-lait-fromage"></h5>
+    <h3>Type de pâte</h3>
+    <h5 class="type-de-pate-fromage"></h5>
+    <h3>Est pasteurisé</h3>
+    <h5 class="pasteurise-fromage"></h5>
   </div>
+  <!-- Producteur -->
   <div class="form-group col-lg-3 border">
     <h2 class="titre">Le producteur</h2>
-    <h4>Description</h4>
-    <p class="description-producteur" style="max-width: 400px;margin:auto"></p>
-    <h4>Pays du producteur</h4>
-    <p class="pays-producteur"></p>
-    <h4>Localité du producteur</h4>
-    <p class="localite-producteur"></p>
-    <h4>Canton du producteur</h4>
-    <p class="canton-producteur"></p>
-    <h4>Type de producteur</h4>
-    <p class="type-producteur"></p>
+    <h3>Description</h3>
+    <h5 class="description-producteur" style="max-width: 400px;margin-left:auto;margin-right:auto"></h5>
+    <h3>Pays du producteur</h3>
+    <h5 class="pays-producteur"></h5>
+    <h3>Localité du producteur</h3>
+    <h5 class="localite-producteur"></h5>
+    <h3>Canton du producteur</h3>
+    <h5 class="canton-producteur"></h5>
+    <h3>Type de producteur</h3>
+    <h5 class="type-producteur"></h5>
   </div>
+  <!-- Valeur énergetique -->
   <div class="form-group col-lg-6 border">
     <h2 class="titre">Valeur énergetique</h2>
       <table class="table">
@@ -179,6 +182,21 @@
             $('.ajouterDegustation').attr("href","<?php echo base_url(); ?>index.php/fromage/ajouterDegustation/?id="+data[0]['fromage_numero']);
           }
       });
+
+      // Récupération des données du produceur et ajout des données dans les champs
+      $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>index.php/fromage/apiProducteur?id=<?php echo $id; ?>",
+            dataType: "json",
+            success: function (data) {
+              $('#image-producteur').attr("src","<?php echo base_url(); ?>assets/images/fromage/"+data[0]['photo_fromage']);
+              $('.description-producteur').text(data[0]['description_producteur']);
+              $('.pays-producteur').text(data[0]['pays']);
+              $('.localite-producteur').text(data[0]['localite']);
+              $('.canton-producteur').text(data[0]['canton']);
+              $('.type-producteur').text(data[0]['type_producteur']);
+            }
+        });
 
       // Supprimer les colonnes de dégustation si il y a aucune dégustation
       $.ajax({
