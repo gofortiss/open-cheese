@@ -22,16 +22,29 @@
   </div>
 </div>
 <div class="form-row degustation">
-  <div class="form-group col-lg-6 border">
+  <div class="form-group col-lg-3 border">
     <h2 class="titre">Le produit</h2>
-    <h4>Description :</h4>
-    <p class="description-fromage" style="width: 400px;text-align:left;margin:auto"></p>
+    <h4>Description</h4>
+    <h5 class="description-fromage" style="max-width: 400px;margin:auto"></h5>
     <h4>Type de lait</h4>
     <p class="type-de-lait-fromage"></p>
     <h4>Type de pâte</h4>
     <p class="type-de-pate-fromage"></p>
     <h4>Est pasteurisé</h4>
     <p class="pasteurise-fromage"></p>
+  </div>
+  <div class="form-group col-lg-3 border">
+    <h2 class="titre">Le producteur</h2>
+    <h4>Description</h4>
+    <p class="description-producteur" style="max-width: 400px;margin:auto"></p>
+    <h4>Pays du producteur</h4>
+    <p class="pays-producteur"></p>
+    <h4>Localité du producteur</h4>
+    <p class="localite-producteur"></p>
+    <h4>Canton du producteur</h4>
+    <p class="canton-producteur"></p>
+    <h4>Type de producteur</h4>
+    <p class="type-producteur"></p>
   </div>
   <div class="form-group col-lg-6 border">
     <h2 class="titre">Valeur énergetique</h2>
@@ -86,7 +99,7 @@
         </div>
     	</div>
       <?php
-      // Affichage des dégustations
+    // Affichage des dégustations
     foreach ($degustation as $value) {
       echo '<div class="row">
               <div class="col-md-2">
@@ -95,7 +108,7 @@
                     <img class="degustation-utilisateur-image rounded-photo"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
                   </a>
                   <h4 class="degustation-utilisateur-pseudo">'.$value->pseudo.'</h4>
-                  <h5 class="degustation-utilisateur-date">'.$value->dateAjout.'</h5>
+                  <h6 class="degustation-utilisateur-date">'.$value->dateAjout.'</h6>
                 </div>
               </div>
               <div class="col-md-2">
