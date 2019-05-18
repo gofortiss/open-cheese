@@ -31,7 +31,7 @@ class Connexion extends CI_Controller {
     }
   }
 
-  public function connect()
+  public function appelConnexion()
   {
     $result = $this->userAction->connexion($_POST);
 

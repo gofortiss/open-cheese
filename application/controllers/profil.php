@@ -27,7 +27,7 @@ public function __construct(){
     }
   }
 
-  public function newFriend()
+  public function appelNouvelAmi()
   {
     // Vérification du paramètre d'url et que l'utilisateur soit connecté
     if(isset($_GET['id']) && isset($_SESSION['idUser'])) {
