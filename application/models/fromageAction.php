@@ -21,6 +21,7 @@ class fromageAction extends CI_Model
     return $data;
   }
 
+  // Retourne un fromage selon l'id
   public function getFromage($id)
   {
     $this->db->select("tblfromage.numero as fromage_numero, nom,description_fromage,calories,proteines,lipides,sodium,type,typeLait,pasteurise,photo_fromage");
@@ -28,6 +29,21 @@ class fromageAction extends CI_Model
     $this->db->join('tbltypepate','tblfromage.num_tbltypePate=tbltypepate.numero');
     $this->db->join('tbllait','tblfromage.num_tbllait=tbllait.numero');
     $this->db->join('tblpasteurise','tblfromage.num_tblpasteurise=tblpasteurise.numero');
+    $this->db->where('tblfromage.numero', $id);
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
+  }
+
+  // Retourne un producteur de fromage selon l'id du fromage
+  public function getProducteur($id)
+  {
+    $this->db->select("tblfromage.numero, num_tblproducteur, nom_producteur, localite, description_producteur, photo_producteur, pays, canton, tbltypeproducteur.type as type_producteur");
+    $this->db->from('tblfromage');
+    $this->db->join('tblproducteur', 'tblfromage.num_tblproducteur = tblproducteur.numero');
+    $this->db->join('tblpays', 'tblproducteur.num_tblpays = tblpays.numero');
+    $this->db->join('tblcanton', 'tblproducteur.num_tblcanton = tblcanton.numero');
+    $this->db->join('tbltypeproducteur', 'tblproducteur.num_tbltypeProducteur = tbltypeproducteur.numero');
     $this->db->where('tblfromage.numero', $id);
     $query=$this->db->get();
     $data=$query->result();
