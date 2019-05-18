@@ -48,8 +48,12 @@ $(document).ready(function(){
           sortOrder: 'ASC',
           field: 'pays',
           title: "Pays de production"
-        },
-        {
+        }, {
+          sortable: true,
+          sortOrder: 'ASC',
+          field: 'type',
+          title: "Type de producteur"
+        }, {
           sortable: true,
           sortOrder: 'ASC',
           field: 'canton',
@@ -57,15 +61,15 @@ $(document).ready(function(){
         }, {
           sortable: true,
           sortOrder: 'ASC',
-          field: 'type',
-          title: "Type de pâte"
-        }, {
-          sortable: true,
-          sortOrder: 'ASC',
           field: 'typeLait',
           title: 'Type de lait'
         },
         {
+          sortable: true,
+          sortOrder: 'ASC',
+          field: 'type_pate',
+          title: 'Type de pâte'
+        }, {
           sortable: true,
           sortOrder: 'ASC',
           field: 'pasteurise',
