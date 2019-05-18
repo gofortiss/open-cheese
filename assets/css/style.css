@@ -150,7 +150,11 @@ body {
 .list-button {
   margin-top: 10px;
 }
-
+.photo-fromage {
+  margin: auto;
+  width: 200px;
+  border-radius: 10px;
+}
 /* DEGUSTATION */
 .row-degustation {
   /* max-width: 300px; */

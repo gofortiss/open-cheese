@@ -18,7 +18,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4 titre-fromage"></h1>
-    <img class="rounded-photo" id="image-fromage" src="" alt="photo du fromage">
+    <img class="photo-fromage" id="image-fromage" src="" alt="photo du fromage">
   </div>
 </div>
 <div class="form-row degustation">
@@ -108,7 +108,7 @@
               <div class="col-md-2">
                 <div class="degustation-info-block">
                   <a href="'.base_url().'index.php/profil?id='.$value->num_tblutilisateur.'">
-                    <img class="degustation-utilisateur-image rounded-photo"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
+                    <img class="degustation-utilisateur-image photo-fromage"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
                   </a>
                   <h4 class="degustation-utilisateur-pseudo">'.$value->pseudo.'</h4>
                   <h6 class="degustation-utilisateur-date">'.$value->dateAjout.'</h6>
