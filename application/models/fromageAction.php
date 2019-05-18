@@ -6,7 +6,7 @@ class fromageAction extends CI_Model
   public function getAllFromageAndProducteur()
   {
     $this->db->select("tblfromage.numero as fromage_numero, tblfromage.nom as nom_du_fromage ,description_fromage,
-    calories,proteines,lipides,sodium,tbltypepate.type,typeLait,pasteurise,photo_fromage,
+    calories,proteines,lipides,sodium,tbltypepate.type as type_pate,typeLait,pasteurise,photo_fromage,
     tblproducteur.nom_producteur as nom_du_producteur, tblpays.pays, tblcanton.canton, tbltypeproducteur.type");
     $this->db->from('tblfromage');
     $this->db->join('tbltypepate','tblfromage.num_tbltypePate=tbltypepate.numero');
