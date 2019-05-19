@@ -15,11 +15,11 @@ class moncompte extends CI_Controller {
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
-        case 'success':
-          $data['js'] = 'swal("Parfait", "Les données ont bien été modifées", "success", {button: "Continuer",}).catch(swal.noop);';
-          break;
         case 'pseudo':
           $data['js'] = 'swal("Attention", "Le pseudo est déjà utilisé", "warning", {button: "Continuer",}).catch(swal.noop);';
+        break;
+        case 'success':
+          $data['js'] = 'swal("Parfait", "Les données ont bien été modifées", "success", {button: "Continuer",}).catch(swal.noop);';
           break;
         case 'motdepasse':
           $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
