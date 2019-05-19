@@ -152,6 +152,7 @@ body {
 }
 .photo-fromage {
   margin: auto;
+  margin-bottom: 20px;
   width: 200px;
   border-radius: 10px;
 }
