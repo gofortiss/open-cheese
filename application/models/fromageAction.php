@@ -130,6 +130,17 @@ class fromageAction extends CI_Model
 
     $this->db->db_debug = FALSE; // Désactivation des erreurs Codeigniter si le like existe déjà
     $this->db->insert('tblaime',$data); // Insertion du like
+  }
+
+  // Retourne la note moyenne d'une dégustation
+  public function getMoyenneNoteFromage($degustation)
+  {
+    $total = 0; // Initialisation de la variable contenant l'addition de toutes les notes
+    foreach ($degustation as $value) {
+      $total += $value->note;
+    }
+    return $total / count($degustation); // Calcul de la note
+  }
 
   }
 

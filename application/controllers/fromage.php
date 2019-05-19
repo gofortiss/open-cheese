@@ -50,7 +50,7 @@ public function __construct(){
   }
 
 
-  // Récupération des informations d'un fromage
+  // Récupération des informations d'un fromage et de sa note moyenne
   public function apiFromage()
   {
     if(isset($_GET['id'])){
@@ -66,8 +66,9 @@ public function __construct(){
   public function apiDegustation()
   {
     if(isset($_GET['id'])){
-      $degustation = $this->fromageAction->getDegustation($_GET['id']);
-      $degustation = json_encode($degustation,true);
+      $data['degustation'] = $this->fromageAction->getDegustation($_GET['id']);
+      $data['note_moyenne'] = $this->fromageAction->getMoyenneNoteFromage($data['degustation']);
+      $degustation = json_encode($data,true);
       echo $degustation;
     } else {
       echo "Error";
