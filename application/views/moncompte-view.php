@@ -1,8 +1,8 @@
 <div class="MonCompte">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4"><?php if(isset($userInfo)){echo $userInfo[0]['pseudo'];}?></h1>
-      <img class="rounded-photo" src="<?php echo base_url('assets/images/profile-picture/'.$userInfo[0]['photo_profil']); ?>">
+      <h1 class="display-4"><?php if(isset($userInfo)){echo $userInfo[0]->pseudo;}?></h1>
+      <img class="rounded-photo" src="<?php echo base_url('assets/images/profile-picture/'.$userInfo[0]->photo_profil); ?>">
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">
@@ -12,13 +12,13 @@
         <form action="moncompte/appelUpdate" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
-            <input type="text" class="form-control" maxlength="255" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php echo $userInfo[0]['pseudo'];?>' required>
+            <input type="text" class="form-control" maxlength="255" name="pseudo" id="pseudo" placeholder="Pseudo" value='<?php echo $userInfo[0]->pseudo;?>' required>
             <label>Bio personnelle</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">ceci sera publique</span>
               </div>
-              <textarea class="form-control" name="bio" aria-label="With textarea"><?php echo $userInfo[0]['bio'];?></textarea>
+              <textarea class="form-control" name="bio" aria-label="With textarea"><?php echo $userInfo[0]->bio;?></textarea>
             </div>
             <label>Changer sa photo de profil</label>
             <div class="form-row">
