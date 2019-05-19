@@ -104,21 +104,11 @@ class fromageAction extends CI_Model
     $post['num_tblutilisateur'] = $_SESSION['idUser']; // Ajout de l'utilisateur connecté dans le POST
     $post['num_tblfromage'] = $id; // Ajout du numero du fromage
 
-    $this->db->insert('tbldegustation', $post); // Insertion dans la base de donnée
+    $this->db->insert('tbldegustation', $post); // Insertion de la dégustation dans la base de donnée
   }
 
-  public function getDegustation($id)
-  {
-    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur,photo_profil");
-    $this->db->from('tbldegustation');
-    $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
-    $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur=tblutilisateur.numero');
-    $this->db->where('tbldegustation.num_tblfromage', $id);
-    $query=$this->db->get();
-    $data=$query->result();
-    return $data;
-  }
 
+  // Ajoute un "J'aime" sur une dégustation
   public function insertLikeDegustation($id)
   {
     $data = array(
@@ -141,8 +131,20 @@ class fromageAction extends CI_Model
     return $total / count($degustation); // Calcul de la note
   }
 
+  // Retourne les dégustations selon le fromage
+  public function getDegustation($id)
+  {
+    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,num_tblfromage,pseudo,num_tblutilisateur,photo_profil");
+    $this->db->from('tbldegustation');
+    $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
+    $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur=tblutilisateur.numero');
+    $this->db->where('tbldegustation.num_tblfromage', $id);
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
   }
 
+  // Retourne les like d'une dégustations selon le fromage
   public function getLikeDegustation($id)
   {
     $this->db->select("tblaime.numero, pseudo, numero_tbldegustation");
