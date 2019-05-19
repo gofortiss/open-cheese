@@ -1,8 +1,8 @@
 <div class="MonCompte">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <img class="rounded-photo" src="<?php echo base_url('assets/images/profile-picture/'.$user[0]['photo_profil']); ?>">
-      <h1 class="display-4" id="titre-prfil"><?php echo $user[0]['pseudo']; ?></h1>
+      <img class="rounded-photo" src="<?php echo base_url('assets/images/profile-picture/'.$user[0]->photo_profil); ?>">
+      <h1 class="display-4" id="titre-prfil"><?php echo $user[0]->pseudo; ?></h1>
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">
@@ -11,13 +11,13 @@
         <form action="profil/appelNouvelAmi?id=<?php echo $_GET['id']?>" method="post">
           <div class="form-group">
             <label>Pseudo</label>
-            <input type="text" class="form-control" name="pseudo" id="pseudo" disabled value='<?php echo $user[0]['pseudo'];?>' required>
+            <input type="text" class="form-control" name="pseudo" id="pseudo" disabled value='<?php echo $user[0]->pseudo;?>' required>
             <label>Bio personnelle</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">Présentation</span>
               </div>
-              <textarea class="form-control" name="bio" disabled aria-label="With textarea"><?php echo $user[0]['bio'];?></textarea>
+              <textarea class="form-control" name="bio" disabled aria-label="With textarea"><?php echo $user[0]->bio;?></textarea>
             </div>
           </div>
           <!-- En développement -->
