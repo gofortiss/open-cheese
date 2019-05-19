@@ -1,5 +1,4 @@
 <?php
-require_once('inc/connexion.inc.php');
 require_once('inc/image.inc.php');
 class fromageAction extends CI_Model
 {
