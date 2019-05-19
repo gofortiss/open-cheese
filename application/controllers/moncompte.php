@@ -45,7 +45,7 @@ class moncompte extends CI_Controller {
     public function appelUpdate()
   {
     // Appel de la fonction mise à jour de l'utilisateur
-    $defaultData = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']); // Données par défaut inscrite dans la db
+    $defaultData = $this->userAction->getInformationsUtilisateur(); // Données par défaut inscrite dans la db
     $result = $this->userAction->updateInformationsUtilisateur($defaultData, $_POST, $_FILES); // Nouvelles données
     switch ($result->message[0]) {
       case 'pseudo':
