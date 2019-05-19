@@ -133,7 +133,7 @@ class userAction extends CI_Model
    if(empty($row)) { // Si la ligne est vide
      $pseudo = $post['pseudo'];
    } elseif($row[0]->numero != $_SESSION['idUser']) { // Si le numéro de la ligne est pas égale a l'utilisateur connecté (Est déjà utilisé)
-     $pseudo = $user[0]['pseudo'];
+     $pseudo = $user[0]->pseudo;
      $response->addMessage('pseudo');
    }
    else { // Si l'input du pseudo est le même que l'actuelle
