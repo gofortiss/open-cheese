@@ -79,6 +79,7 @@
           <?php
         }
      ?>
+     <h2 class="titre note-moyenne"></h2>
   </div>
 </div>
   <!-- Affichage du message par défaut -->
@@ -205,6 +206,7 @@
             dataType: "json",
             success: function (data) {
               if(data.length != 0){
+                $('.note-moyenne').text("Note moyenne : " + data['note_moyenne']);
                 $('.degustation-titre').text("");
               } else {
                 $('.degustation-header').attr('style','display:none');
