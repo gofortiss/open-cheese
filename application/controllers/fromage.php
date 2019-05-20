@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('inc/class.alert.php'); // Appel de la classe alerte
+require_once('inc/class.auth.php'); // Appel de la classe authentification
 class fromage extends CI_Controller {
 public function __construct(){
   parent::__construct();
@@ -91,7 +92,10 @@ public function __construct(){
   // Chargement de la vue ajouter un fromage
   public function ajouterFromage()
   {
-    $alert = new Alert();
+    $alert = new Alert(); // Nouvelle instance alerte
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'exist':
@@ -119,6 +123,9 @@ public function __construct(){
   public function ajouterProducteur()
   {
     $alert = new Alert();
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
      // Contrôle des messages d'erreurs
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
@@ -142,6 +149,9 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutFromage()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     $info = $this->fromageAction->insertFromage($_POST,$_FILES);
     // Redirection
     switch ($info->message[0]) {
@@ -160,6 +170,9 @@ public function __construct(){
   // Controller qui appel la fonction d'ajout du producteur
   public function appelAjoutProducteur()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     $success = $this->producteurAction->insertProducteur($_POST,$_FILES);
     // Redirection
     switch ($success->success) {
@@ -174,6 +187,9 @@ public function __construct(){
 
   public function ajouterDegustation()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     $data['title'] = "Ajouter une dégustation";
     // Retour requête SQL sur toute la table fromage
     $data['fromage'] = $this->fromageAction->getAllFromageAndProducteur();
@@ -187,6 +203,9 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutDegustation()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     $this->fromageAction->insertDegustation($_POST,$_FILES,$_GET['id']);
     header('Location:'.base_url('index.php/fromage/?id='.$_GET['id']));
   }
@@ -194,6 +213,9 @@ public function __construct(){
   // Ajouter un "Like" sur une dégustation
   public function appelLike()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     // Vérification si un paramètre est entré
     if(isset($_GET['degustation']) && isset($_GET['fromage']))
     {
@@ -206,6 +228,9 @@ public function __construct(){
   // Retourne un tableau JSON qui contient les like d'une dégustation
   public function apiGetLike()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+    
     if(isset($_GET['degustation'])) {
       $existingLike = $this->fromageAction->getLikeDegustation($_GET['degustation']);
       $existingLike = json_encode($existingLike,true);

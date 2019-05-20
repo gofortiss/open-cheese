@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('inc/class.alert.php'); // Appel de la classe alerte
+require_once('inc/class.auth.php'); // Appel de la classe authentification
 class moncompte extends CI_Controller {
   public function __construct(){
     parent::__construct();
@@ -11,10 +12,11 @@ class moncompte extends CI_Controller {
 
   public function index()
   {
-    // Titre de la page
-    $data['title'] = "Mon compte";
     // Nouvelle alerte
     $alert = new Alert();
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
@@ -32,21 +34,20 @@ class moncompte extends CI_Controller {
           break;
       }
     }
-    // Vérifie si l'utilisateur est déconnecté
-    if(isset($_SESSION['idUser']))
-    {
+
+      // Titre de la page
+      $data['title'] = "Mon compte";
       $data['userInfo'] = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']); // Récupération des données de l'utilisateur
       $this->load->view('header-view',$data); // Chargement du header
       $this->load->view('moncompte-view'); // Chargemnt de la page
       $this->load->view('footer-view'); // Chargement du footer
-    }
-    else {
-      header('Location:'.base_url('index.php/Connexion'));
-    }
   }
 
     public function appelUpdate()
   {
+    $auth = new Authentification(); // Nouvelle instance authentification
+    $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
+    
     // Appel de la fonction mise à jour de l'utilisateur
     $defaultData = $this->userAction->getInformationsUtilisateur(); // Données par défaut inscrite dans la db
     $result = $this->userAction->updateInformationsUtilisateur($defaultData, $_POST, $_FILES); // Nouvelles données
