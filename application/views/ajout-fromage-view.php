@@ -88,7 +88,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control pattern" maxlength="255" name="description_fromage" aria-label="With textarea"></textarea>
+        <textarea class="form-control" maxlength="255" name="description_fromage" aria-label="With textarea" required></textarea>
       </div>
     </div>
   </div>

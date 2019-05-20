@@ -55,7 +55,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control pattern" name="description_producteur" pattern="[a-zA-Zéèêïàäö' ]+" aria-label="With textarea" maxlength="255" required></textarea>
+        <textarea class="form-control" name="description_producteur" aria-label="With textarea" maxlength="255" required></textarea>
       </div>
     </div>
   </div>
