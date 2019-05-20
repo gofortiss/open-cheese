@@ -1,10 +1,11 @@
 body {
-  font-family: 'Ubuntu', sans-serif!important;
+  /* font-family: 'Ubuntu', sans-serif!important; */
   position: relative;
   min-height: 100vh;
   padding-bottom: 10rem;    /* Footer height */
   overflow-x: hidden;
 }
+
 .pattern:valid {
   box-shadow: 0 0 2px 1px green;
 }
@@ -20,6 +21,19 @@ body {
 .navbar-nav {
   margin: auto;
   font-size: 18px;
+}
+/* ACCUEIL */
+.home-card {
+  max-width: 300px;
+  /* border: 1px #80808040 solid; */
+  border-radius: 10px;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+}
+.home-card > img{
+  margin: auto;
+  margin-bottom: 15px;
 }
 /* CONNEXION */
 .connexion {
