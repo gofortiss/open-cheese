@@ -84,11 +84,28 @@ class fromageAction extends CI_Model
     {
       $image = uploadImage($file,'fromage/'); // Upload de l'image du fromage
       $post['photo_fromage'] = $image['nomFichier'];
-
+      // Vérification du status du téléchargement
+      if($image['type'] != 'success') {
+        $response->addMessage('photo');
+      }
     } else {
       $post['photo_fromage'] = 'default.png';
     }
-    $this->db->insert('tblfromage', $post);
+
+
+    // Si aucune erreur n'est survenue jusque là
+    if (empty($response->info()->message[0])) {
+      $this->db->db_debug = FALSE; // Désactivation des messages d'erreurs
+      $this->db->insert('tblfromage', $post); // Insertion des données
+
+      // Si le nom du producteur existe déjà (duplicata de donnée unique)
+      if ($this->db->insert_id()) {
+          $response->addMessage('success'); // Envoi succès
+        } else {
+          $response->addMessage('exist'); // Envoi erreur
+        }
+    }
+    return $response->info();
   }
 
   public function insertDegustation($post,$file,$id)
