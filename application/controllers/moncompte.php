@@ -32,10 +32,10 @@ class moncompte extends CI_Controller {
     // Vérifie si l'utilisateur est déconnecté
     if(isset($_SESSION['idUser']))
     {
-      $data['userInfo'] = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']);
-      $this->load->view('header-view',$data); // Load header
-      $this->load->view('moncompte-view');
-      $this->load->view('footer-view');
+      $data['userInfo'] = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']); // Récupération des données de l'utilisateur
+      $this->load->view('header-view',$data); // Chargement du header
+      $this->load->view('moncompte-view'); // Chargemnt de la page
+      $this->load->view('footer-view'); // Chargement du footer
     }
     else {
       header('Location:'.base_url('index.php/Connexion'));
@@ -54,7 +54,6 @@ class moncompte extends CI_Controller {
       case 'success':
           header('Location:'.base_url('index.php/moncompte?message=success'));
         break;
-
       case 'motdepasse':
           header('Location:'.base_url('index.php/moncompte?message=motdepasse'));
         break;
