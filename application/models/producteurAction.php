@@ -39,7 +39,10 @@ class producteurAction extends CI_Model
     {
       $image = uploadImage($file,'producteur/'); // Upload de l'image du fromage
       $post['photo_producteur'] = $image['nomFichier'];
-
+        // Vérification du status du téléchargement
+        if($image['type'] != 'success') {
+          $response->addMessage('photo');
+        }
     } else {
       $post['photo_producteur'] = 'default.png';
     }
@@ -52,14 +55,12 @@ class producteurAction extends CI_Model
 
     // Si aucune erreur n'est survenue jusque là
     if (empty($response->message)) {
-      $this->db->db_debug = FALSE; // Désactivation des messages d'erreurs
-      $this->db->insert('tblproducteur', $post); // Insertion des données
-
       // Si le nom du producteur existe déjà (duplicata de donnée unique)
-      if ($this->db->insert_id()) {
-          $response->setSuccess(true); // Envoi succès
+      if ( $this->db->insert('tblproducteur', $post)) {
+          $response->addMessage('success'); // Envoi succès
+          setcookie("producteur", "", time() - 3600); // Suppression du cookie
         } else {
-          $response->setSuccess(false); // Envoi erreur
+          $response->addMessage('exist'); // Envoi erreur
         }
     }
     return $response->info(); // Envoi du message au controlleur

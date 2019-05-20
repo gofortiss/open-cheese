@@ -1,3 +1,9 @@
+<?php
+  // Contrôle du cookie de rémanance
+  if(isset($_COOKIE['producteur'])) {
+    $input = json_decode($_COOKIE['producteur']); // Décodage du cookie
+  }
+ ?>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Ajout d'un producteur</h1>
@@ -6,7 +12,7 @@
 <form class="form" action="appelAjoutProducteur" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du producteur</label>
-    <input type="text" class="form-control pattern" name="nom_producteur" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" id="nom" placeholder="Exemple : Greber" required>
+    <input type="text" class="form-control pattern" value="<?php if(isset($input)){echo $input->nom;} ?>" name="nom_producteur" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" id="nom" placeholder="Exemple : Greber" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
@@ -34,7 +40,7 @@
   </div>
   <div class="form-group">
     <label>Localite</label>
-    <input type="text" class="form-control" name="localite" maxlength="50" placeholder="Exemple : Neuchâtel" required>
+    <input type="text" class="form-control" value="<?php if(isset($input)){echo $input->localite;} ?>" name="localite" maxlength="50" placeholder="Exemple : Neuchâtel" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
@@ -55,7 +61,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" name="description_producteur" aria-label="With textarea" maxlength="255" required></textarea>
+        <textarea class="form-control" value="<?php if(isset($input)){echo $input->description_producteur;} ?>" name="description_producteur" aria-label="With textarea" maxlength="255" required></textarea>
       </div>
     </div>
   </div>

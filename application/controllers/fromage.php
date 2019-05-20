@@ -130,7 +130,10 @@ public function __construct(){
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'producteur':
-            $data['js'] = $alert->warning("Ouuuups","Le producteur existe déjà");
+            $data['js'] = $alert->warning("Ouups","Le producteur existe déjà");
+          break;
+        case 'photo':
+            $data['js'] = $alert->error("Mhhhh","Il y a eu un problème avec l'image");
           break;
       }
     }
@@ -149,6 +152,9 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutFromage()
   {
+    // Création d'un cookie avec les valeur des inputs
+    setcookie ('fromage', json_encode($_POST), time() + 240); // heure de création + 240 sec
+
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
@@ -170,17 +176,23 @@ public function __construct(){
   // Controller qui appel la fonction d'ajout du producteur
   public function appelAjoutProducteur()
   {
+    // Création d'un cookie avec les valeur des inputs
+    setcookie ('producteur', json_encode($_POST), time() + 240); // heure de création + 240 sec
+
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
     $success = $this->producteurAction->insertProducteur($_POST,$_FILES);
     // Redirection
-    switch ($success->success) {
-      case true :
+    switch ($success->message[0]) {
+      case 'success' :
           header('Location:'.base_url('index.php/fromage/listeFromage'));
         break;
-      case false :
+      case 'exist' :
           header('Location:'.base_url('index.php/fromage/ajouterProducteur?message=producteur'));
+        break;
+      case 'photo' :
+          header('Location:'.base_url('index.php/fromage/ajouterProducteur?message=photo'));
         break;
     }
   }
@@ -230,7 +242,7 @@ public function __construct(){
   {
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
-    
+
     if(isset($_GET['degustation'])) {
       $existingLike = $this->fromageAction->getLikeDegustation($_GET['degustation']);
       $existingLike = json_encode($existingLike,true);

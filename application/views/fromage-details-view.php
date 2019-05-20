@@ -19,6 +19,7 @@
   <div class="container">
     <h1 class="display-4 titre-fromage"></h1>
     <img class="photo-fromage" id="image-fromage" src="" alt="photo du fromage">
+    <img class="photo-fromage" id="image-producteur" src="" alt="photo du producteur">
   </div>
 </div>
 <div class="form-row degustation">
@@ -205,7 +206,7 @@
             url: "<?php echo base_url(); ?>index.php/fromage/apiDegustation?id=<?php echo $id;?>",
             dataType: "json",
             success: function (data) {
-              if(data.length != 0){
+              if(data.length != null){
                 $('.note-moyenne').text("Note moyenne : " + data['note_moyenne']);
                 $('.degustation-titre').text("");
               } else {

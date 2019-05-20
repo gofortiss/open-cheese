@@ -98,9 +98,10 @@ class fromageAction extends CI_Model
       $this->db->db_debug = FALSE; // Désactivation des messages d'erreurs
       $this->db->insert('tblfromage', $post); // Insertion des données
 
-      // Si le nom du producteur existe déjà (duplicata de donnée unique)
+      // Si le nom du fromage existe déjà (duplicata de donnée unique)
       if ($this->db->insert_id()) {
           $response->addMessage('success'); // Envoi succès
+          setcookie("fromage", "", time() - 3600); // Suppression du cookie
         } else {
           $response->addMessage('exist'); // Envoi erreur
         }
@@ -148,7 +149,9 @@ class fromageAction extends CI_Model
     foreach ($degustation as $value) {
       $total += $value->note;
     }
-    return $total / count($degustation); // Calcul de la note
+    if(!empty($degustation)){
+      return $total / count($degustation); // Calcul de la note
+    }
   }
 
   // Retourne les dégustations selon le fromage

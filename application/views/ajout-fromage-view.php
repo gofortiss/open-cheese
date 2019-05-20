@@ -1,3 +1,9 @@
+<?php
+  // Contrôle du cookie de rémanance
+  if(isset($_COOKIE['fromage'])) {
+    $input = json_decode($_COOKIE['fromage']); // Décodage du cookie
+  }
+ ?>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Ajout d'un fromage</h1>
@@ -6,7 +12,7 @@
 <form class="form" action="appelAjoutFromage" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du fromage</label>
-    <input type="text" class="form-control pattern" pattern="[a-zA-Zéèêïàäö' ]{3,50}" maxlength="50" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
+    <input type="text" class="form-control pattern" pattern="[a-zA-Zéèêïàäö' ]{3,50}" maxlength="50" value="<?php if(isset($input)){echo $input->nom;} ?>" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
@@ -71,10 +77,10 @@
         </thead>
       <tbody>
         <tr>
-          <th class="calories-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="calories" id="calories"></th>
-          <th class="protines-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="proteines" id="proteines"></th>
-          <th class="lipides-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="lipides" id="lipides"></th>
-          <th class="sodium-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="sodium" id="sodium"></th>
+          <th class="calories-fromage"><input type="text" value="<?php if(isset($input)){echo $input->calories;} ?>" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="calories" id="calories"></th>
+          <th class="proteines-fromage"><input type="text" value="<?php if(isset($input)){echo $input->proteines;} ?>" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="proteines" id="proteines"></th>
+          <th class="lipides-fromage"><input type="text" value="<?php if(isset($input)){echo $input->lipides;} ?>" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="lipides" id="lipides"></th>
+          <th class="sodium-fromage"><input type="text" value="<?php if(isset($input)){echo $input->sodium;} ?>" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="sodium" id="sodium"></th>
         </tr>
       </tbody>
       <small class="form-text text-muted">Si vous ne les connaissez pas, voir les données du site : <a href="https://myfitnesspal.com/fr/food/" target="_blank">myfitnesspal</a></small>
@@ -88,7 +94,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" maxlength="255" name="description_fromage" aria-label="With textarea" required></textarea>
+        <textarea class="form-control" value="<?php if(isset($input)){echo $input->description_fromage;} ?>" maxlength="255" name="description_fromage" aria-label="With textarea" required></textarea>
       </div>
     </div>
   </div>
