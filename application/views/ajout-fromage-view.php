@@ -6,7 +6,7 @@
 <form class="form" action="appelAjoutFromage" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du fromage</label>
-    <input type="text" class="form-control pattern" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
+    <input type="text" class="form-control pattern" pattern="[a-zA-Zéèêïàäö' ]{3,50}" maxlength="50" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
