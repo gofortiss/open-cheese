@@ -1,4 +1,5 @@
 <?php
+require_once('inc/class.alert.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Inscription extends CI_Controller {
   public function __construct(){
@@ -10,21 +11,22 @@ class Inscription extends CI_Controller {
   public function index()
   {
     // Titre de la page
+    $alert = new Alert();
     $data['title'] = "Inscription";
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'pseudo':
-          $data['js'] = 'swal("Attention", "Le pseudo est déjà utilisé", "warning", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->warning("Attention","Le pseudo est déjà utilisé");
           break;
         case 'date':
-          $data['js'] = 'swal("Attention", "Il y a eu un problème avec la date", "warning", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->warning("Attention","Il y a eu un problème avec la date");
           break;
         case 'motdepasse':
-          $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->error("Erreur","Les mots de passe ne correspondent pas");
           break;
         case 'fichier':
-          $data['js'] = 'swal("Erreur", "Un problème avec le fichier est survenu", "error", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->error("Erreur","Un problème avec le fichier est survenu");
           break;
       }
     }

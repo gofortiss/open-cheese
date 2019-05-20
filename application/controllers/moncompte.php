@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('inc/class.alert.php'); // Appel de la classe alerte
 class moncompte extends CI_Controller {
   public function __construct(){
     parent::__construct();
@@ -12,20 +13,22 @@ class moncompte extends CI_Controller {
   {
     // Titre de la page
     $data['title'] = "Mon compte";
+    // Nouvelle alerte
+    $alert = new Alert();
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'pseudo':
-          $data['js'] = 'swal("Attention", "Le pseudo est déjà utilisé", "warning", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->warning("Attention","Le pseudo est déjà utilisé");
         break;
         case 'success':
-          $data['js'] = 'swal("Parfait", "Les données ont bien été modifées", "success", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->success("Parfait","Les données ont bien été modifées");
           break;
         case 'motdepasse':
-          $data['js'] = 'swal("Erreur", "Les mots de passe ne correspondent pas", "error", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->error("Erreur","Les mots de passe ne correspondent pas");
           break;
         case 'photo':
-          $data['js'] = 'swal("Oupss", "Il y a eu un problème avec le fichier", "error", {button: "Continuer",}).catch(swal.noop);';
+          $data['js'] = $alert->error("Oupss","Il y a eu un problème avec le fichier");
           break;
       }
     }
