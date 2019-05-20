@@ -79,7 +79,6 @@ class userAction extends CI_Model
    if(isset($post['pseudo']) && isset($post['password']))
    {
      $passwordCrypt = md5($post['password']);
-     echo $passwordCrypt;
      // connexion à la base de donnée et requête SQL
      $cnn = getConnexion('open-cheese');
      $stmt = $cnn->prepare('SELECT * FROM tblutilisateur WHERE tblutilisateur.pseudo LIKE :pseudo');
@@ -94,7 +93,6 @@ class userAction extends CI_Model
          // Création de la session
          $_SESSION['idUser'] = $row['numero'];
          $_SESSION['pseudo'] = $row['pseudo'];
-         $_SESSION['photo'] =  $row['photo'];
          $response->setSuccess(true);
        }
        else {
@@ -106,6 +104,8 @@ class userAction extends CI_Model
        $response->setSuccess(false);
      }
    }
+   // var_dump($_SESSION);
+   // die();
    return $response->info();
  }
 
