@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('inc/class.alert.php'); // Appel de la classe alerte
 class fromage extends CI_Controller {
 public function __construct(){
   parent::__construct();
@@ -90,8 +91,19 @@ public function __construct(){
   // Chargement de la vue ajouter un fromage
   public function ajouterFromage()
   {
-    $data['title'] = "Ajouter un fromage";
+    $alert = new Alert();
+    if(isset($_GET['message'])) {
+      switch ($_GET['message']) {
+        case 'exist':
+          $data['js'] = $alert->warning("Huhu","Le fromage existe dàjà");
+          break;
+        case 'photo':
+          $data['js'] = $alert->error("Attention","Il y a eu un problème avec le fichier");
+          break;
+      }
+    }
 
+    $data['title'] = "Ajouter un fromage";
     //Requête SQL sur les tables (Données liste déroulante)
     $data['pate'] = $this->fromageAction->getTypePate();
     $data['lait'] = $this->fromageAction->getLait();
@@ -106,11 +118,12 @@ public function __construct(){
 
   public function ajouterProducteur()
   {
+    $alert = new Alert();
      // Contrôle des messages d'erreurs
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'producteur':
-            $data['js'] = 'swal("Ouuupss", "Le producteur existe déjà.", "warning", {button: "Continuer",}).catch(swal.noop);';
+            $data['js'] = $alert->warning("Ouuuups","Le producteur existe déjà");
           break;
       }
     }
@@ -129,15 +142,26 @@ public function __construct(){
   // Fonction ajouter un fromage
   public function appelAjoutFromage()
   {
-    $this->fromageAction->insertFromage($_POST,$_FILES);
-    header('Location:'.base_url('index.php/fromage/listeFromage'));
+    $info = $this->fromageAction->insertFromage($_POST,$_FILES);
+    // Redirection
+    switch ($info->message[0]) {
+      case 'success' :
+          header('Location:'.base_url('index.php/fromage/listeFromage'));
+        break;
+      case 'exist' :
+          header('Location:'.base_url('index.php/fromage/ajouterFromage?message=exist'));
+        break;
+      case 'photo' :
+          header('Location:'.base_url('index.php/fromage/ajouterFromage?message=photo'));
+        break;
+    }
   }
 
   // Controller qui appel la fonction d'ajout du producteur
   public function appelAjoutProducteur()
   {
     $success = $this->producteurAction->insertProducteur($_POST,$_FILES);
-    var_dump($success);
+    // Redirection
     switch ($success->success) {
       case true :
           header('Location:'.base_url('index.php/fromage/listeFromage'));

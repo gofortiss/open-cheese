@@ -1,5 +1,6 @@
 <?php
 require_once('inc/image.inc.php');
+require_once('inc/class.response.php');
 class fromageAction extends CI_Model
 {
   public function getAllFromageAndProducteur()
@@ -69,6 +70,8 @@ class fromageAction extends CI_Model
 
   public function insertFromage($post,$file)
   {
+    // Nouvelle réponse
+    $response = new Response();
     // Remplacement des valeurs vide par des valeurs NULL
     foreach ($post as $key => $value) {
           if ($value == '') {

@@ -1,5 +1,5 @@
 <?php
-require_once('inc/class.alert.php');
+require_once('inc/class.alert.php'); // Appel de la classe alerte
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Inscription extends CI_Controller {
   public function __construct(){
@@ -11,8 +11,9 @@ class Inscription extends CI_Controller {
   public function index()
   {
     // Titre de la page
-    $alert = new Alert();
     $data['title'] = "Inscription";
+    // Nouvelle alerte
+    $alert = new Alert();
     // Vérifie message d'erreur si existant
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
