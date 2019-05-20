@@ -6,7 +6,7 @@
 <form class="form" action="appelAjoutFromage" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du fromage</label>
-    <input type="text" class="form-control" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
+    <input type="text" class="form-control pattern" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" name="nom" id="nom" placeholder="Exemple : Gruyère" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
@@ -71,10 +71,10 @@
         </thead>
       <tbody>
         <tr>
-          <th class="calories-fromage"><input type="text" class="form-control" name="calories" id="calories"></th>
-          <th class="protines-fromage"><input type="text" class="form-control" name="proteines" id="proteines"></th>
-          <th class="lipides-fromage"><input type="text" class="form-control" name="lipides" id="lipides"></th>
-          <th class="sodium-fromage"><input type="text" class="form-control" name="sodium" id="sodium"></th>
+          <th class="calories-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="calories" id="calories"></th>
+          <th class="protines-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="proteines" id="proteines"></th>
+          <th class="lipides-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="lipides" id="lipides"></th>
+          <th class="sodium-fromage"><input type="text" class="form-control pattern" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="sodium" id="sodium"></th>
         </tr>
       </tbody>
       <small class="form-text text-muted">Si vous ne les connaissez pas, voir les données du site : <a href="https://myfitnesspal.com/fr/food/" target="_blank">myfitnesspal</a></small>
@@ -88,7 +88,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" name="description_fromage" aria-label="With textarea"></textarea>
+        <textarea class="form-control pattern" maxlength="255" name="description_fromage" aria-label="With textarea"></textarea>
       </div>
     </div>
   </div>

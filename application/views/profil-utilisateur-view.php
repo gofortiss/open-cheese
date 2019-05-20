@@ -11,7 +11,7 @@
         <form action="profil/appelNouvelAmi?id=<?php echo $_GET['id']?>" method="post">
           <div class="form-group">
             <label>Pseudo</label>
-            <input type="text" class="form-control" name="pseudo" id="pseudo" disabled value='<?php echo $user[0]->pseudo;?>' required>
+            <input type="text" class="form-control pattern" name="pseudo" id="pseudo" disabled value='<?php echo $user[0]->pseudo;?>' required>
             <label>Bio personnelle</label>
             <div class="input-group">
               <div class="input-group-prepend">

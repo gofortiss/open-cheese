@@ -6,7 +6,7 @@
 <form class="form" action="appelAjoutProducteur" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du producteur</label>
-    <input type="text" class="form-control" name="nom_producteur" maxlength="50" id="nom" placeholder="Exemple : Greber" required>
+    <input type="text" class="form-control pattern" name="nom_producteur" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" id="nom" placeholder="Exemple : Greber" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
@@ -55,7 +55,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" name="description_producteur" aria-label="With textarea" maxlength="255"></textarea>
+        <textarea class="form-control pattern" name="description_producteur" pattern="[a-zA-Zéèêïàäö' ]+" aria-label="With textarea" maxlength="255" required></textarea>
       </div>
     </div>
   </div>
