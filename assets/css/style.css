@@ -5,7 +5,12 @@ body {
   padding-bottom: 10rem;    /* Footer height */
   overflow-x: hidden;
 }
-
+input:valid {
+  box-shadow: 0 0 2px 1px green;
+}
+input:invalid {
+  box-shadow: 0 0 2px 1px red;
+}
 
 .jumbotron {
   background-color: #FDEFC1;
