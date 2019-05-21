@@ -12,7 +12,7 @@
 <form class="form" action="appelAjoutProducteur" method="post"  enctype="multipart/form-data">
   <div class="form-group">
     <label>Nom du producteur</label>
-    <input type="text" class="form-control pattern" value="<?php if(isset($input)){echo $input->nom;} ?>" name="nom_producteur" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" id="nom" placeholder="Exemple : Greber" required>
+    <input type="text" class="form-control pattern" value="<?php if(isset($input)){echo $input->nom_producteur;} ?>" name="nom_producteur" pattern="[a-zA-Zéèêïàäö' ]+" maxlength="50" id="nom" placeholder="Exemple : Greber" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
