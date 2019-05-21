@@ -13,6 +13,7 @@ body {
   box-shadow: 0 0 2px 1px red;
 }
 
+
 .jumbotron {
   background-color: #FDEFC1;
   text-align: center;
@@ -23,6 +24,9 @@ body {
   font-size: 18px;
 }
 /* ACCUEIL */
+.home-card-container {
+  margin-top: -90px;
+}
 .home-card {
   max-width: 300px;
   /* border: 1px #80808040 solid; */
@@ -30,6 +34,10 @@ body {
   padding: 20px;
   margin: auto;
   text-align: center;
+}
+.home-card > img {
+  height: 180px;
+  width: 200px;
 }
 .home-card > img{
   margin: auto;
@@ -145,6 +153,7 @@ body {
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 20px;
+    box-sizing: content-box;
 }
 .degustation-like {
   margin-top:35px;
@@ -174,6 +183,10 @@ body {
   margin-bottom: 20px;
   width: 200px;
   border-radius: 10px;
+  transition: transform .2s; /* Animation */
+}
+.photo-fromage:hover {
+  transform: scale(1.5);
 }
 /* DEGUSTATION */
 .row-degustation {
