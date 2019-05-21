@@ -7,7 +7,7 @@ class Authentification {
 
     public function auth(){
         if(!isset($_SESSION['idUser'])) {
-          return header('Location: '.base_url('index.php/fromage'));
+          return header('Location: '.base_url('index.php/Connexion'));
         }
     }
 }
