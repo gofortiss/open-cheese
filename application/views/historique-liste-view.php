@@ -14,7 +14,7 @@ $(document).ready(function(){
 
         columns: [{
           visible : false,
-          field: '0',
+          field: 'num_tblfromage',
           title: "Identifiant unique"
         },
         {
@@ -59,7 +59,7 @@ $(document).ready(function(){
         }],
         // Si une ligne est cliquée redirection sur la page de la dégustation
         onClickRow: function (row, element, field) {
-          window.location.href = "<?php echo base_url(); ?>index.php/fromage?id="+row['0'];
+          window.location.href = "<?php echo base_url(); ?>index.php/fromage?id="+row['num_tblfromage'];
         }
       })
 
