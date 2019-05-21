@@ -37,7 +37,7 @@
 </div>
 
 <div class="jumbotron" style="margin-bottom: 0px;">
-  <h1 class="display-4">Notez les meilleurs formage du monde</h1>
+  <h1 class="display-4">Notez les meilleurs formages du monde</h1>
   <hr class="my-4">
    <p class="lead">Open-cheese offre la possibilitée à n'importe qui de pouvoir noter les fromages les plus préstigieux</p>
 </div>
