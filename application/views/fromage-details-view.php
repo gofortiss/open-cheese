@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Qui à aimé ?</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Qui a aimé ?</h5>
       </div>
       <div class="modal-body">
       </div>
@@ -18,40 +18,40 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4 titre-fromage"></h1>
-    <img class="photo-fromage" id="image-fromage" src="" alt="photo du fromage">
-    <img class="photo-fromage" id="image-producteur" src="" alt="photo du producteur">
+    <img class="photo-fromage" data-toggle="tooltip" data-placement="top" title="Fromage" id="image-fromage" src="" alt="photo du fromage">
+    <img class="photo-fromage" data-toggle="tooltip" data-placement="top" title="Producteur" id="image-producteur" src="" alt="photo du producteur">
   </div>
 </div>
 <div class="form-row degustation">
   <!-- Fromage -->
   <div class="form-group col-lg-3 border">
-    <h2 class="titre">Le produit</h2>
-    <h3>Description</h4>
-    <h5 class="description-fromage" style="max-width: 400px;margin-left:auto;margin-right:auto"></h5>
-    <h3>Type de lait</h3>
-    <h5 class="type-de-lait-fromage"></h5>
-    <h3>Type de pâte</h3>
-    <h5 class="type-de-pate-fromage"></h5>
-    <h3>Est pasteurisé</h3>
-    <h5 class="pasteurise-fromage"></h5>
+    <h3 class="titre">Le produit</h3>
+    <h5>Description</h5>
+    <p class="description-fromage lead" style="max-width: 400px;margin-left:auto;margin-right:auto"></p>
+    <h5>Type de lait</h5>
+    <p class="type-de-lait-fromage lead"></p>
+    <h5>Type de pâte</h5>
+    <p class="type-de-pate-fromage lead"></p>
+    <h5>Est pasteurisé</h5>
+    <p class="pasteurise-fromage lead"></p>
   </div>
   <!-- Producteur -->
   <div class="form-group col-lg-3 border">
-    <h2 class="titre">Le producteur</h2>
-    <h3>Description</h3>
-    <h5 class="description-producteur" style="max-width: 400px;margin-left:auto;margin-right:auto"></h5>
-    <h3>Pays du producteur</h3>
-    <h5 class="pays-producteur"></h5>
-    <h3>Localité du producteur</h3>
-    <h5 class="localite-producteur"></h5>
-    <h3>Canton du producteur</h3>
-    <h5 class="canton-producteur"></h5>
-    <h3>Type de producteur</h3>
-    <h5 class="type-producteur"></h5>
+    <h3 class="titre">Le producteur</h3>
+    <h5>Description</h5>
+    <p class="description-producteur lead" style="max-width: 400px;margin-left:auto;margin-right:auto"></p>
+    <h5>Pays du producteur</h5>
+    <p class="pays-producteur lead"></p>
+    <h5>Localité du producteur</h5>
+    <p class="localite-producteur lead"></p>
+    <h5>Canton du producteur</h5>
+    <p class="canton-producteur lead"></p>
+    <h5>Type de producteur</h3>
+    <p class="type-producteur lead"></p>
   </div>
   <!-- Valeur énergetique -->
   <div class="form-group col-lg-6 border">
-    <h2 class="titre">Valeur énergetique</h2>
+    <h3 class="titre">Valeur énergetique</h3>
       <table class="table">
         <thead class="">
           <tr>
@@ -75,7 +75,7 @@
         if(isset($_SESSION['idUser']))
         {
           ?>
-          <h2 class="titre">Dégustation</h2>
+          <h3 class="titre">Dégustation</h3>
           <a class="btn btn-primary btn-lg ajouterDegustation" href="" class="btn btn-primary btn-lg">Ajouter une dégustation</a>
           <?php
         }
@@ -112,13 +112,13 @@
                   <a href="'.base_url().'index.php/profil?id='.$value->num_tblutilisateur.'">
                     <img class="degustation-utilisateur-image photo-fromage"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
                   </a>
-                  <h4 class="degustation-utilisateur-pseudo">'.$value->pseudo.'</h4>
-                  <h6 class="degustation-utilisateur-date">'.$value->dateAjout.'</h6>
+                  <p class="degustation-utilisateur-pseudo lead">'.$value->pseudo.'</p>
+                  <p class="degustation-utilisateur-date lead">'.$value->dateAjout.'</p>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="degustation-info-block">
-                <h1 class="degustation-utilisateur-note">'.$value->note.'</h1>
+                <h2 class="degustation-utilisateur-note">'.$value->note.'</h2>
                 </div>
               </div>
 
@@ -137,7 +137,7 @@
                   <img class="degustation-utilisateur-image"  style="width:100px!important;height:100px" src="'.base_url().'assets/images/degustation/'.$value->photo_degustation.'" alt="Aucune photo"/>
                   </a>';
                 } else {
-                  echo '<h2>Aucune photo</h2>';
+                  echo '<h3>Aucune photo</h3>';
                 }
                 echo '
                 </div>
@@ -162,6 +162,10 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
     // Récupération des données du fromage et ajout des données dans les champs
     $.ajax({
@@ -191,7 +195,7 @@
             url: "<?php echo base_url(); ?>index.php/fromage/apiProducteur?id=<?php echo $id; ?>",
             dataType: "json",
             success: function (data) {
-              $('#image-producteur').attr("src","<?php echo base_url(); ?>assets/images/fromage/"+data[0]['photo_fromage']);
+              $('#image-producteur').attr("src","<?php echo base_url(); ?>assets/images/producteur/"+data[0]['photo_producteur']);
               $('.description-producteur').text(data[0]['description_producteur']);
               $('.pays-producteur').text(data[0]['pays']);
               $('.localite-producteur').text(data[0]['localite']);
