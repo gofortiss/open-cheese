@@ -1,0 +1,207 @@
+body {
+  /* font-family: 'Ubuntu', sans-serif!important; */
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 10rem;    /* Footer height */
+  overflow-x: hidden;
+}
+
+.pattern:valid {
+  box-shadow: 0 0 2px 1px green;
+}
+.pattern:invalid {
+  box-shadow: 0 0 2px 1px red;
+}
+
+
+.jumbotron {
+  background-color: #FDEFC1;
+  text-align: center;
+}
+/* NAVBAR */
+.navbar-nav {
+  margin: auto;
+  font-size: 18px;
+}
+/* ACCUEIL */
+.home-card-container {
+  margin-top: -90px;
+}
+.home-card {
+  max-width: 300px;
+  /* border: 1px #80808040 solid; */
+  border-radius: 10px;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+}
+.home-card > img {
+  height: 180px;
+  width: 200px;
+}
+.home-card > img{
+  margin: auto;
+  margin-bottom: 15px;
+}
+/* CONNEXION */
+.connexion {
+  max-width: 800px;
+  margin: auto;
+}
+/* INSCRIPTION */
+.form {
+  max-width: 750px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+  box-shadow: 0px 6px 35px -27px rgba(0,0,0,0.36);
+}
+
+/* MON COMPTE */
+.rounded-photo {
+  display: block;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.moncompte-block1 {
+  border-radius: 5px;
+  height: 510px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.moncompte-titre{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 25px;
+}
+
+.moncompte-block1 > form {
+  max-width: 365px;
+  margin: auto;
+  padding-top: 25px;
+}
+
+.moncompte-block1 > form > button {
+  margin-top: 25px;
+}
+
+.moncompte-block2 {
+  border-radius: 5px;
+  overflow-y: scroll;
+  height: 510px;
+  padding-top: 50px;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* SCROLL BAR */
+.moncompte-block2::-webkit-scrollbar-track
+{
+	border-radius: 5px;
+	background-color: #F5F5F5;
+}
+
+.moncompte-block2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.moncompte-block2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #fdefc1;
+}
+
+.moncompte-block3 {
+  border-radius: 5px;
+  height: 510px;
+  padding-top: 50px;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+.moncompte-block3 > img {
+  width: 100px;
+}
+
+/* PROFIL */
+.profil {
+  max-width: 700px;
+  margin: auto;
+}
+
+/* DEGUSTATION */
+.degustation {
+  text-align: center;
+  margin: auto;
+}
+.degustation-info-block {
+    min-width: 130px;
+    height: 140px;
+    margin: auto;
+    margin-bottom: 25px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: content-box;
+}
+.degustation-like {
+  margin-top:35px;
+
+}
+.degustation-like > a{
+  padding: 15px;
+}
+
+/* FROMAGE */
+
+.titre {
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+.image-fromage {
+  width: 150px;
+}
+.border {
+  border: solid 1px #ebebec;
+}
+.list-button {
+  margin-top: 10px;
+}
+.photo-fromage {
+  margin: auto;
+  margin-bottom: 20px;
+  width: 200px;
+  border-radius: 10px;
+  transition: transform .2s; /* Animation */
+}
+.photo-fromage:hover {
+  transform: scale(1.5);
+}
+/* DEGUSTATION */
+.row-degustation {
+  /* max-width: 300px; */
+}
+/* FOOTER */
+.footer	{
+  position: absolute;
+  font-family: 'Roboto Mono', monospace;
+  bottom: 0;
+  width: 100%;
+  height: 10rem;            /* Footer height */
+  background-color: #FDEFC1;
+  text-align: center;
+}
+.footer  h5 {
+    margin-top: 70px;
+}
