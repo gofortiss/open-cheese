@@ -55,8 +55,10 @@ class producteurAction extends CI_Model
 
     // Si aucune erreur n'est survenue jusque là
     if (empty($response->message)) {
+      $this->db->db_debug = FALSE; // Désactivation des messages d'erreurs
+      $this->db->insert('tblproducteur', $post); // Insertion des données
       // Si le nom du producteur existe déjà (duplicata de donnée unique)
-      if ( $this->db->insert('tblproducteur', $post)) {
+      if ( $this->db->insert_id()) {
           $response->addMessage('success'); // Envoi succès
           setcookie("producteur", "", time() - 3600); // Suppression du cookie
         } else {
