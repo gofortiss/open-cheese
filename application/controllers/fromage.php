@@ -182,9 +182,9 @@ public function __construct(){
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
-    $success = $this->producteurAction->insertProducteur($_POST,$_FILES);
+    $return = $this->producteurAction->insertProducteur($_POST,$_FILES);
     // Redirection
-    switch ($success->message[0]) {
+    switch ($return->message[0]) {
       case 'success' :
           header('Location:'.base_url('index.php/fromage/listeFromage'));
         break;
