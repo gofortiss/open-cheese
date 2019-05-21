@@ -14,4 +14,5 @@
     <small id="passwordHelp" class="form-text text-muted">Ne donner votre mot de passe à personne !</small>
   </div>
   <button type="submit" class="btn btn-primary">Connexion</button>
+  <a href="<?php echo base_url('index.php/Inscription');?>"<small id="passwordHelp" class="form-text text-muted">Je n'ai pas de compte</small></a>
 </form>
