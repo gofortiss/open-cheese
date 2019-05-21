@@ -39,7 +39,7 @@
 		        <a class="nav-link" href="<?php echo base_url('index.php/fromage/listeFromage');?>">Liste des fromages</a>
 		      </li>
 					<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url('index.php/fromage/listeDegustation');?>">Liste des dégustations</a>
+							<a class="nav-link" href="<?php echo base_url('index.php/listeHistorique');?>">Liste des dégustations</a>
 					</li>
 					<!-- Élément dynamique HTML connecté/déconnecté-->
 					<?php
