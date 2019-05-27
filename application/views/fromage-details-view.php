@@ -210,7 +210,7 @@
             url: "<?php echo base_url(); ?>index.php/fromage/apiDegustation?id=<?php echo $id;?>",
             dataType: "json",
             success: function (data) {
-              if(data.length != null){
+              if(data['note_moyenne'] != null){
                 $('.note-moyenne').text("Note moyenne : " + data['note_moyenne']);
                 $('.degustation-titre').text("");
               } else {
