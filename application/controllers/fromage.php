@@ -99,7 +99,7 @@ public function __construct(){
     if(isset($_GET['message'])) {
       switch ($_GET['message']) {
         case 'exist':
-          $data['js'] = $alert->warning("Huhu","Le fromage existe dàjà");
+          $data['js'] = $alert->warning("Huhu","Le fromage existe déjà, ou il y a une erreur avec le producteur");
           break;
         case 'photo':
           $data['js'] = $alert->error("Attention","Il y a eu un problème avec le fichier");
