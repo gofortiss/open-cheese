@@ -5,7 +5,7 @@
       <h1 class="display-4" id="titre-prfil"><?php echo $user[0]->pseudo; ?></h1>
     </div>
   </div>
-  <div class="form-row" style="margin-bottom: 50px;">
+  <div class="form-row">
     <div class="form-group profil col-lg-12">
        <h2 class="">Utilisateur</h2>
         <form action="profil/appelNouvelAmi?id=<?php echo $_GET['id']?>" method="post">
