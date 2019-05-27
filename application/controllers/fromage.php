@@ -229,11 +229,9 @@ public function __construct(){
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
     // Vérification si un paramètre est entré
-    if(isset($_GET['degustation']) && isset($_GET['fromage']))
+    if(isset($_GET['degustation']))
     {
       $this->fromageAction->insertLikeDegustation($_GET['degustation']);
-      // Redirection sur la page du fromage
-      header('Location:'.base_url('index.php/fromage/?id='.$_GET['fromage']));
     } else {echo "Nope";}
   }
 

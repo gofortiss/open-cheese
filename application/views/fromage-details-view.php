@@ -146,7 +146,7 @@
                 if(isset($_SESSION['idUser']))
                   {
                     // Le bouton est activé
-                    echo '<a class="btn btn-primary " href="'.base_url('index.php/fromage/appelLike?fromage='.$_GET['id'].'&degustation='.$value->degustation_numero).'" role="button"><i class="material-icons">thumb_up_alt</i></a>';
+                    echo '<button class="btn btn-primary like" id="'.$value->degustation_numero.'"><i class="material-icons">thumb_up_alt</i></button>';
                     echo '<a class="degustation-get-like" id="'.$value->degustation_numero.'" href="#voir" role="button">Voir</a>';
 
                   }
@@ -163,9 +163,10 @@
 <script type="text/javascript">
   $(document).ready(function(){
 
+    // Initialisation des tooltip
     $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 
     // Récupération des données du fromage et ajout des données dans les champs
     $.ajax({
@@ -242,5 +243,14 @@
         $('#modal-like').modal('hide');
         $(".modal-body").empty();
       });
+
+      // Clique du bouton "Like"
+      $('.like').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>index.php/fromage/appelLike?degustation="+this.id,
+        dataType: "json"
+      });
+    });
   });
 </script>
