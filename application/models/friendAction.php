@@ -3,6 +3,7 @@ require_once('inc/connexion.inc.php');
 require_once('inc/image.inc.php');
 class friendAction extends CI_Model
 {
+<<<<<<< HEAD
 
   // Nouvelle relation
   public function newRelation($id)
@@ -21,6 +22,17 @@ class friendAction extends CI_Model
     $this->db->where('num_tblutilisateur1', $_SESSION['idUser']);
     $this->db->where('num_tblutilisateur2',$id);
     $this->db->delete('tblrelationutilisateur');
+=======
+  public function newRelation($id)
+  {
+     // EN COURS DE DEV
+      $data = array(
+        'numero' => null,
+        'num_tblutilisateur1' => $_SESSION['idUser'],
+        'num_tblutilisateur2' => $id
+      );
+      $this->db->insert('tblrelationutilisateur', $data); // Insertion dans la base de donnée
+>>>>>>> developpement
   }
 
   public function getAllRelation()

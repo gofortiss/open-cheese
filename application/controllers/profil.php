@@ -23,6 +23,7 @@ public function __construct(){
       $this->load->view('header-view',$data); // Load header
       $this->load->view('profil-utilisateur-view');
       $this->load->view('footer-view');
+      var_dump($data);
     }
     else{
       // Redirection sur la liste des fromages
@@ -35,6 +36,7 @@ public function __construct(){
   {
     // Vérification du paramètre d'url et que l'utilisateur soit connecté
     if(isset($_GET['id'])) {
+<<<<<<< HEAD
       echo json_encode($this->friendAction->getRelation($_GET['id']),true); // Ajour d'une relation
     } else {
       header('Location:'.base_url('index.php/fromage/listeFromage'));
@@ -47,6 +49,9 @@ public function __construct(){
     // Vérification du paramètre d'url et que l'utilisateur soit connecté
     if(isset($_GET['id'])) {
       echo json_encode($this->friendAction->newRelation($_GET['id']),true); // Ajour d'une relation
+=======
+      $this->friendAction->newRelation($_GET['id']); // Liste des relations de l'utilisateur connecté
+>>>>>>> developpement
     } else {
       header('Location:'.base_url('index.php/fromage/listeFromage'));
     }
