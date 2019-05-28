@@ -57,4 +57,15 @@ class friendAction extends CI_Model
         return false; // Relaton existante
       }
   }
+
+  public function getFriendsList()
+  {
+      $this->db->select("tblutilisateur.numero, tblutilisateur.pseudo, tblrelationutilisateur.num_tblutilisateur1, tblrelationutilisateur.num_tblutilisateur2");
+      $this->db->from('tblrelationutilisateur');
+      $this->db->join('tblutilisateur','tblrelationutilisateur.num_tblutilisateur2=tblutilisateur.numero');
+      $this->db->where('num_tblutilisateur1',$_SESSION['idUser']);
+      $query=$this->db->get();
+      $data=$query->result();
+      return $data;
+  }
 }

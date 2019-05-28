@@ -23,22 +23,10 @@ public function __construct(){
       $this->load->view('header-view',$data); // Load header
       $this->load->view('profil-utilisateur-view');
       $this->load->view('footer-view');
-      var_dump($data);
     }
     else{
       // Redirection sur la liste des fromages
         header('Location:'.base_url('index.php/fromage/listeFromage'));
-    }
-  }
-
-  // Nouvel ami
-  public function appelRelation()
-  {
-    // Vérification du paramètre d'url et que l'utilisateur soit connecté
-    if(isset($_GET['id'])) {
-      echo json_encode($this->friendAction->getRelation($_GET['id']),true); // Ajour d'une relation
-    } else {
-      header('Location:'.base_url('index.php/fromage/listeFromage'));
     }
   }
 
@@ -54,6 +42,17 @@ public function __construct(){
     }
   }
 
+  // appel d'une relations
+  public function appelRelation()
+  {
+    // Vérification du paramètre d'url et que l'utilisateur soit connecté
+    if(isset($_GET['id'])) {
+      echo json_encode($this->friendAction->getRelation($_GET['id']),true); // Ajour d'une relation
+    } else {
+      header('Location:'.base_url('index.php/fromage/listeFromage'));
+    }
+  }
+
   // Retirer ami
   public function appelRetirerAmi()
   {
@@ -63,5 +62,11 @@ public function __construct(){
     } else {
       header('Location:'.base_url('index.php/fromage/listeFromage'));
     }
+  }
+
+  // Liste amis
+  public function apiAmis()
+  {
+      echo json_encode($this->friendAction->getFriendsList()); // Ajour d'une relation
   }
 }
