@@ -8,7 +8,6 @@
   <div class="form-row">
     <div class="form-group profil col-lg-12">
        <h2 class="">Utilisateur</h2>
-        <form action="profil/appelNouvelAmi?id=<?php echo $_GET['id']?>" method="post">
           <div class="form-group">
             <label>Pseudo</label>
             <input type="text" class="form-control pattern" name="pseudo" id="pseudo" disabled value='<?php echo $user[0]->pseudo;?>' required>
@@ -20,19 +19,11 @@
               <textarea class="form-control" name="bio" disabled aria-label="With textarea"><?php echo $user[0]->bio;?></textarea>
             </div>
           </div>
-          <!-- En développement -->
-          <!-- <button type="submit" class="btn btn-outline-primary btn-lg btn-block" >Ajouter en ami</button> -->
           <p>
-            <button class="btn btn-outline-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              Ajouter en ami
+            <button class="btn btn-outline-primary btn-lg btn-block" id="ajouter_ami" type="button">
+              Suivre
             </button>
           </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                Patience... cette fonction sera bientôt disponible :)
-              </div>
-            </div>
-        </form>
       </div>
     </div>
     <div class="form-group col-lg-12">
@@ -50,5 +41,18 @@
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
       </div>
     </div>
-  </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // Si ajouter en ami est cliqué
+    $('#ajouter_ami').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>index.php/profil/appelNouvelAmi?id=<?php echo $_GET['id']; ?>",
+        dataType: "json",
+        success: function (data) {
+        }
+      });
+    });
+  });
+</script>

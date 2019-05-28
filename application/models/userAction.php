@@ -109,11 +109,11 @@ class userAction extends CI_Model
    return $response->info();
  }
 
- public function getInformationsUtilisateur()
+ public function getInformationsUtilisateur($id)
  {
    $this->db->select("*");
    $this->db->from('tblutilisateur');
-   $this->db->where('tblutilisateur.numero', $_SESSION['idUser']);
+   $this->db->where('tblutilisateur.numero', $id);
    $query=$this->db->get();
    return $query->result();
  }

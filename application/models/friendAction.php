@@ -3,31 +3,20 @@ require_once('inc/connexion.inc.php');
 require_once('inc/image.inc.php');
 class friendAction extends CI_Model
 {
-  public function newRelation($userSelected,$relation)
+  public function newRelation($id)
   {
      // EN COURS DE DEV
-     
-    // foreach ($relation as $value) {
-    //   var_dump($value);
-    //   var_dump($userSelected);
-    //   if($value != $userSelected) {
-    //
-    //     $data = array(
-    //       'numero' => null,
-    //       'num_tblutilisateur1' => $_SESSION['idUser'],
-    //       'num_tblutilisateur2' => $userSelected
-    //     );
-    //     $this->db->insert('tblrelationutilisateur', $data); // Insertion dans la base de donnée
-    //     echo "peut être ajouté";
-    //   } else {
-    //     echo "ne peut pas être ajouté";
-    //   }
-    // }
+      $data = array(
+        'numero' => null,
+        'num_tblutilisateur1' => $_SESSION['idUser'],
+        'num_tblutilisateur2' => $id
+      );
+      $this->db->insert('tblrelationutilisateur', $data); // Insertion dans la base de donnée
   }
 
   public function getAllRelation()
   {
-    // // SELECT * FROM tblrelationutilisateur
+    // SELECT * FROM tblrelationutilisateur
     $query = $this->db->get('tblrelationutilisateur');
     $data = $query->result();
     return $data;
