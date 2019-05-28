@@ -108,11 +108,21 @@
     foreach ($degustation as $value) {
       echo '<div class="row">
               <div class="col-md-2">
-                <div class="degustation-info-block">
-                  <a href="'.base_url().'index.php/profil?id='.$value->num_tblutilisateur.'">
+                <div class="degustation-info-block">';
+                // Si la dégustation à été postée par l'utilisateur connecté
+                if($value->num_tblutilisateur == $_SESSION['idUser']){
+                  echo '<a href="'.base_url().'index.php/moncompte">
+                          <img class="degustation-utilisateur-image photo-fromage"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
+                        </a>
+                        <p class="degustation-utilisateur-pseudo lead">Vous</p>';
+                } // Si la dégustation à été postée par une autre personne
+                else {
+                  echo '<a href="'.base_url().'index.php/profil?id='.$value->num_tblutilisateur.'">
                     <img class="degustation-utilisateur-image photo-fromage"  style="width:50px!important;height:50px" src="'.base_url().'assets/images/profile-picture/'.$value->photo_profil.'" alt="photo"/>
                   </a>
-                  <p class="degustation-utilisateur-pseudo lead">'.$value->pseudo.'</p>
+                  <p class="degustation-utilisateur-pseudo lead">'.$value->pseudo.'</p>';
+                }
+                echo '
                   <p class="degustation-utilisateur-date lead">'.$value->dateAjout.'</p>
                 </div>
               </div>
