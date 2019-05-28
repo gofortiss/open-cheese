@@ -20,14 +20,8 @@
             </div>
           </div>
           <p>
-<<<<<<< HEAD
             <button class="btn btn-outline-primary btn-lg btn-block hidden" id="ajouter_ami" type="button">Suivre</button>
             <button class="btn btn-outline-danger btn-lg btn-block hidden" id="retirer_ami" type="button">Ne plus suivre</button>
-=======
-            <button class="btn btn-outline-primary btn-lg btn-block" id="ajouter_ami" type="button">
-              Suivre
-            </button>
->>>>>>> developpement
           </p>
       </div>
     </div>
@@ -48,9 +42,7 @@
     </div>
 </div>
 <script type="text/javascript">
-  $(document).ready(function(){
-<<<<<<< HEAD
-    // Récupération de la relation
+  $(document).ready(function(){    // Récupération de la relation
     $.ajax({
       type: "POST",
       url: "<?php echo base_url(); ?>index.php/profil/appelRelation?id=<?php echo $_GET['id']; ?>",
@@ -66,15 +58,13 @@
       }
     });
 
-=======
->>>>>>> developpement
+
     // Si ajouter en ami est cliqué
     $('#ajouter_ami').click(function(){
       $.ajax({
         type: "POST",
         url: "<?php echo base_url(); ?>index.php/profil/appelNouvelAmi?id=<?php echo $_GET['id']; ?>",
         dataType: "json",
-<<<<<<< HEAD
         success: function (success) {
           $("#retirer_ami").removeClass("hidden");
           $("#ajouter_ami").addClass("hidden");
@@ -92,9 +82,6 @@
           // Modification du bouton
           $("#ajouter_ami").removeClass("hidden");
           $("#retirer_ami").addClass("hidden");
-=======
-        success: function (data) {
->>>>>>> developpement
         }
       });
     });
