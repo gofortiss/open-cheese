@@ -6,9 +6,9 @@
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">
-    <div class="form-group col-lg-6">
+    <div class="form-group col-lg-4">
        <h2 class="moncompte-titre">Mes informations</h2>
-      <div class="moncompte-block1 reveal-focus">
+      <div class="moncompte-block1" style="border:solid #8080803d 1px;">
         <form action="moncompte/appelUpdate" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
@@ -41,15 +41,15 @@
         </form>
       </div>
     </div>
-    <div class="form-group col-lg-6">
-      <h2 class="moncompte-titre">Amis</h2>
-      <div class="moncompte-block2 reveal-focus">
+    <div class="form-group col-lg-4" >
+      <h2 class="moncompte-titre">Following</h2>
+      <div class="moncompte-block2" style="border:solid #8080803d 1px;">
         <table id="table"></table>
       </div>
     </div>
-    <div class="form-group col-lg-12">
-      <h2 class="moncompte-titre">Badges obtenus</h2>
-      <div class="moncompte-block3 reveal-focus">
+    <div class="form-group col-lg-4">
+      <h2 class="moncompte-titre">Trophés</h2>
+      <div class="moncompte-block3" style="border:solid #8080803d 1px;">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
@@ -69,10 +69,10 @@
 $(document).ready(function(){
       // Affichage des dégustations
       $('#table').bootstrapTable({
-        url:"<?php echo base_url(); ?>index.php/profil/apiAmis",
+        url:"<?php echo base_url(); ?>index.php/community/apiAmis",
         columns: [{
           visible : false,
-          field: 'fromage_numero',
+          field: 'numero',
           title: "Identifiant unique"
         }, {
           sortOrder: 'ASC',
@@ -80,7 +80,7 @@ $(document).ready(function(){
         }],
         // Si une ligne est cliquée redirection sur la page de la dégustation
         onClickRow: function (row, element, field) {
-          window.location.href = "<?php echo base_url(); ?>index.php/fromage?id="+row['fromage_numero'];
+          window.location.href = "<?php echo base_url(); ?>index.php/community/afficherProfil?id="+row['numero'];
         }
       })
 });

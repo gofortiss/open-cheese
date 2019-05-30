@@ -144,12 +144,19 @@ body {
   margin: auto;
 }
 
-/* PROFIL UTILISATEUR */
-/* .profil-utilisateur { */
-  /* max-width:800px;
-  margin: auto;
-  margin-bottom: 50px;
-} */
+/* PROFIL UTILISATEUR  */
+.label-community-user {
+  margin-top:25px!important;
+  margin-bottom:25px!important;
+  font-size:25px!important;
+  background-color:#007bff!important;
+  border: 0px!important;
+  cursor:pointer;
+}
+
+.label-community-user:hover {
+  background-color: #007bffc2!important;
+}
 
 /* DEGUSTATION */
 .degustation {

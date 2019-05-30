@@ -20,7 +20,17 @@ if(isset($_SESSION['idUser']))
   <?php
 }
 ?>
-<table id="table"></table>
+<table
+  data-mobile-responsive="true"
+  data-cookie="true"
+  data-cookie-id-table="saveId"
+  data-auto-refresh="true"
+  data-advanced-search="true"
+  data-id-table="advancedTable"
+  data-mobile-responsive="true"
+  data-show-columns="true"
+  id="table">
+</table>
 <script type="text/javascript">
 $(document).ready(function(){
       // Affichage des dégustations
