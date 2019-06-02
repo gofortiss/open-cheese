@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="form-row">
-      <div class="form-group col-lg-12">
+      <!-- <div class="form-group col-lg-12">
         <h2 class="moncompte-titre">Trophés obtenus</h2>
         <div class="moncompte-block3 reveal-focus">
           <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
@@ -24,6 +24,10 @@
           <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
           <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         </div>
+      </div> -->
+
+      <div class="form-group col-lg-12">
+        <table id="table"></table>
       </div>
     </div>
 </div>
@@ -33,6 +37,7 @@
       $('[data-toggle="popover"]').popover()
     })
 
+    // Affichage du bouton follow en fonction de l'état du suivi
     $.ajax({
       type: "POST",
       url: "<?php echo base_url(); ?>index.php/community/appelRelation?id=<?php echo $_GET['id']; ?>",
@@ -75,5 +80,85 @@
         }
       });
     });
+
+    // Affichage des dégustations de l'utilisateur
+    $('#table').bootstrapTable({
+      search : true,
+      url:"<?php echo base_url(); ?>index.php/fromage/apiDegustationUtilisateur?id="<?php echo $_GET['id'];?>,
+      pagination: true,
+      showLoading: true,
+      columns: [{
+        visible : false,
+        field: 'fromage_numero',
+        title: "Identifiant unique"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'nom_du_fromage',
+        title: "Nom du fromage"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'nom_du_producteur',
+        title: "Nom producteur"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'pays',
+        title: "Pays de production"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'type',
+        title: "Type de producteur"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'canton',
+        title: "Canton"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'typeLait',
+        title: 'Type de lait'
+      },
+      {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'type_pate',
+        title: 'Type de pâte'
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'pasteurise',
+        title: 'Pasteurisé'
+      },
+      {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'calories',
+        title: 'Valeur énergetique (100g)'
+      },
+      {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'proteines',
+        title: 'proteines (100g)'
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'sodium',
+        title: 'Sodium (100g)'
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'lipides',
+        title: 'Lipides (100g)'
+      }],
+      // Si une ligne est cliquée redirection sur la page de la dégustation
+      onClickRow: function (row, element, field) {
+        window.location.href = "<?php echo base_url(); ?>index.php/fromage?id="+row['fromage_numero'];
+      }
+    })
   });
 </script>

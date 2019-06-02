@@ -21,16 +21,15 @@ if(isset($_SESSION['idUser']))
 }
 ?>
 <table
-  data-mobile-responsive="true"
-  data-cookie="true"
-  data-cookie-id-table="saveId"
-  data-auto-refresh="true"
-  data-advanced-search="true"
-  data-id-table="advancedTable"
-  data-mobile-responsive="true"
-  data-show-columns="true"
-  id="table">
-</table>
+data-mobile-responsive="true"
+data-cookie="true"
+data-cookie-id-table="saveId"
+data-auto-refresh="true"
+data-advanced-search="true"
+data-id-table="advancedTable"
+data-mobile-responsive="true"
+data-show-columns="true"
+id="table"></table>
 <script type="text/javascript">
 $(document).ready(function(){
       // Affichage des dégustations
@@ -38,7 +37,7 @@ $(document).ready(function(){
         search : true,
         url:"<?php echo base_url(); ?>index.php/fromage/apiAllFromages",
         pagination: true,
-        showLoading: true,
+        
         columns: [{
           visible : false,
           field: 'fromage_numero',
