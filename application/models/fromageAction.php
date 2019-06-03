@@ -167,6 +167,19 @@ class fromageAction extends CI_Model
     return $data;
   }
 
+  // Retourne les dégustations d'un utilisateur
+  public function getDegustationUtilisateur($id)
+  {
+    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,nom,pseudo,num_tblutilisateur,photo_profil");
+    $this->db->from('tbldegustation');
+    $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
+    $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur =tblutilisateur.numero');
+    $this->db->where('tbldegustation.num_tblutilisateur', $id);
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
+  }
+
   // Retourne les like d'une dégustations selon le fromage
   public function getLikeDegustation($id)
   {

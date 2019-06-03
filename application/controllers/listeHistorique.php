@@ -24,4 +24,15 @@ public function __construct(){
       $degustations = json_encode($degustations,true);
       echo $degustations;
   }
+
+    public function apiDegustationUtilisateur()
+  {
+    if(isset($_GET['id'])){
+      $data['degustation'] = $this->fromageAction->getDegustationUtilisateur($_GET['id']);
+      $degustation = json_encode($data,true);
+      echo $degustation;
+    } else {
+      echo "Error";
+    }
+  }
 }

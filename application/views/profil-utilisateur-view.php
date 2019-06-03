@@ -84,76 +84,33 @@
     // Affichage des dégustations de l'utilisateur
     $('#table').bootstrapTable({
       search : true,
-      url:"<?php echo base_url(); ?>index.php/fromage/apiDegustationUtilisateur?id="<?php echo $_GET['id'];?>,
+      url:"<?php echo base_url(); ?>index.php/fromage/apiDegustationUtilisateur?id=<?php echo $_GET['id'];?>",
       pagination: true,
       showLoading: true,
       columns: [{
         visible : false,
-        field: 'fromage_numero',
+        field: 'numero',
         title: "Identifiant unique"
       }, {
         sortable: true,
         sortOrder: 'ASC',
-        field: 'nom_du_fromage',
+        field: 'dateAjout',
+        title: "Date de la dégustation"
+      }, {
+        sortable: true,
+        sortOrder: 'ASC',
+        field: 'nom',
         title: "Nom du fromage"
       }, {
         sortable: true,
         sortOrder: 'ASC',
-        field: 'nom_du_producteur',
-        title: "Nom producteur"
+        field: 'description_degustation',
+        title: "Description de la dégustation"
       }, {
         sortable: true,
         sortOrder: 'ASC',
-        field: 'pays',
-        title: "Pays de production"
-      }, {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'type',
-        title: "Type de producteur"
-      }, {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'canton',
-        title: "Canton"
-      }, {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'typeLait',
-        title: 'Type de lait'
-      },
-      {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'type_pate',
-        title: 'Type de pâte'
-      }, {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'pasteurise',
-        title: 'Pasteurisé'
-      },
-      {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'calories',
-        title: 'Valeur énergetique (100g)'
-      },
-      {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'proteines',
-        title: 'proteines (100g)'
-      }, {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'sodium',
-        title: 'Sodium (100g)'
-      }, {
-        sortable: true,
-        sortOrder: 'ASC',
-        field: 'lipides',
-        title: 'Lipides (100g)'
+        field: 'note',
+        title: "Note de la dégustarion"
       }],
       // Si une ligne est cliquée redirection sur la page de la dégustation
       onClickRow: function (row, element, field) {
