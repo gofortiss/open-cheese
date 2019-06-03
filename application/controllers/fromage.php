@@ -82,7 +82,7 @@ public function __construct(){
   {
     if(isset($_GET['id'])){
       $data['degustation'] = $this->fromageAction->getDegustationUtilisateur($_GET['id']);
-      $degustation = json_encode($data,true);
+      $degustation = json_encode($data['degustation'],true);
       echo $degustation;
     } else {
       echo "Error";

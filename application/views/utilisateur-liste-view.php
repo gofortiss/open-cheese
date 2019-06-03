@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Liste des utilisateurs</h1>
+    <h1 class="display-4">Utilisateurs</h1>
   </div>
 </div>
 <div style="max-width: 1500px!important;margin:auto">

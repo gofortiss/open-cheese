@@ -41,7 +41,7 @@
 		        <a class="nav-link" href="<?php echo base_url('index.php/home');?>">Accueil<span class="sr-only"></span></a>
 		      </li>
 					<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url('index.php/community');?>">Liste des utilisateurs</a>
+							<a class="nav-link" href="<?php echo base_url('index.php/community');?>">Utilisateurs</a>
 					</li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="<?php echo base_url('index.php/fromage/listeFromage');?>">Liste des fromages</a>

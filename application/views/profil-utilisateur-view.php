@@ -26,8 +26,16 @@
         </div>
       </div> -->
 
-      <div class="form-group col-lg-12">
-        <table id="table"></table>
+      <div class="form-group col-lg-12" style="max-width: 70%;margin:auto;">
+        <table id="table"
+          data-mobile-responsive="true"
+          data-cookie="true"
+          data-cookie-id-table="saveId"
+          data-advanced-search="true"
+          data-id-table="advancedTable"
+          data-mobile-responsive="true"
+          data-show-columns="true">
+        </table>
       </div>
     </div>
 </div>
@@ -86,10 +94,9 @@
       search : true,
       url:"<?php echo base_url(); ?>index.php/fromage/apiDegustationUtilisateur?id=<?php echo $_GET['id'];?>",
       pagination: true,
-      showLoading: true,
       columns: [{
         visible : false,
-        field: 'numero',
+        field: 'fromage_numero',
         title: "Identifiant unique"
       }, {
         sortable: true,
@@ -110,7 +117,7 @@
         sortable: true,
         sortOrder: 'ASC',
         field: 'note',
-        title: "Note de la dégustarion"
+        title: "Note de la dégustation"
       }],
       // Si une ligne est cliquée redirection sur la page de la dégustation
       onClickRow: function (row, element, field) {
