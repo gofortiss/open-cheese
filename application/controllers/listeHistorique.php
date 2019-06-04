@@ -4,6 +4,7 @@ class listeHistorique extends CI_Controller {
 public function __construct(){
   parent::__construct();
   $this->load->model("historique");
+  $this->load->model("communityAction");
 }
   public function index()
   {
@@ -18,6 +19,7 @@ public function __construct(){
     $this->load->view('footer-view');
   }
 
+  // Affiche toutes les dégustations de tout les utilisateurs
     public function apiHistorique()
   {
       $degustations = $this->historique->getAllDegustations();
@@ -25,14 +27,15 @@ public function __construct(){
       echo $degustations;
   }
 
-    public function apiDegustationUtilisateur()
-  {
-    if(isset($_GET['id'])){
-      $data['degustation'] = $this->fromageAction->getDegustationUtilisateur($_GET['id']);
-      $degustation = json_encode($data,true);
-      echo $degustation;
-    } else {
-      echo "Error";
-    }
-  }
+  // // Retourne un tableau des dégustations d'un utilisateur
+  //   public function apiDegustationUtilisateur()
+  // {
+  //   if(isset($_GET['id'])){
+  //     $data['degustation'] = $this->fromageAction->getDegustationUtilisateur($_GET['id']);
+  //     $degustation = json_encode($data,true);
+  //     echo $degustation;
+  //   } else {
+  //     echo "Error";
+  //   }
+  // }
 }
