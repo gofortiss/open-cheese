@@ -6,6 +6,16 @@ body {
   overflow-x: hidden;
 }
 
+/* FEED */
+.feed {
+  width: max-content;
+  margin: auto;
+  margin-top: 25px;
+}
+.feed-star {
+  width: 150px;
+}
+
 .hidden {
   display: none!important;
 }

@@ -8,6 +8,7 @@ public function __construct(){
   $this->load->database();
   $this->load->model("fromageAction");
   $this->load->model("producteurAction");
+  $this->load->model("communityAction");
   $this->load->helper('url');
 }
   public function index()
@@ -87,6 +88,19 @@ public function __construct(){
     } else {
       echo "Error";
     }
+  }
+
+  // Retourne un tableau JSON des dégustations des utilisateurs suivis
+  public function apiDegustationFollowing()
+  {
+    $data['friends'] = $this->communityAction->getFriendsList();
+    $data['degustation'] = [];
+    foreach ($data['friends'] as $key => $value) {
+      array_push($data['degustation'], $this->fromageAction->getDegustationUtilisateur($value->num_tblutilisateur2));
+    }
+    $degustation = json_encode($data['degustation'],true);
+    echo $degustation;
+    
   }
 
   // Retourne un tableau JSON des producteurs
