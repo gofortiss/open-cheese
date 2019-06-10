@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('inc/class.alert.php'); // Appel de la classe alerte
 require_once('inc/class.auth.php'); // Appel de la classe authentification
-class moncompte extends CI_Controller {
+class Mon_compte extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->model("User_action");

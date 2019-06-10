@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('inc/class.auth.php'); // Appel de la classe authentification
-class community extends CI_Controller {
+class Community extends CI_Controller {
 public function __construct(){
   parent::__construct();
   $this->load->model("Community_action");
