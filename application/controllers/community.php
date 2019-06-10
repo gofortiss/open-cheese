@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('inc/class.auth.php'); // Appel de la classe authentification
-class community extends CI_Controller {
+class Community extends CI_Controller {
 public function __construct(){
   parent::__construct();
   $this->load->model("Community_action");
@@ -27,7 +27,7 @@ public function __construct(){
     if (isset($_GET['id'])) {
       // Si l'id est égal à l'utilisateur connecté redirection sur mon compte
       if($_GET['id'] == $_SESSION['idUser']) {
-        header('Location:'.base_url('index.php/moncompte'));
+        header('Location:'.base_url('index.php/Mon_compte'));
       }
       // Recupération des données de l'utilisateur
       $data['user'] = $this->User_action->getInformationsUtilisateur($_GET['id']);
