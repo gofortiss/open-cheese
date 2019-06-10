@@ -1,9 +1,18 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Historique des dégustations</h1>
+    <h1 class="display-4">Historique des dégustations globale</h1>
   </div>
 </div>
-<table id="table"></table>
+<table
+data-mobile-responsive="true"
+data-cookie="true"
+data-cookie-id-table="saveId"
+data-auto-refresh="true"
+data-advanced-search="true"
+data-id-table="advancedTable"
+data-mobile-responsive="true"
+data-show-columns="true"
+id="table"></table>
 <script type="text/javascript">
 $(document).ready(function(){
       // Affichage des dégustations

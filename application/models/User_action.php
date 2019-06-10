@@ -2,7 +2,7 @@
 require_once('inc/connexion.inc.php');
 require_once('inc/class.response.php');
 require_once('inc/image.inc.php');
-class userAction extends CI_Model
+class User_action extends CI_Model
 {
 // fonction pour l'inscription
  public function inscription($post,$file)
@@ -109,11 +109,11 @@ class userAction extends CI_Model
    return $response->info();
  }
 
- public function getInformationsUtilisateur()
+ public function getInformationsUtilisateur($id)
  {
    $this->db->select("*");
    $this->db->from('tblutilisateur');
-   $this->db->where('tblutilisateur.numero', $_SESSION['idUser']);
+   $this->db->where('tblutilisateur.numero', $id);
    $query=$this->db->get();
    return $query->result();
  }

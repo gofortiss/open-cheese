@@ -8,7 +8,7 @@
   <div class="form-row" style="margin-bottom: 50px;">
     <div class="form-group col-lg-6">
        <h2 class="moncompte-titre">Mes informations</h2>
-      <div class="moncompte-block1 reveal-focus">
+      <div class="moncompte-block" style="border:solid #8080803d 1px;">
         <form action="moncompte/appelUpdate" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
@@ -41,134 +41,15 @@
         </form>
       </div>
     </div>
-    <div class="form-group col-lg-6">
-      <h2 class="moncompte-titre">Amis</h2>
-      <div class="moncompte-block2 reveal-focus">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-          </table>
+    <div class="form-group col-lg-6" >
+      <h2 class="moncompte-titre">Mes suivis<a href="<?php echo base_url('index.php/community'); ?>" style="margin-left: 20px"class="btn btn-outline-primary">Chercher des utilisateurs</a></h2>
+      <div class="moncompte-block" style="border:solid #8080803d 1px;">
+        <table id="table"></table>
       </div>
     </div>
-    <div class="form-group col-lg-12">
-      <h2 class="moncompte-titre">Badges obtenus</h2>
-      <div class="moncompte-block3 reveal-focus">
+    <!-- <div class="form-group col-lg-4">
+      <h2 class="moncompte-titre">Trophés</h2>
+      <div class="moncompte-block3" style="border:solid #8080803d 1px;">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
@@ -180,6 +61,27 @@
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+      // Affichage des dégustations
+      $('#table').bootstrapTable({
+        url:"<?php echo base_url(); ?>index.php/community/apiAmis",
+        columns: [{
+          visible : false,
+          field: 'numero',
+          title: "Identifiant unique"
+        }, {
+          sortOrder: 'ASC',
+          field: 'pseudo'
+        }],
+        // Si une ligne est cliquée redirection sur la page de la dégustation
+        onClickRow: function (row, element, field) {
+          window.location.href = "<?php echo base_url(); ?>index.php/community/afficherProfil?id="+row['numero'];
+        }
+      })
+});
+</script>

@@ -2,7 +2,7 @@
 require_once('connexion.inc.php');
 function uploadImage($file,$target)
 {
-    $target_dir = "C:/wamp/www/open-cheese/assets/images/".$target;
+    $target_dir = "assets/images/".$target;
     $filename = $file["fichier"]["name"];
   	$file_basename = substr($filename,  strripos($filename, '.')); // get file extention
   	$file_ext = substr($filename, strripos($filename, '.')); // get file name

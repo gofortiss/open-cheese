@@ -1,7 +1,7 @@
 <?php
 require_once('inc/image.inc.php');
 require_once('inc/class.response.php');
-class fromageAction extends CI_Model
+class Fromage_action extends CI_Model
 {
   public function getAllFromageAndProducteur()
   {
@@ -162,6 +162,19 @@ class fromageAction extends CI_Model
     $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
     $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur=tblutilisateur.numero');
     $this->db->where('tbldegustation.num_tblfromage', $id);
+    $query=$this->db->get();
+    $data=$query->result();
+    return $data;
+  }
+
+  // Retourne les dégustations d'un utilisateur
+  public function getDegustationUtilisateur($id)
+  {
+    $this->db->select("tbldegustation.numero as degustation_numero, dateAjout,description_degustation,note,photo_degustation,nom,pseudo,num_tblutilisateur, tblfromage.numero as fromage_numero, photo_profil");
+    $this->db->from('tbldegustation');
+    $this->db->join('tblfromage','tbldegustation.num_tblfromage=tblfromage.numero');
+    $this->db->join('tblutilisateur','tbldegustation.num_tblutilisateur =tblutilisateur.numero');
+    $this->db->where('tbldegustation.num_tblutilisateur', $id);
     $query=$this->db->get();
     $data=$query->result();
     return $data;

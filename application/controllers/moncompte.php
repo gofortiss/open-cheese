@@ -5,7 +5,7 @@ require_once('inc/class.auth.php'); // Appel de la classe authentification
 class moncompte extends CI_Controller {
   public function __construct(){
     parent::__construct();
-    $this->load->model("userAction");
+    $this->load->model("User_action");
     $this->load->database();
     $this->load->helper('url');
   }
@@ -37,7 +37,7 @@ class moncompte extends CI_Controller {
 
       // Titre de la page
       $data['title'] = "Mon compte";
-      $data['userInfo'] = $this->userAction->getInformationsUtilisateur($_SESSION['idUser']); // Récupération des données de l'utilisateur
+      $data['userInfo'] = $this->User_action->getInformationsUtilisateur($_SESSION['idUser']); // Récupération des données de l'utilisateur
       $this->load->view('header-view',$data); // Chargement du header
       $this->load->view('moncompte-view'); // Chargemnt de la page
       $this->load->view('footer-view'); // Chargement du footer
@@ -47,10 +47,10 @@ class moncompte extends CI_Controller {
   {
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
-    
+
     // Appel de la fonction mise à jour de l'utilisateur
-    $defaultData = $this->userAction->getInformationsUtilisateur(); // Données par défaut inscrite dans la db
-    $result = $this->userAction->updateInformationsUtilisateur($defaultData, $_POST, $_FILES); // Nouvelles données
+    $defaultData = $this->User_action->getInformationsUtilisateur($_SESSION['idUser']); // Données par défaut inscrite dans la db
+    $result = $this->User_action->updateInformationsUtilisateur($defaultData, $_POST, $_FILES); // Nouvelles données
     switch ($result->message[0]) {
       case 'pseudo':
           header('Location:'.base_url('index.php/moncompte?message=pseudo'));

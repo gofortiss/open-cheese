@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Connexion extends CI_Controller {
   public function __construct(){
     parent::__construct();
-    $this->load->model("userAction");
+    $this->load->model("User_action");
     $this->load->helper('url');
   }
 
@@ -33,7 +33,7 @@ class Connexion extends CI_Controller {
 
   public function appelConnexion()
   {
-    $result = $this->userAction->connexion($_POST);
+    $result = $this->User_action->connexion($_POST);
 
     // Contrôle résultat
     if($result->success)
