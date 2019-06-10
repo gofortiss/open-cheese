@@ -15,7 +15,7 @@ public function __construct(){
     $this->load->helper('url');
     // Vérifie si l'utilisateur est déconnecté
     $this->load->view('header-view',$data); // Load header
-    $this->load->view('Historique-liste-view');
+    $this->load->view('historique-liste-view');
     $this->load->view('footer-view');
   }
 
