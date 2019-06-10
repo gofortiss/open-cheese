@@ -38,16 +38,16 @@
 		  <div class="collapse navbar-collapse" id="navbarNav">
 		    <ul class="navbar-nav">
 		      <li class="nav-item">
-		        <a class="nav-link" href="<?php echo base_url('index.php/home');?>">Accueil<span class="sr-only"></span></a>
+		        <a class="nav-link" href="<?php echo base_url('index.php/Home');?>">Accueil<span class="sr-only"></span></a>
 		      </li>
 					<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url('index.php/community');?>">Utilisateurs</a>
+							<a class="nav-link" href="<?php echo base_url('index.php/Community');?>">Utilisateurs</a>
 					</li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="<?php echo base_url('index.php/fromage/listeFromage');?>">Liste des fromages</a>
 		      </li>
 					<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url('index.php/listeHistorique');?>">Liste des dégustations</a>
+							<a class="nav-link" href="<?php echo base_url('index.php/Liste_historique');?>">Liste des dégustations</a>
 					</li>
 					<!-- Élément dynamique HTML connecté/déconnecté-->
 					<?php
@@ -64,7 +64,7 @@
 						else {
 							?>
 							<li class="nav-item">
-								<a class="nav-link" href="<?php echo base_url('index.php/moncompte');?>">Mon compte</a>
+								<a class="nav-link" href="<?php echo base_url('index.php/Mon_compte');?>">Mon compte</a>
 							</li>
 							<li class="nav-item">
 								<?php echo '<a href='.base_url('index.php/Deconnexion').' class="nav-link">Déconnexion</a>';?>
