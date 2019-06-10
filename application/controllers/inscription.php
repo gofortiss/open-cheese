@@ -5,7 +5,7 @@ class Inscription extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->database();
-    $this->load->model("userAction");
+    $this->load->model("User_action");
     $this->load->helper('url');
   }
   public function index()
@@ -48,7 +48,7 @@ class Inscription extends CI_Controller {
       // Création d'un cookie avec les valeur des inputs
       setcookie ('inscription', json_encode($_POST), time() + 240); // heure de création + 240 sec
       // Appel de la fonction création d'utilisateur
-      $result = $this->userAction->inscription($_POST,$_FILES);
+      $result = $this->User_action->inscription($_POST,$_FILES);
       // Switch qui renvois sur les pages associée au message
       switch ($result->message[0]) {
         case 'success':

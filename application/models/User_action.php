@@ -2,7 +2,7 @@
 require_once('inc/connexion.inc.php');
 require_once('inc/class.response.php');
 require_once('inc/image.inc.php');
-class userAction extends CI_Model
+class User_action extends CI_Model
 {
 // fonction pour l'inscription
  public function inscription($post,$file)

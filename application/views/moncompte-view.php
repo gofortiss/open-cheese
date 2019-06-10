@@ -6,9 +6,9 @@
     </div>
   </div>
   <div class="form-row" style="margin-bottom: 50px;">
-    <div class="form-group col-lg-4">
+    <div class="form-group col-lg-6">
        <h2 class="moncompte-titre">Mes informations</h2>
-      <div class="moncompte-block1" style="border:solid #8080803d 1px;">
+      <div class="moncompte-block" style="border:solid #8080803d 1px;">
         <form action="moncompte/appelUpdate" method="post"  enctype="multipart/form-data">
           <div class="form-group">
             <label>Pseudo</label>
@@ -41,13 +41,13 @@
         </form>
       </div>
     </div>
-    <div class="form-group col-lg-4" >
-      <h2 class="moncompte-titre">Following</h2>
-      <div class="moncompte-block2" style="border:solid #8080803d 1px;">
+    <div class="form-group col-lg-6" >
+      <h2 class="moncompte-titre">Mes suivis<a href="<?php echo base_url('index.php/community'); ?>" style="margin-left: 20px"class="btn btn-outline-primary">Chercher des utilisateurs</a></h2>
+      <div class="moncompte-block" style="border:solid #8080803d 1px;">
         <table id="table"></table>
       </div>
     </div>
-    <div class="form-group col-lg-4">
+    <!-- <div class="form-group col-lg-4">
       <h2 class="moncompte-titre">Trophés</h2>
       <div class="moncompte-block3" style="border:solid #8080803d 1px;">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
@@ -61,7 +61,7 @@
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
         <img src="https://previews.123rf.com/images/alexutemov/alexutemov1512/alexutemov151200347/49462014-modern-flat-design-badge-icon-vector-badges-flat-modern-style-vintage-retro-flat-badges-labels-and-r.jpg" class="img-thumbnail" alt="...">
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

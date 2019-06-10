@@ -1,7 +1,7 @@
 <?php
 require_once('inc/image.inc.php');
 require_once('inc/class.response.php');
-class fromageAction extends CI_Model
+class Fromage_action extends CI_Model
 {
   public function getAllFromageAndProducteur()
   {

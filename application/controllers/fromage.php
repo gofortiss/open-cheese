@@ -6,9 +6,9 @@ class fromage extends CI_Controller {
 public function __construct(){
   parent::__construct();
   $this->load->database();
-  $this->load->model("fromageAction");
-  $this->load->model("producteurAction");
-  $this->load->model("communityAction");
+  $this->load->model("Fromage_action");
+  $this->load->model("Producteur_action");
+  $this->load->model("Community_action");
   $this->load->helper('url');
 }
   public function index()
@@ -24,7 +24,7 @@ public function __construct(){
         header('Location:'.base_url('index.php/fromage/listeFromage'));
       }
     // Récupération des dégustations
-    $data['degustation'] = $this->fromageAction->getDegustation($_GET['id']);
+    $data['degustation'] = $this->Fromage_action->getDegustation($_GET['id']);
 
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
@@ -47,7 +47,7 @@ public function __construct(){
   // Récupération des fromages
   function apiAllFromages()
   {
-    $fromages = $this->fromageAction->getAllFromageAndProducteur();
+    $fromages = $this->Fromage_action->getAllFromageAndProducteur();
     $fromages = json_encode($fromages,true);
     echo $fromages;
   }
@@ -57,7 +57,7 @@ public function __construct(){
   public function apiFromage()
   {
     if(isset($_GET['id'])){
-      $fromage = $this->fromageAction->getFromage($_GET['id']);
+      $fromage = $this->Fromage_action->getFromage($_GET['id']);
       $fromage = json_encode($fromage,true);
       echo $fromage;
     } else {
@@ -69,8 +69,8 @@ public function __construct(){
   public function apiDegustation()
   {
     if(isset($_GET['id'])){
-      $data['degustation'] = $this->fromageAction->getDegustation($_GET['id']);
-      $data['note_moyenne'] = $this->fromageAction->getMoyenneNoteFromage($data['degustation']);
+      $data['degustation'] = $this->Fromage_action->getDegustation($_GET['id']);
+      $data['note_moyenne'] = $this->Fromage_action->getMoyenneNoteFromage($data['degustation']);
       $degustation = json_encode($data,true);
       echo $degustation;
     } else {
@@ -82,7 +82,7 @@ public function __construct(){
   public function apiDegustationUtilisateur()
   {
     if(isset($_GET['id'])){
-      $data['degustation'] = $this->fromageAction->getDegustationUtilisateur($_GET['id']);
+      $data['degustation'] = $this->Fromage_action->getDegustationUtilisateur($_GET['id']);
       $degustation = json_encode($data['degustation'],true);
       echo $degustation;
     } else {
@@ -93,21 +93,21 @@ public function __construct(){
   // Retourne un tableau JSON des dégustations des utilisateurs suivis
   public function apiDegustationFollowing()
   {
-    $data['friends'] = $this->communityAction->getFriendsList();
+    $data['friends'] = $this->Community_action->getFriendsList();
     $data['degustation'] = [];
     foreach ($data['friends'] as $key => $value) {
-      array_push($data['degustation'], $this->fromageAction->getDegustationUtilisateur($value->num_tblutilisateur2));
+      array_push($data['degustation'], $this->Fromage_action->getDegustationUtilisateur($value->num_tblutilisateur2));
     }
     $degustation = json_encode($data['degustation'],true);
     echo $degustation;
-    
+
   }
 
   // Retourne un tableau JSON des producteurs
   public function apiProducteur()
   {
     if(isset($_GET['id'])){
-      $producteur = $this->fromageAction->getProducteur($_GET['id']);
+      $producteur = $this->Fromage_action->getProducteur($_GET['id']);
       $producteur = json_encode($producteur,true);
       echo $producteur;
     } else {
@@ -135,10 +135,10 @@ public function __construct(){
 
     $data['title'] = "Ajouter un fromage";
     //Requête SQL sur les tables (Données liste déroulante)
-    $data['pate'] = $this->fromageAction->getTypePate();
-    $data['lait'] = $this->fromageAction->getLait();
-    $data['pasteurise'] = $this->fromageAction->getPasteurise();
-    $data['producteur'] = $this->producteurAction->getAllProducteurs();
+    $data['pate'] = $this->Fromage_action->getTypePate();
+    $data['lait'] = $this->Fromage_action->getLait();
+    $data['pasteurise'] = $this->Fromage_action->getPasteurise();
+    $data['producteur'] = $this->Producteur_action->getAllProducteurs();
 
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
@@ -165,9 +165,9 @@ public function __construct(){
     }
 
     //Requête SQL sur les tables (Données liste déroulante)
-    $data['typeproducteur'] = $this->producteurAction->getTypeProducteur();
-    $data['pays'] = $this->producteurAction->getPays();
-    $data['canton'] = $this->producteurAction->getCanton();
+    $data['typeproducteur'] = $this->Producteur_action->getTypeProducteur();
+    $data['pays'] = $this->Producteur_action->getPays();
+    $data['canton'] = $this->Producteur_action->getCanton();
     $data['title'] = "Ajouter un producteur";
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
@@ -184,7 +184,7 @@ public function __construct(){
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
-    $info = $this->fromageAction->insertFromage($_POST,$_FILES);
+    $info = $this->Fromage_action->insertFromage($_POST,$_FILES);
     // Redirection
     switch ($info->message[0]) {
       case 'success' :
@@ -208,7 +208,7 @@ public function __construct(){
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
-    $return = $this->producteurAction->insertProducteur($_POST,$_FILES);
+    $return = $this->Producteur_action->insertProducteur($_POST,$_FILES);
     // Redirection
     switch ($return->message[0]) {
       case 'success' :
@@ -230,7 +230,7 @@ public function __construct(){
 
     $data['title'] = "Ajouter une dégustation";
     // Retour requête SQL sur toute la table fromage
-    $data['fromage'] = $this->fromageAction->getAllFromageAndProducteur();
+    $data['fromage'] = $this->Fromage_action->getAllFromageAndProducteur();
 
     // Chargement des vues
     $this->load->view('header-view',$data); // Load header
@@ -244,7 +244,7 @@ public function __construct(){
     $auth = new Authentification(); // Nouvelle instance authentification
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
-    $this->fromageAction->insertDegustation($_POST,$_FILES,$_GET['id']);
+    $this->Fromage_action->insertDegustation($_POST,$_FILES,$_GET['id']);
     header('Location:'.base_url('index.php/fromage/?id='.$_GET['id']));
   }
 
@@ -257,7 +257,7 @@ public function __construct(){
     // Vérification si un paramètre est entré
     if(isset($_GET['degustation']))
     {
-      $this->fromageAction->insertLikeDegustation($_GET['degustation']);
+      $this->Fromage_action->insertLikeDegustation($_GET['degustation']);
     } else {echo "Nope";}
   }
 
@@ -268,7 +268,7 @@ public function __construct(){
     $auth->auth(); // Redirection si l'utilisateur n'est pas connecté
 
     if(isset($_GET['degustation'])) {
-      $existingLike = $this->fromageAction->getLikeDegustation($_GET['degustation']);
+      $existingLike = $this->Fromage_action->getLikeDegustation($_GET['degustation']);
       $existingLike = json_encode($existingLike,true);
       echo $existingLike;
     }

@@ -1,7 +1,7 @@
 <?php
 require_once('inc/connexion.inc.php');
 require_once('inc/image.inc.php');
-class communityAction extends CI_Model
+class Community_action extends CI_Model
 {
 
   // Nouvelle relation

@@ -1,6 +1,6 @@
 <?php
 require_once('inc/connexion.inc.php');
-class historique extends CI_Model
+class Historique extends CI_Model
 {
   public function getAllDegustations()
   {

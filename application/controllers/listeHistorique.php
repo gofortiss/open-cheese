@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class listeHistorique extends CI_Controller {
 public function __construct(){
   parent::__construct();
-  $this->load->model("historique");
-  $this->load->model("communityAction");
+  $this->load->model("Historique");
+  $this->load->model("Community_action");
 }
   public function index()
   {
@@ -15,14 +15,14 @@ public function __construct(){
     $this->load->helper('url');
     // Vérifie si l'utilisateur est déconnecté
     $this->load->view('header-view',$data); // Load header
-    $this->load->view('historique-liste-view');
+    $this->load->view('Historique-liste-view');
     $this->load->view('footer-view');
   }
 
   // Affiche toutes les dégustations de tout les utilisateurs
     public function apiHistorique()
   {
-      $degustations = $this->historique->getAllDegustations();
+      $degustations = $this->Historique->getAllDegustations();
       $degustations = json_encode($degustations,true);
       echo $degustations;
   }
@@ -31,7 +31,7 @@ public function __construct(){
   //   public function apiDegustationUtilisateur()
   // {
   //   if(isset($_GET['id'])){
-  //     $data['degustation'] = $this->fromageAction->getDegustationUtilisateur($_GET['id']);
+  //     $data['degustation'] = $this->Fromage_action->getDegustationUtilisateur($_GET['id']);
   //     $degustation = json_encode($data,true);
   //     echo $degustation;
   //   } else {
